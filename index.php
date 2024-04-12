@@ -16,7 +16,7 @@
     require 'connection.php';
     ?>
 
-    <h1>Welcome WanderWave's</h1>
+    <h1>Welcome Wander Wave's</h1>
 
     <?php
     require 'Components/footer.php';

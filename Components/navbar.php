@@ -6,7 +6,6 @@
  * 
  */
 
- 
 echo '<nav class="navbar navbar-expand-lg bg-body-tertiary">';
 echo '<div class="container-fluid">';
 // Navigation title

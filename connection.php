@@ -20,10 +20,7 @@
     define('DB_PASSWD', 'XdpJx7aAXt');
     define('DB_NAME', 'sql8698311');
 
-    // define('DB_HOST', 'localhost');
-    // define('DB_USER', 's3092883');
-    // define('DB_PASSWD', 'taralien');
-    // define('DB_NAME', 's3092883');
+
 
     // Create connection
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWD, DB_NAME);

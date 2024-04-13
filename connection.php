@@ -27,7 +27,7 @@
 
 
     $db_connection  = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWD) or die("could dnot connect to MySQLi !" . mysqli_connect_error());
-    echo (!mysqli_select_db($db_connection, DB_NAME)) ? die("unable to select database" . mysqli_error($db_connection)) : "Connected MySQL successfully.";
+     (!mysqli_select_db($db_connection, DB_NAME)) ? die("unable to select database" . mysqli_error($db_connection)) : "Connected MySQL successfully.";
 
     // // Check connection
     // if ($db_connection->connect_error) {

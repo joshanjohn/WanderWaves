@@ -1,0 +1,151 @@
+@import url(../css/clash-display.css);
+
+:root {
+    --green: #00be63;
+    --black: #333;
+    --white: #f5f5f5;
+    --c-dark: #212529;
+    --c-brand-rgb: 78, 87, 212;
+    --c-body: #727272;
+    --font-base: "ClashDisplay", sans-serif;
+    --box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.08);
+    --transition: all 0.5s ease;
+}
+
+/*navigation style*/
+.navbar {
+    background-color: var(--white) !important;
+    box-shadow: var(--box-shadow);
+}
+
+.nav-item {
+    margin-right: 15px;
+    font-family: monospace;
+    font-size: medium;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.img2 {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nav-item .btn {
+    background-color: var(--green);
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 10px 25Spx;
+}
+
+.nav-item .btn:hover {
+    background-color: var(--black);
+    border-color: var(--c-brand-light);
+}
+
+/*index styling*/
+body {
+    font-family: var(--font-base);
+    line-height: 1.7;
+    color: var(--black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-weight: 600;
+    color: var(--black);
+
+}
+
+.row {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#haventitle {
+    background: rgba(245, 245, 245, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(245, 245, 245, 0.3);
+    width: 50%;
+    max-width: 50%;
+
+}
+
+#haventitle button {
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+}
+
+#haventitle button:hover {
+    background-color: var(--green);
+}
+
+a {
+    text-decoration: none;
+    color: var(--c-brand);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--c-brand-light);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section-padding {
+    padding-top: 140px;
+    padding-bottom: 140px;
+}
+
+.theme-shadow {
+    box-shadow: var(--box-shadow);
+}
+
+#index {
+    background: url(../images/index11.png);
+    background-position: center;
+    background-size: cover;
+}
+
+/* SECTION TITLE */
+.section-title {
+    margin-bottom: 60px;
+}
+
+.section-title .line {
+    width: 60px;
+    height: 4px;
+    background-color: var(--black);
+    margin: 16px auto 24px auto;
+}
+
+.section-title p {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}

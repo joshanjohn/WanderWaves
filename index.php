@@ -38,6 +38,28 @@
         </div>
     </section>
 
+    <!-- TESTIMONIAL SECTION -->
+    <section class="review my-5">
+        <!-- title -->
+        <h3 class=" text-center" id="title">OUR REVIEWS</h3>
+        <div class="row d-flex justify-content-between mx-auto" style="width: 85%;">
+            <?php
+            $stmt = $db_connection->prepare("SELECT * FROM reviews");   //selecting reviews from MySQK
+            $stmt->execute();
+            $result = $stmt->get_result();
+            for ($i = 0; $i < 3; $i++) {    // displaying 3 Reviews from Latest Review
+                $row = $result->fetch_assoc();
+                // CARDS
+                echo '<div class="card text-white" id="card">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . $row['name'] . '</h5>';
+                echo '<p class="card-text">' . $row['message'] . '</p>';
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
+        </div>
+    </section>
 
     <?php
     require 'Components/footer.php';

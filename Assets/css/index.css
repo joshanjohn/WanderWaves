@@ -2,6 +2,7 @@
 
 :root {
     --green: #00be63;
+    --dark-green: #013b1f;
     --black: #333;
     --white: #f5f5f5;
     --c-dark: #212529;
@@ -148,4 +149,34 @@ img {
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+}
+
+#title {
+    color: var();
+    font-size: 2.6rem;
+    margin-bottom: 4rem;
+    font-family: var(--font-base);
+}
+
+#card {
+    width: 22rem;
+    background-color: var(--green);
+    width: 22rem;
+    font-family: var(--font-base);
+    color: var(--white);
+    -webkit-box-shadow: 14px 23px 31px -9px rgba(98,145,122,1);
+    -moz-box-shadow: 14px 23px 31px -9px rgba(98,145,122,1);
+    box-shadow: 14px 23px 31px -9px rgba(98,145,122,1);
+    transition: all 2s ease;
+}
+
+#card:hover {
+    -webkit-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+}
+
+
+.card-title{
+    color: red;
 }

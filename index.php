@@ -50,7 +50,7 @@
             for ($i = 0; $i < 3; $i++) {    // displaying 3 Reviews from Latest Review
                 $row = $result->fetch_assoc();
                 // CARDS
-                echo '<div class="card text-white" id="card">';
+                echo '<div class="card text-white my-4" id="card">';
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title">' . $row['name'] . '</h5>';
                 echo '<p class="card-text text-dark">' . $row['message'] . '</p>';

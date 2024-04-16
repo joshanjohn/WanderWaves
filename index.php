@@ -53,7 +53,7 @@
                 echo '<div class="card text-white" id="card">';
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title">' . $row['name'] . '</h5>';
-                echo '<p class="card-text">' . $row['message'] . '</p>';
+                echo '<p class="card-text text-dark">' . $row['message'] . '</p>';
                 echo '</div>';
                 echo '</div>';
             }

@@ -19,7 +19,7 @@
                 </li>
                 <!-- Testimonials link -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#testimonials">Testimonials</a>
+                    <a class="nav-link" href="#testimonial">Testimonials</a>
                 </li>
                 <!-- Contact Us link -->
                 <li class="nav-item">

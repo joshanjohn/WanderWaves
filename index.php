@@ -39,7 +39,7 @@
     </section>
 
     <!-- TESTIMONIAL SECTION -->
-    <section class="review my-5">
+    <section class="review my-5" id="testimonial">
         <!-- title -->
         <h3 class=" text-center" id="title">OUR REVIEWS</h3>
         <div class="row d-flex justify-content-between mx-auto" style="width: 85%;">

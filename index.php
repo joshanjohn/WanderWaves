@@ -44,14 +44,21 @@
         <h3 class=" text-center" id="title">OUR REVIEWS</h3>
         <div class="row d-flex justify-content-between mx-auto" style="width: 85%;">
             <?php
-            $stmt = $db_connection->prepare("SELECT * FROM reviews");   //selecting reviews from MySQK
+            $stmt = $db_connection->prepare("
+            SELECT u.name, r.message 
+            FROM reviews AS r
+            JOIN appuser AS u
+            ON (r.user_id = u.user_id)
+            GROUP BY r.user_id
+            ORDER BY RAND() LIMIT 3
+            ");   //selecting reviews from MySQK
             $stmt->execute();
             $result = $stmt->get_result();
             for ($i = 0; $i < 3; $i++) {    // displaying 3 Reviews from Latest Review
                 $row = $result->fetch_assoc();
                 // CARDS
                 echo '<div class="card text-white my-4" id="card">';
-                echo '<div class="card-body">';
+                echo '<div class="card-body d-flex flex-column justify-content-start" style="min-height: 16rem">';
                 echo '<h5 class="card-title">' . $row['name'] . '</h5>';
                 echo '<p class="card-text text-dark">' . $row['message'] . '</p>';
                 echo '</div>';

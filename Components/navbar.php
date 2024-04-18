@@ -2,10 +2,10 @@
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="#">
-            <img src="./Assets/images/logo.png" alt="Wander Waves Logo" width="120" height="70">
+            <img src="./Assets/images/logo.png" alt="Wander Waves Logo" width="50px" height="50px">
             
         </a>
-        <div class="img2"><img src="./Assets/images/navImage.png" alt="Wander Waves header pic" width="420"></div>
+        <div class="img2"><img src="./Assets/images/navImage.png" alt="Wander Waves header pic" width="200px" height="100px"></div>
         <!-- Toggle button for smaller screens -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

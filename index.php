@@ -18,7 +18,9 @@
 <body>
 
     <?php
-    require 'Components/navbar.php';
+    session_start();
+    $_SESSION['reviewEdit'] =
+        require 'Components/navbar.php';
     require 'connection.php';
     ?>
 
@@ -40,8 +42,17 @@
 
     <!-- TESTIMONIAL SECTION -->
     <section class="review my-5" id="testimonial">
+
+        <form action="" class="d-flex justify-content-end justify-content-sm-center p-sm-4">
+            <button class="btn btn-outline-secondary mx-4"><img width="25" height="25"
+                    src="https://img.icons8.com/ios-filled/50/40C057/create-new.png" alt="create-new" />Edit reviews</button>
+        </form>
+        
         <!-- title -->
         <h3 class=" text-center" id="title">OUR REVIEWS</h3>
+
+
+        <!-- CARD AREA -->
         <div class="row d-flex justify-content-between mx-auto" style="width: 85%;">
             <?php
             $stmt = $db_connection->prepare("
@@ -50,7 +61,6 @@
             JOIN appuser AS u
             ON (r.user_id = u.user_id)
             GROUP BY r.user_id
-            ORDER BY RAND() LIMIT 3
             ");   //selecting reviews from MySQK
             $stmt->execute();
             $result = $stmt->get_result();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql8.freesqldatabase.com
--- Generation Time: Apr 18, 2024 at 11:14 AM
+-- Generation Time: Apr 18, 2024 at 11:47 AM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
@@ -84,7 +84,7 @@ CREATE TABLE `properties` (
 CREATE TABLE `reviews` (
   `review_id` int(11) NOT NULL COMMENT 'unique review ID',
   `user_id` int(11) NOT NULL COMMENT 'user_id of reviewer',
-  `message` varchar(50) NOT NULL COMMENT 'review message'
+  `message` varchar(150) NOT NULL COMMENT 'review message'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -92,18 +92,15 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`review_id`, `user_id`, `message`) VALUES
-(1, 1, '\"The website is visually appealing with a sleek de'),
-(2, 2, 'I recently visited the website and was quite impre'),
-(3, 3, 'Lorem Ipsum website offers a sleek design and user'),
-(7, 4, 'The website design is modern and sleek, but the lo'),
-(8, 5, 'I appreciate the user-friendly interface, but ther'),
-(9, 6, 'The website provides valuable information, but the'),
-(10, 7, 'I love the interactive features on the website, bu'),
-(11, 8, 'The website navigation is intuitive, but I encount'),
-(12, 9, 'Overall, the website offers a great user experienc'),
-(13, 10, 'The website layout is clean and organized, but I s'),
-(14, 11, 'I found the website content to be comprehensive an'),
-(15, 12, 'The website offers valuable resources for users, b');
+(7, 4, 'Lorem Ipsum website offers a sleek design and user-friendly interface. However, the content seems lacking in depth, and navigation could be smoother.'),
+(8, 5, 'I appreciate the user-friendly interface, but there are some broken links that need fixing.'),
+(9, 6, 'The website provides valuable information, but the lack of mobile responsiveness is disappointing.'),
+(10, 7, 'I love the interactive features on the website, but the font choice could be improved for better readability.'),
+(11, 8, 'The website navigation is intuitive, but I encountered some bugs while using the search function.'),
+(12, 9, 'Overall, the website offers a great user experience, but I wish there were more frequent updates on the content.'),
+(13, 10, 'The website layout is clean and organized, but I struggled to find the contact information for customer support.'),
+(14, 11, 'I found the website content to be comprehensive and well-researched, but the lack of multimedia elements makes it less engaging.'),
+(15, 12, 'The website offers valuable resources for users, but I encountered difficulties while trying to submit feedback through the online form.');
 
 --
 -- Indexes for dumped tables

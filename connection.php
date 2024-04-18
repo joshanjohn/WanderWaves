@@ -16,9 +16,9 @@
 
 
     define('DB_HOST', 'sql8.freesqldatabase.com');
-    define('DB_USER', 'sql8698311');
-    define('DB_PASSWD', 'XdpJx7aAXt');
-    define('DB_NAME', 'sql8698311');
+    define('DB_USER', 'sql8700055');
+    define('DB_PASSWD', 'VRLYIKf4UF');
+    define('DB_NAME', 'sql8700055');
 
     // define('DB_HOST', 'localhost');
     // define('DB_USER', 's3092883');

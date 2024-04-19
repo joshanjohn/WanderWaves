@@ -1,8 +1,9 @@
 <!-- TESTIMONIAL SECTION -->
+
 <section class="review my-5" id="testimonial">
 
     <div class="container mb-4 d-flex justify-content-center">
-        <a class="btn btn-outline-secondary mx-4" href="testimonial_manage.php"><img width="25" height="25"
+        <a class="btn btn-outline-secondary mx-4 text-dark" href="pages/testimonials/testimonial_manage.php"><img width="25" height="25"
                 src="https://img.icons8.com/color/48/pencil-tip.png" alt="pencil-tip" /> Edit Reviews</a>
     </div>
 
@@ -11,6 +12,7 @@
 
     <!-- CARD AREA -->
     <?php
+    require_once '././connection.php';
     $stmt = $db_connection->prepare("
             SELECT u.name as name, r.message as message
             FROM reviews AS r
@@ -32,6 +34,8 @@
         echo '</div>';
         echo '</div>';
     }
+    $stmt->close();
+    $db_connection->close();
     ?>
     </div>
 </section>

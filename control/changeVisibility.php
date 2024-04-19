@@ -6,7 +6,7 @@ if (isset($_POST['public'])){
     $id = intval($_POST['public']);
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    header("Location: ../testimonial_manage.php");
+    header("Location: ../pages/testimonials/testimonial_manage.php");
 }
 
 if (isset($_POST['private'])){
@@ -15,6 +15,6 @@ if (isset($_POST['private'])){
     $id = intval($_POST['private']);
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    header("Location: ../testimonial_manage.php");
+    header("Location: ../pages/testimonials/testimonial_manage.php");
 }
 ?>

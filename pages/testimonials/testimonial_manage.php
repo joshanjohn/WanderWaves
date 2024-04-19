@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="Assets/css/index.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Assets/css/index.css?v=<?php echo time(); ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -19,8 +19,8 @@
     <!-- TESTIMONIAL MANAGE -->
 
     <?php
-    require 'connection.php';
-    include 'Components/navbar.php';
+    require '../../connection.php';
+    include '../../Components/navbar.php';
     ?>
 
     <!-- title -->
@@ -28,7 +28,7 @@
 
     <!-- SAVE BUTTON -->
     <div class="container mb-4 d-flex justify-content-center">
-        <a class="btn btn-outline-secondary mx-4" href="index.php#testimonial"><img width="25" height="25"
+        <a class="btn btn-outline-secondary mx-4 text-dark" href="../../index.php#testimonial"><img width="25" height="25"
                 src="https://img.icons8.com/sf-black-filled/64/FAB005/checked-2.png" alt="checked-2" /> Save Reviews</a>
     </div>
 
@@ -72,11 +72,11 @@
         function displayBtn($bool, $id)
         {
             if ($bool == "1") {
-                echo '<form action="control/changeVisibility.php" method="POST">';
+                echo '<form action="../../control/changeVisibility.php" method="POST">';
                 echo '<button class="btn btn-dark mx-2" name="private" value="' . $id . '"> private </button>';
                 echo '</form>';
             } else {
-                echo '<form action="control/changeVisibility.php" method="POST">';
+                echo '<form action="../../control/changeVisibility.php" method="POST">';
                 echo '<button class="btn btn-success mx-2" name="public" value="' . $id . '"> public </button>';
                 echo '</form>';
             }

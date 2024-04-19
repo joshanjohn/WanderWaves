@@ -19,7 +19,6 @@
 <body>
 
     <?php
-    require 'connection.php';
     // NAVBAR
     include 'Components/navbar.php';
     ?>
@@ -44,7 +43,7 @@
 
     <?php
     // TESTIMONIAL SECTION
-    include 'testimonial.php';
+    include 'pages/testimonials/testimonial.php';
 
     // FOOTER
     include 'Components/footer.php';

@@ -23,7 +23,7 @@
 
 
     // Create connection
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWD, DB_NAME);
+    // $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWD, DB_NAME);
 
 
     $db_connection  = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWD) or die("could dnot connect to MySQLi !" . mysqli_connect_error());

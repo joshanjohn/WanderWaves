@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link href="Assets/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="Assets/css/index.css?v=<?php echo time(); ?>">
+    <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,10 +19,9 @@
 <body>
 
     <?php
-    session_start();
-    $_SESSION['reviewEdit'] =
-        require 'Components/navbar.php';
     require 'connection.php';
+    // NAVBAR
+    include 'Components/navbar.php';
     ?>
 
     <!-- main page-->
@@ -40,46 +40,14 @@
         </div>
     </section>
 
-    <!-- TESTIMONIAL SECTION -->
-    <section class="review my-5" id="testimonial">
 
-        <form action="" class="d-flex justify-content-end justify-content-sm-center p-sm-4">
-            <button class="btn btn-outline-secondary mx-4"><img width="25" height="25"
-                    src="https://img.icons8.com/ios-filled/50/40C057/create-new.png" alt="create-new" />Edit reviews</button>
-        </form>
-        
-        <!-- title -->
-        <h3 class=" text-center" id="title">OUR REVIEWS</h3>
-
-
-        <!-- CARD AREA -->
-        <div class="row d-flex justify-content-between mx-auto" style="width: 85%;">
-            <?php
-            $stmt = $db_connection->prepare("
-            SELECT u.name, r.message 
-            FROM reviews AS r
-            JOIN appuser AS u
-            ON (r.user_id = u.user_id)
-            GROUP BY r.user_id
-            ");   //selecting reviews from MySQK
-            $stmt->execute();
-            $result = $stmt->get_result();
-            for ($i = 0; $i < 3; $i++) {    // displaying 3 Reviews from Latest Review
-                $row = $result->fetch_assoc();
-                // CARDS
-                echo '<div class="card text-white my-4" id="card">';
-                echo '<div class="card-body d-flex flex-column justify-content-start" style="min-height: 16rem">';
-                echo '<h5 class="card-title">' . $row['name'] . '</h5>';
-                echo '<p class="card-text text-dark">' . $row['message'] . '</p>';
-                echo '</div>';
-                echo '</div>';
-            }
-            ?>
-        </div>
-    </section>
 
     <?php
-    require 'Components/footer.php';
+    // TESTIMONIAL SECTION
+    include 'testimonial.php';
+
+    // FOOTER
+    include 'Components/footer.php';
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

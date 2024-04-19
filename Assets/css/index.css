@@ -160,23 +160,21 @@ img {
 
 #card {
     width: 22rem;
-    background-color: var(--green);
-    width: 22rem;
+    /* background-color: var(--white); */
+    background-color: #92d5b5;
+    border: var(--green) dashed 3px;
     font-family: var(--font-base);
     color: var(--white);
     -webkit-box-shadow: 14px 23px 31px -9px rgba(98,145,122,1);
     -moz-box-shadow: 14px 23px 31px -9px rgba(98,145,122,1);
     box-shadow: 14px 23px 31px -9px rgba(98,145,122,1);
-    transition: all 2s ease;
+    transition: all 1s ease;
 }
 
 #card:hover {
+    border: #00be63 solid 3px;
+    background-color: var(--white);
     -webkit-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
-}
-
-
-.card-title{
-    color: red;
 }

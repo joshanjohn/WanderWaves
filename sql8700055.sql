@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql8.freesqldatabase.com
--- Generation Time: Apr 18, 2024 at 11:47 AM
+-- Generation Time: Apr 19, 2024 at 12:39 PM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
@@ -61,6 +61,20 @@ INSERT INTO `appuser` (`user_id`, `name`, `mail`, `address`, `pincode`, `city`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `feedbacks`
+--
+
+CREATE TABLE `feedbacks` (
+  `feedback_id` int(11) NOT NULL COMMENT 'unique feedback ID',
+  `name` varchar(50) NOT NULL COMMENT 'name of person',
+  `mail` varchar(50) NOT NULL COMMENT 'mail ID of person',
+  `mobile` varchar(20) NOT NULL COMMENT 'mobile number of person',
+  `message` text NOT NULL COMMENT 'feedback message '
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `properties`
 --
 
@@ -70,9 +84,10 @@ CREATE TABLE `properties` (
   `address` varchar(250) NOT NULL COMMENT 'property address',
   `city` varchar(50) NOT NULL COMMENT 'name of city',
   `postcode` varchar(10) NOT NULL COMMENT 'postcode of property',
-  `type` varchar(20) NOT NULL COMMENT 'type of property (Rent, Shared, Buy)',
+  `category` enum('buy','share','rent') NOT NULL COMMENT 'category of property (Rent, Shared, Buy)',
   `price` decimal(10,0) NOT NULL COMMENT 'price of property',
-  `availability` date NOT NULL COMMENT 'date of availability of property'
+  `availability` date NOT NULL COMMENT 'date of availability of property',
+  `description` text NOT NULL COMMENT 'description for property'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -84,23 +99,24 @@ CREATE TABLE `properties` (
 CREATE TABLE `reviews` (
   `review_id` int(11) NOT NULL COMMENT 'unique review ID',
   `user_id` int(11) NOT NULL COMMENT 'user_id of reviewer',
-  `message` varchar(150) NOT NULL COMMENT 'review message'
+  `message` varchar(150) NOT NULL COMMENT 'review message',
+  `visible` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'visiblity of review'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reviews`
 --
 
-INSERT INTO `reviews` (`review_id`, `user_id`, `message`) VALUES
-(7, 4, 'Lorem Ipsum website offers a sleek design and user-friendly interface. However, the content seems lacking in depth, and navigation could be smoother.'),
-(8, 5, 'I appreciate the user-friendly interface, but there are some broken links that need fixing.'),
-(9, 6, 'The website provides valuable information, but the lack of mobile responsiveness is disappointing.'),
-(10, 7, 'I love the interactive features on the website, but the font choice could be improved for better readability.'),
-(11, 8, 'The website navigation is intuitive, but I encountered some bugs while using the search function.'),
-(12, 9, 'Overall, the website offers a great user experience, but I wish there were more frequent updates on the content.'),
-(13, 10, 'The website layout is clean and organized, but I struggled to find the contact information for customer support.'),
-(14, 11, 'I found the website content to be comprehensive and well-researched, but the lack of multimedia elements makes it less engaging.'),
-(15, 12, 'The website offers valuable resources for users, but I encountered difficulties while trying to submit feedback through the online form.');
+INSERT INTO `reviews` (`review_id`, `user_id`, `message`, `visible`) VALUES
+(7, 4, 'Lorem Ipsum website offers a sleek design and user-friendly interface. However, the content seems lacking in depth, and navigation could be smoother.', 0),
+(8, 5, 'I appreciate the user-friendly interface, but there are some broken links that need fixing.', 1),
+(9, 6, 'The website provides valuable information, but the lack of mobile responsiveness is disappointing.', 0),
+(10, 7, 'I love the interactive features on the website, but the font choice could be improved for better readability.', 1),
+(11, 8, 'The website navigation is intuitive, but I encountered some bugs while using the search function.', 1),
+(12, 9, 'Overall, the website offers a great user experience, but I wish there were more frequent updates on the content.', 0),
+(13, 10, 'The website layout is clean and organized, but I struggled to find the contact information for customer support.', 0),
+(14, 11, 'I found the website content to be comprehensive and well-researched, but the lack of multimedia elements makes it less engaging.', 0),
+(15, 12, 'The website offers valuable resources for users, but I encountered difficulties while trying to submit feedback through the online form.', 0);
 
 --
 -- Indexes for dumped tables
@@ -113,10 +129,17 @@ ALTER TABLE `appuser`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `feedbacks`
+--
+ALTER TABLE `feedbacks`
+  ADD PRIMARY KEY (`feedback_id`);
+
+--
 -- Indexes for table `properties`
 --
 ALTER TABLE `properties`
-  ADD PRIMARY KEY (`property_id`);
+  ADD PRIMARY KEY (`property_id`),
+  ADD KEY `properties_ibfk_1` (`user_id`);
 
 --
 -- Indexes for table `reviews`
@@ -135,6 +158,11 @@ ALTER TABLE `reviews`
 ALTER TABLE `appuser`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique user ID', AUTO_INCREMENT=14;
 --
+-- AUTO_INCREMENT for table `feedbacks`
+--
+ALTER TABLE `feedbacks`
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique feedback ID';
+--
 -- AUTO_INCREMENT for table `properties`
 --
 ALTER TABLE `properties`
@@ -147,6 +175,12 @@ ALTER TABLE `reviews`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `properties`
+--
+ALTER TABLE `properties`
+  ADD CONSTRAINT `properties_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `appuser` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reviews`

@@ -39,6 +39,7 @@
             JOIN appuser AS u
             ON (r.user_id = u.user_id)
             GROUP BY r.review_id
+            ORDER BY r.visible DESC
         ");
         $stmt->execute();
         $result = $stmt->get_result();

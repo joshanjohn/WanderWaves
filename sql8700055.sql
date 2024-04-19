@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql8.freesqldatabase.com
--- Generation Time: Apr 19, 2024 at 12:39 PM
+-- Generation Time: Apr 19, 2024 at 02:25 PM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
@@ -75,10 +75,10 @@ CREATE TABLE `feedbacks` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `properties`
+-- Table structure for table `property`
 --
 
-CREATE TABLE `properties` (
+CREATE TABLE `property` (
   `property_id` int(11) NOT NULL COMMENT 'unique property ID',
   `user_id` int(11) NOT NULL COMMENT 'unique user ID',
   `address` varchar(250) NOT NULL COMMENT 'property address',
@@ -88,6 +88,17 @@ CREATE TABLE `properties` (
   `price` decimal(10,0) NOT NULL COMMENT 'price of property',
   `availability` date NOT NULL COMMENT 'date of availability of property',
   `description` text NOT NULL COMMENT 'description for property'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `property_category`
+--
+
+CREATE TABLE `property_category` (
+  `property_id` int(11) NOT NULL COMMENT 'unique property ID',
+  `category` enum('buy','share','rent') NOT NULL COMMENT 'category of property'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -109,8 +120,8 @@ CREATE TABLE `reviews` (
 
 INSERT INTO `reviews` (`review_id`, `user_id`, `message`, `visible`) VALUES
 (7, 4, 'Lorem Ipsum website offers a sleek design and user-friendly interface. However, the content seems lacking in depth, and navigation could be smoother.', 0),
-(8, 5, 'I appreciate the user-friendly interface, but there are some broken links that need fixing.', 1),
-(9, 6, 'The website provides valuable information, but the lack of mobile responsiveness is disappointing.', 0),
+(8, 5, 'I appreciate the user-friendly interface, but there are some broken links that need fixing.', 0),
+(9, 6, 'The website provides valuable information, but the lack of mobile responsiveness is disappointing.', 1),
 (10, 7, 'I love the interactive features on the website, but the font choice could be improved for better readability.', 1),
 (11, 8, 'The website navigation is intuitive, but I encountered some bugs while using the search function.', 1),
 (12, 9, 'Overall, the website offers a great user experience, but I wish there were more frequent updates on the content.', 0),
@@ -135,11 +146,17 @@ ALTER TABLE `feedbacks`
   ADD PRIMARY KEY (`feedback_id`);
 
 --
--- Indexes for table `properties`
+-- Indexes for table `property`
 --
-ALTER TABLE `properties`
+ALTER TABLE `property`
   ADD PRIMARY KEY (`property_id`),
   ADD KEY `properties_ibfk_1` (`user_id`);
+
+--
+-- Indexes for table `property_category`
+--
+ALTER TABLE `property_category`
+  ADD PRIMARY KEY (`property_id`);
 
 --
 -- Indexes for table `reviews`
@@ -163,9 +180,9 @@ ALTER TABLE `appuser`
 ALTER TABLE `feedbacks`
   MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique feedback ID';
 --
--- AUTO_INCREMENT for table `properties`
+-- AUTO_INCREMENT for table `property`
 --
-ALTER TABLE `properties`
+ALTER TABLE `property`
   MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique property ID';
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -177,10 +194,10 @@ ALTER TABLE `reviews`
 --
 
 --
--- Constraints for table `properties`
+-- Constraints for table `property`
 --
-ALTER TABLE `properties`
-  ADD CONSTRAINT `properties_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `appuser` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `property`
+  ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `appuser` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reviews`

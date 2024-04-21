@@ -19,8 +19,7 @@
     <!-- TESTIMONIAL MANAGE -->
 
     <?php
-    require '../../connection.php';
-    include '../../Components/navbar.php';
+    require '../../Components/header.php';
     ?>
 
     <!-- title -->

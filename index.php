@@ -19,9 +19,7 @@
 <body>
 
     <?php
-    require_once 'connection.php';
-    // NAVBAR
-    include 'Components/navbar.php';
+    include 'Components/header.php';
     ?>
 
     <!-- main page-->

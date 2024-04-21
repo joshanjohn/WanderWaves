@@ -21,7 +21,7 @@
 <body>
     <?php
     // NAVBAR
-    include '../../Components/navbar.php';
+    require '../../Components/header.php';
 
     // message
     if (isset($_GET['success'])) {

@@ -178,3 +178,45 @@ img {
     -moz-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
 }
+
+/*LOG IN STYLING*/
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+/*REGISTERATION STYLING*/
+#reg{
+    background-color: var(--black);
+}
+   
+    
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+    #btnR{
+        background-color: var(--green);
+        border: none;
+    
+    }
+    #register{
+        padding-top: 20px;
+        
+    }

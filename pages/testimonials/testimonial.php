@@ -2,14 +2,17 @@
 
 <section class="review my-5" id="testimonial">
 
-    <div class="container mb-4 d-flex justify-content-center">
-        <a class="btn btn-outline-secondary mx-4 text-dark" href="pages/testimonials/testimonial_manage.php"><img width="25" height="25"
-                src="https://img.icons8.com/color/48/pencil-tip.png" alt="pencil-tip" /> Edit Reviews</a>
-    </div>
-
+    
     <!-- title -->
-    <h3 class=" text-center" id="title">OUR REVIEWS</h3>
-
+    <h3 class=" text-center mt-5" id="title">OUR REVIEWS</h3>
+    
+    <!-- edit button -->
+    <div class="container mb-4 d-flex justify-content-center">
+        <a class="btn btn-outline-secondary mx-4 text-dark" href="pages/testimonials/testimonial_manage.php"><img
+                width="25" height="25" src="https://img.icons8.com/color/48/pencil-tip.png" alt="pencil-tip" /> Edit
+            Reviews</a>
+    </div>
+    
     <!-- CARD AREA -->
     <?php
     require_once '././connection.php';

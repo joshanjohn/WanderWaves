@@ -29,10 +29,10 @@
     $navLinks = array(
         'Public' => array(
             array('Home', './index.php'),
-            array('Adverts', './pages/adverts/adverts.php'),
-            array('Testimonials', './pages/testimonials/testimonials.php'),
+            array('Adverts', './adverts/adverts.php'),
+            array('Testimonials', './testimonials/testimonials.php'),
             array('Contact Us', '#contact'),
-            array('Log In', './pages/LogIn.php')
+            array('Log In', 'WanderWaves/pages/LogIn.php')
         ),
         'Landlord' => array(
             array('Home', './index.php'),
@@ -46,7 +46,7 @@
             array('Log Out', 'logout.php')
         ),
         'Tenant' => array(
-            array('Home', './index.php'),
+            array('Home', '#home'),
             array('Adverts', './pages/adverts/adverts.php'),
             array('Testimonials', './pages/testimonials/testimonials.php'),
             array('Inventory Details', '#InventoryDetails'),

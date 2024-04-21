@@ -220,3 +220,39 @@ height: 100%;
         padding-top: 20px;
         
     }
+
+    /*/* CONTACT */
+#contact {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+}
+
+#contact::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-green); 
+    background-image:  url(../images/counter.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#contact .form-control {
+    border-radius: 0;
+}
+
+#contact .form-control:focus {
+    box-shadow: none;
+    border-color: var(--dark-green);
+}
+#btnC{
+    background-color: var(--dark-green);
+    align-items: center;
+    justify-content: center;
+    border: none;
+}

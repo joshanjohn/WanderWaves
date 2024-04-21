@@ -55,6 +55,8 @@ if (isset($_POST['submit']) && $_FILES['file']['error'] != 4) {
         echo "Cannot upload this file type.";
         header("Location: ../pages/adverts/addAdverts.php?success=false");
     }
-
+    
+}else{
+    header("Location: ../pages/adverts/addAdverts.php");
 }
 ?>

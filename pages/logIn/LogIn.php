@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <!-- <link rel="stylesheet" href="../Assets/css/index.css?v=<?php echo time(); ?>"> -->
-    <link href="../Assets/css/index.css" rel="stylesheet">
+    <link href="../../Assets/css/index.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,13 +18,13 @@
 
 <body>
 <?php
-    require '../Components/header.php';
+    require '../../Components/header.php';
     ?>
     <section class="vh-100">
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="../Assets/images/index2.png"
+        <img src="../../Assets/images/index2.png"
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -61,7 +61,7 @@
           <div class="text-center text-lg-start mt-4 pt-2">
             <button  id="btnR"type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="register.php"
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="../../../WanderWaves/pages/register/register.php"
                 class="link-danger">Register</a></p>
           </div>
 

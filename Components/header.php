@@ -1,4 +1,5 @@
 <?php
+session_start();
     // Including the database connection
     if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
         // Path for the Knuth server
@@ -24,7 +25,9 @@
     function validate_password($data){
         return true;
     }
-
+    function validate_category($data){
+        return ($data!="Admin" && $data!="Landlord" && $data!="Tenant");
+    }
     // Define an array of links for each user level
     $navLinks = array(
         'Public' => array(
@@ -66,8 +69,12 @@
             array('Log Out', 'logout.php')
         )
     );
-    // $links=$navLinks[$_SESSION["userLevel"]];
-    $links=$navLinks["Public"];
+    $userLevel="Public";
+    if(isset($_SESSION["userLevel"])){
+        $userLevel= $_SESSION["userLevel"];
+    }
+    $links=$navLinks[$userLevel];
+    
 
 ?>
 

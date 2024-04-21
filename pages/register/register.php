@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="../Assets/css/index.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Assets/css/index.css?v=<?php echo time(); ?>">
     <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
 
 <body>
 <?php
-    require 'C:/xampp/htdocs/Assignment3/WanderWaves/Components/header.php';
+    require '../../Components/header.php';
     ?>
  <section class="vh-100 gradient-custom">
   <div id ="reg"class="container py-5 h-100">
@@ -27,13 +27,13 @@
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-            <form>
+            <form action="processor.php" method="POST" novalidate>
 
               <div class="row">
                 <div class="col-md-6 mb-4">
 
                   <div data-mdb-input-init class="form-outline">
-                    <input type="text" id="firstName" class="form-control form-control-lg" />
+                    <input name="firstName"type="text" id="firstName" class="form-control form-control-lg" />
                     <label class="form-label" for="firstName">First Name</label>
                   </div>
 
@@ -41,7 +41,7 @@
                 <div class="col-md-6 mb-4">
 
                   <div data-mdb-input-init class="form-outline">
-                    <input type="text" id="lastName" class="form-control form-control-lg" />
+                    <input name="lastName"type="text" id="lastName" class="form-control form-control-lg" />
                     <label class="form-label" for="lastName">Last Name</label>
                   </div>
 
@@ -55,7 +55,7 @@
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div data-mdb-input-init class="form-outline">
-                    <input type="email" id="emailAddress" class="form-control form-control-lg" />
+                    <input name="emailAddress" type="email" id="emailAddress" class="form-control form-control-lg" />
                     <label class="form-label" for="emailAddress">Email</label>
                   </div>
 
@@ -63,7 +63,7 @@
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div data-mdb-input-init class="form-outline">
-                    <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
+                    <input name="phoneNumber"type="tel" id="phoneNumber" class="form-control form-control-lg" />
                     <label class="form-label" for="phoneNumber">Phone Number</label>
                   </div>
 
@@ -73,11 +73,11 @@
               <div class="row">
                 <div class="col-12">
 
-                  <select class="select form-control-lg">
-                    <option value="1" disabled>User Category</option>
-                    <option value="2">Tenant</option>
-                    <option value="3">Landlord</option>
-                    <option value="4">Admin</option>
+                  <select name="userCategory"class="select form-control-lg">
+                    <option value="userCategory" disabled>User Category</option>
+                    <option value="Tenant">Tenant</option>
+                    <option value="Landlord">Landlord</option>
+                    <option value="Admin">Admin</option>
                   </select>
                   <label class="form-label select-label">User Category</label>
                   
@@ -87,8 +87,8 @@
                
 
                 <div id="register" data-mdb-input-init class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg">Password</label>
+                  <input name="password"type="password" id="password" class="form-control form-control-lg" />
+                  <label class="form-label" for="password">Password</label>
                 </div>
 
                

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql8.freesqldatabase.com
--- Generation Time: Apr 19, 2024 at 02:25 PM
+-- Generation Time: Apr 21, 2024 at 09:37 AM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
@@ -21,6 +21,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `sql8700055`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ads`
+--
+
+CREATE TABLE `ads` (
+  `ad_id` int(11) NOT NULL COMMENT 'unique ad ID',
+  `image` varchar(50) NOT NULL COMMENT 'path of image'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -120,18 +131,24 @@ CREATE TABLE `reviews` (
 
 INSERT INTO `reviews` (`review_id`, `user_id`, `message`, `visible`) VALUES
 (7, 4, 'Lorem Ipsum website offers a sleek design and user-friendly interface. However, the content seems lacking in depth, and navigation could be smoother.', 0),
-(8, 5, 'I appreciate the user-friendly interface, but there are some broken links that need fixing.', 0),
+(8, 5, 'I appreciate the user-friendly interface, but there are some broken links that need fixing.', 1),
 (9, 6, 'The website provides valuable information, but the lack of mobile responsiveness is disappointing.', 1),
-(10, 7, 'I love the interactive features on the website, but the font choice could be improved for better readability.', 1),
-(11, 8, 'The website navigation is intuitive, but I encountered some bugs while using the search function.', 1),
+(10, 7, 'I love the interactive features on the website, but the font choice could be improved for better readability.', 0),
+(11, 8, 'The website navigation is intuitive, but I encountered some bugs while using the search function.', 0),
 (12, 9, 'Overall, the website offers a great user experience, but I wish there were more frequent updates on the content.', 0),
-(13, 10, 'The website layout is clean and organized, but I struggled to find the contact information for customer support.', 0),
-(14, 11, 'I found the website content to be comprehensive and well-researched, but the lack of multimedia elements makes it less engaging.', 0),
+(13, 10, 'The website layout is clean and organized, but I struggled to find the contact information for customer support.', 1),
+(14, 11, 'I found the website content to be comprehensive and well-researched, but the lack of multimedia elements makes it less engaging.', 1),
 (15, 12, 'The website offers valuable resources for users, but I encountered difficulties while trying to submit feedback through the online form.', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ads`
+--
+ALTER TABLE `ads`
+  ADD PRIMARY KEY (`ad_id`);
 
 --
 -- Indexes for table `appuser`
@@ -169,6 +186,11 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `ads`
+--
+ALTER TABLE `ads`
+  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique ad ID', AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `appuser`
 --

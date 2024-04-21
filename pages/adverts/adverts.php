@@ -2,11 +2,11 @@
 
 
     <!-- title -->
-    <h3 class=" text-center" id="title">ADVERTS</h3>
+    <h3 class=" text-center" id="advertsTitle">ADVERTS</h3>
 
     <!-- upload button -->
     <div class="container mb-4 d-flex justify-content-center">
-        <a class="btn btn-outline-secondary mx-4 text-dark" href="pages/testimonials/testimonial_manage.php"><img
+        <a class="btn btn-outline-secondary mx-4 text-dark" href="pages/adverts/addAdverts.php"><img
                 width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/40C057/upload--v1.png"
                 alt="upload--v1" /> Upload</a>
     </div>

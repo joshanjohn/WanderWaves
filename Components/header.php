@@ -53,10 +53,11 @@ $userLevel = $_SESSION['access'];
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <?php
+                //HOME
                 echo '<li class="nav-item">';
                 echo '<a class="nav-link" href="' . getbaseURL() . '/index.php">Home</a>';
                 echo '</li>';
-
+                // TESTIMONIALS
                 echo '<li class="nav-item">';
                 echo '<a class="nav-link" href="' . getbaseURL() . '/index.php#testimonial">Testimonials</a>';
                 echo '</li>';
@@ -67,66 +68,21 @@ $userLevel = $_SESSION['access'];
 
                         }
                     }
-
+                    //Log Out
                     echo '<li class="nav-item">';
                     echo '<a class="nav-link" href="' . getbaseURL() . '/pages/logIn/LogIn.php">Log Out</a>';
                     echo '</li>';
                 } else {
+                    // Login
                     echo '<li class="nav-item">';
                     echo '<a class="nav-link" href="' . getbaseURL() . '/pages/logIn/LogIn.php">Login</a>';
                     echo '</li>';
                 }
-
-
-                // if ($userLevel == "admin" ) {
-                //     echo '<li class="nav-item">';
-                //     echo '<a class="nav-link" href="' . $navLinks['base'][1] . '">Property Listings</a>';
-                //     echo '</li>';
-                
-                // }
-                // if ($userLevel != "Public") {
-                //     echo '<li class="nav-item">';
-                //     echo '<a class="nav-link" href="' . $navLinks['base'][2] . '">Inventory Details</a>';
-                //     echo '</li>';
-                
-                // }
-                // if ($userLevel != "Public") {
-                //     echo '<li class="nav-item">';
-                //     echo '<a class="nav-link" href="' . $navLinks['base'][3] . '">Tenant Account</a>';
-                //     echo '</li>';
-                
-                // }
-                // if ($userLevel != "Public") {
-                //     echo '<li class="nav-item">';
-                //     echo '<a class="nav-link" href="' . $navLinks['base'][4] . '">Landlord Account</a>';
-                //     echo '</li>';
-                
-                // }
-                // echo '<li class="nav-item">';
-                // echo '<a class="nav-link" href="' . $navLinks['base'][5] . '">Testimonials</a>';
-                // echo '</li>';
-                
-                // echo '<li class="nav-item">';
-                // echo '<a class="nav-link" href="' . $navLinks['base'][6] . '">Contact Us</a>';
-                // echo '</li>';
-                
-                // echo '<li class="nav-item">';
-                // if ($userLevel == "Public") {
-                //     echo '<a class="nav-link" href="' . $navLinks['base'][7] . '">Log in</a>';
-                // } else {
-                //     echo '<a class="nav-link" href="' . $navLinks['base'][8] . '">Log Out</a>';
-                // }
-                // echo '</li>';
-                
-
                 ?>
-
-
             </ul>
         </div>
     </div>
 </nav>
-
 
 <?php
 //user defined functions 

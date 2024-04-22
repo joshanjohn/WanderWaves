@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql8.freesqldatabase.com
--- Generation Time: Apr 21, 2024 at 09:37 AM
+-- Generation Time: Apr 22, 2024 at 03:03 PM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
@@ -33,6 +33,29 @@ CREATE TABLE `ads` (
   `image` varchar(50) NOT NULL COMMENT 'path of image'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `ads`
+--
+
+INSERT INTO `ads` (`ad_id`, `image`) VALUES
+(12, '/Assets/images/ads/66255b51b8ca5.png'),
+(13, '/Assets/images/ads/66255b705e450.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appliances`
+--
+
+CREATE TABLE `appliances` (
+  `washing_machine` tinyint(1) NOT NULL,
+  `microwave` tinyint(1) NOT NULL,
+  `dryer` tinyint(1) NOT NULL,
+  `wifi` tinyint(1) NOT NULL,
+  `tv` tinyint(1) NOT NULL,
+  `property_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -42,32 +65,30 @@ CREATE TABLE `ads` (
 CREATE TABLE `appuser` (
   `user_id` int(11) NOT NULL COMMENT 'unique user ID',
   `name` varchar(50) NOT NULL COMMENT 'name of user',
-  `mail` varchar(50) NOT NULL COMMENT 'mail ID of user',
-  `address` varchar(250) NOT NULL COMMENT 'address of user',
-  `pincode` varchar(10) NOT NULL COMMENT 'pincode of address',
-  `city` varchar(50) NOT NULL COMMENT 'name of city',
+  `email` varchar(50) NOT NULL COMMENT 'email ID of user',
   `mobile` varchar(20) NOT NULL COMMENT 'mobile number of user',
-  `access` varchar(10) NOT NULL COMMENT 'type of access for user (admin, landlord, Tenants)'
+  `access` enum('landlord','public','tenants','admin') NOT NULL DEFAULT 'public' COMMENT 'type of access for user (admin, landlord, Tenants)',
+  `password` varchar(50) NOT NULL COMMENT 'user password'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `appuser`
 --
 
-INSERT INTO `appuser` (`user_id`, `name`, `mail`, `address`, `pincode`, `city`, `mobile`, `access`) VALUES
-(1, 'Joshan John', 'joshanjohn2003@gmail.com', '49, Cassian cout', 'D15AY09', 'Dublin', '+7 899837325', 'admin'),
-(2, 'Anna Gromyko', 'anna.gromyko@student.griffith.ie', 'GHR Dublin ', 'D08 DF87', 'Dublin', '+7 899837325', 'admin'),
-(3, 'Getrude', 'getty@gmail.com', 'London ', 'D08 DF87', 'London ', '+353 80993423', 'admin'),
-(4, 'John Doe', 'john.doe@example.com', '123 Main St', '12345', 'Anytown', '+1 1234567890', 'admin'),
-(5, 'Jane Smith', 'jane.smith@example.com', '456 Elm St', '54321', 'Othertown', '+1 0987654321', 'landlord'),
-(6, 'Michael Johnson', 'michael.johnson@example.com', '789 Oak St', '67890', 'Anycity', '+1 9876543210', 'tenant'),
-(7, 'Emily Brown', 'emily.brown@example.com', '101 Pine St', '45678', 'Sometown', '+1 5678901234', 'admin'),
-(8, 'David Lee', 'david.lee@example.com', '202 Cedar St', '98765', 'Yourtown', '+1 4321098765', 'landlord'),
-(9, 'Sarah Wang', 'sarah.wang@example.com', '303 Maple St', '23456', 'Newtown', '+1 3210987654', 'tenant'),
-(10, 'Alexandra Garcia', 'alexandra.garcia@example.com', '404 Birch St', '87654', 'Heretown', '+1 2109876543', 'admin'),
-(11, 'Matthew Taylor', 'matthew.taylor@example.com', '505 Walnut St', '34567', 'Thistown', '+1 7890123456', 'landlord'),
-(12, 'Olivia Martinez', 'olivia.martinez@example.com', '606 Pineapple St', '65432', 'Everytown', '+1 9012345678', 'tenant'),
-(13, 'Daniel Rodriguez', 'daniel.rodriguez@example.com', '707 Banana St', '54321', 'Wheretown', '+1 3456789012', 'admin');
+INSERT INTO `appuser` (`user_id`, `name`, `email`, `mobile`, `access`, `password`) VALUES
+(1, 'Joshan John', 'joshanjohn2003@gmail.com', '+7 899837325', 'admin', ''),
+(2, 'Anna Gromyko', 'anna.gromyko@student.griffith.ie', '+7 899837325', 'admin', ''),
+(3, 'Getrude', 'getty@gmail.com', '+353 80993423', 'admin', ''),
+(4, 'John Doe', 'john.doe@example.com', '+1 1234567890', 'admin', ''),
+(5, 'Jane Smith', 'jane.smith@example.com', '+1 0987654321', 'landlord', ''),
+(6, 'Michael Johnson', 'michael.johnson@example.com', '+1 9876543210', 'public', ''),
+(7, 'Emily Brown', 'emily.brown@example.com', '+1 5678901234', 'admin', ''),
+(8, 'David Lee', 'david.lee@example.com', '+1 4321098765', 'landlord', ''),
+(9, 'Sarah Wang', 'sarah.wang@example.com', '+1 3210987654', 'public', ''),
+(10, 'Alexandra Garcia', 'alexandra.garcia@example.com', '+1 2109876543', 'admin', ''),
+(11, 'Matthew Taylor', 'matthew.taylor@example.com', '+1 7890123456', 'landlord', ''),
+(12, 'Olivia Martinez', 'olivia.martinez@example.com', '+1 9012345678', 'public', ''),
+(13, 'Daniel Rodriguez', 'daniel.rodriguez@example.com', '+1 3456789012', 'admin', '');
 
 -- --------------------------------------------------------
 
@@ -93,23 +114,24 @@ CREATE TABLE `property` (
   `property_id` int(11) NOT NULL COMMENT 'unique property ID',
   `user_id` int(11) NOT NULL COMMENT 'unique user ID',
   `address` varchar(250) NOT NULL COMMENT 'property address',
-  `city` varchar(50) NOT NULL COMMENT 'name of city',
-  `postcode` varchar(10) NOT NULL COMMENT 'postcode of property',
-  `category` enum('buy','share','rent') NOT NULL COMMENT 'category of property (Rent, Shared, Buy)',
+  `eircode` varchar(10) NOT NULL COMMENT 'eircode of property',
+  `category` enum('house','apartment') NOT NULL COMMENT 'category of property ',
   `price` decimal(10,0) NOT NULL COMMENT 'price of property',
-  `availability` date NOT NULL COMMENT 'date of availability of property',
-  `description` text NOT NULL COMMENT 'description for property'
+  `start_date` date NOT NULL COMMENT 'start date of availability',
+  `end_date` date NOT NULL COMMENT 'end date of availability',
+  `description` text NOT NULL COMMENT 'description for property',
+  `num_beds` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `property_category`
+-- Table structure for table `property_images`
 --
 
-CREATE TABLE `property_category` (
+CREATE TABLE `property_images` (
   `property_id` int(11) NOT NULL COMMENT 'unique property ID',
-  `category` enum('buy','share','rent') NOT NULL COMMENT 'category of property'
+  `image_path` varchar(50) NOT NULL COMMENT 'image path'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -131,7 +153,7 @@ CREATE TABLE `reviews` (
 
 INSERT INTO `reviews` (`review_id`, `user_id`, `message`, `visible`) VALUES
 (7, 4, 'Lorem Ipsum website offers a sleek design and user-friendly interface. However, the content seems lacking in depth, and navigation could be smoother.', 0),
-(8, 5, 'I appreciate the user-friendly interface, but there are some broken links that need fixing.', 1),
+(8, 5, 'I appreciate the user-friendly interface, but there are some broken links that need fixing.', 0),
 (9, 6, 'The website provides valuable information, but the lack of mobile responsiveness is disappointing.', 1),
 (10, 7, 'I love the interactive features on the website, but the font choice could be improved for better readability.', 0),
 (11, 8, 'The website navigation is intuitive, but I encountered some bugs while using the search function.', 0),
@@ -151,10 +173,17 @@ ALTER TABLE `ads`
   ADD PRIMARY KEY (`ad_id`);
 
 --
+-- Indexes for table `appliances`
+--
+ALTER TABLE `appliances`
+  ADD PRIMARY KEY (`property_id`);
+
+--
 -- Indexes for table `appuser`
 --
 ALTER TABLE `appuser`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `feedbacks`
@@ -170,10 +199,10 @@ ALTER TABLE `property`
   ADD KEY `properties_ibfk_1` (`user_id`);
 
 --
--- Indexes for table `property_category`
+-- Indexes for table `property_images`
 --
-ALTER TABLE `property_category`
-  ADD PRIMARY KEY (`property_id`);
+ALTER TABLE `property_images`
+  ADD KEY `property_id` (`property_id`);
 
 --
 -- Indexes for table `reviews`
@@ -190,7 +219,12 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `ads`
 --
 ALTER TABLE `ads`
-  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique ad ID', AUTO_INCREMENT=10;
+  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique ad ID', AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `appliances`
+--
+ALTER TABLE `appliances`
+  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `appuser`
 --
@@ -216,10 +250,22 @@ ALTER TABLE `reviews`
 --
 
 --
+-- Constraints for table `appliances`
+--
+ALTER TABLE `appliances`
+  ADD CONSTRAINT `appliances_ibfk_1` FOREIGN KEY (`property_id`) REFERENCES `property` (`property_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `property`
 --
 ALTER TABLE `property`
   ADD CONSTRAINT `property_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `appuser` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `property_images`
+--
+ALTER TABLE `property_images`
+  ADD CONSTRAINT `property_images_ibfk_1` FOREIGN KEY (`property_id`) REFERENCES `property` (`property_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reviews`

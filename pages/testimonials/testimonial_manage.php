@@ -19,7 +19,7 @@
     <!-- TESTIMONIAL MANAGE -->
 
     <?php
-    require '../../Components/header.php';
+    include '../../Components/header.php';
     ?>
 
     <!-- title -->

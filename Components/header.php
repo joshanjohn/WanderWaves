@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['access'] = 'public';
+$_SESSION['access'] = 'admin';
 
 // Including the database connection
 if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {

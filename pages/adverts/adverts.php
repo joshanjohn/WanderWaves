@@ -6,16 +6,15 @@
     <!-- upload button -->
     <?php
 
-    if ($_SESSION['access'] == 'Admin') {
+    if ($_SESSION['access'] == 'admin') {
         echo '<div class="container mb-4 d-flex justify-content-center">';
-        echo '<a class="btn btn-outline-secondary mx-4" href="pages/adverts/addAdverts.php"><img';
-        echo 'width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/40C057/upload--v1.png"';
-        echo 'alt="upload--v1" /> Upload</a>';
+        echo '<a class="btn btn-outline-secondary mx-4" href="pages/adverts/addAdverts.php">';
+        echo '<img width="25" height="25" src="https://img.icons8.com/ios-glyphs/25/40C057/upload--v1.png"';
+        echo 'alt="upload--v1"/> Upload</a>';
         echo '</div>';
     }
     ?>
-
-
+    
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
 
         <div class="carousel-inner">

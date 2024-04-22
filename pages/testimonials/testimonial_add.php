@@ -13,8 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addTestimonial'])) {
 }
 ?>
 
-
-
 <div class="conatiner mx-auto my-5 w-lg-6500" id="addReview">
     <form class="mt-lg-3 col-lg-6 p-sm-3 mx-auto" method="POST" action="<?php echo 'index.php#addReview'; ?>">
         <!-- title -->

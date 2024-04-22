@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['access'] = "public";
 // Including the database connection
 if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
     // Path for the Knuth server
@@ -33,80 +34,41 @@ function validate_category($data)
 {
     return ($data != "Admin" && $data != "Landlord" && $data != "Tenant");
 }
-// Define an array of links for each user level
-$navLinks = array(
-    'Public' => array(
-        array('Home', './index.php'),
-        array('Adverts', '#adverts'),
-        array('Testimonials', '#testimonial'),
-        array('Contact Us', '#contact'),
-        array('Log In', 'pages/logIn/LogIn.php')
-    ),
-    'Landlord' => array(
-        array('Home', './index.php'),
-        array('Property Listings', '#propertyListings'),
-        array('Inventory Details', '#InventoryDetails'),
-        array('Tenant Account', '#tenantAccount'),
-        array('Landlord Account', '#landlordAccount'),
-        array('Adverts', './pages/adverts/adverts.php'),
-        array('Testimonials', './pages/testimonials/testimonials.php'),
-        array('Contact Us', '#contact'),
-        array('Log Out', 'logout.php')
-    ),
-    'Tenant' => array(
-        array('Home', '#home'),
-        array('Adverts', './pages/adverts/adverts.php'),
-        array('Testimonials', './pages/testimonials/testimonials.php'),
-        array('Inventory Details', '#InventoryDetails'),
-        array('Tenancy Account', '#tenancyAccount'),
-        array('Contact Us', '#contact'),
-        array('Log Out', 'logout.php')
-    ),
-    'Admin' => array(
-        array('Home', './index.php'),
-        array('Property Listings', '#propertyListings'),
-        array('Inventory Details', '#InventoryDetails'),
-        array('Tenant Account', '#tenantAccount'),
-        array('Landlord Account', '#landlordAccount'),
-        array('Adverts', './pages/adverts/adverts.php'),
-        array('Testimonials', './pages/testimonials/testimonials.php'),
-        array('Contact Us', '#contact'),
-        array('Log Out', 'logout.php')
-    )
-);
 
 
 $navLinks = array(
     'base' => array(
-        array('Home', './index.php'),
-        array('Property Listings', '#propertyListings'),
-        array('Inventory Details', '#InventoryDetails'),
-        array('Tenant Account', '#tenantAccount'),
-        array('Landlord Account', '#landlordAccount'),
-        array('Adverts', './pages/adverts/adverts.php'),
-        array('Testimonials', './pages/testimonials/testimonials.php'),
-        array('Contact Us', '#contact'),
-        array('Log Out', 'logout.php')
+        './index.php',
+        '/pages/propertyListings/propertyListings.php',
+        '/pages/inventoryDetails',
+        '/pages/tenantAccount',
+        '/pages/landlordAccount',
+        '#testimonial',
+        '#contact',
+        './pages/testimonials/testimonials.php',
+        '#contact',
+        'logout.php'
     ),
     'pages' => array(
-        array('Home', './index.php'),
-        array('Property Listings', '#propertyListings'),
-        array('Inventory Details', '#InventoryDetails'),
-        array('Tenant Account', '#tenantAccount'),
-        array('Landlord Account', '#landlordAccount'),
-        array('Adverts', './pages/adverts/adverts.php'),
-        array('Testimonials', './pages/testimonials/testimonials.php'),
-        array('Contact Us', '#contact'),
-        array('Log Out', 'logout.php')
+        './index.php',
+        '#propertyListings',
+        'inventoryDetails',
+        '#InventoryDetails',
+        '#tenantAccount',
+        '#landlordAccount',
+        './pages/adverts/adverts.php',
+        './pages/testimonials/testimonials.php',
+        '#contact',
+        'logout.php'
     ),
 );
 
 
-$userLevel = "Public";
+$userLevel = "Admin";
 if (isset($_SESSION["userLevel"])) {
     $userLevel = $_SESSION["userLevel"];
 }
-$links = $navLinks[$userLevel];
+// $links = $navLinks[$userLevel];
 
 
 ?>
@@ -130,35 +92,70 @@ $links = $navLinks[$userLevel];
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <?php
-                // Loop through navigation links
-                foreach ($links as $link) {
+                // // Loop through navigation links
+                // foreach ($links as $link) {
+                //     echo '<li class="nav-item">';
+                //     echo '<a class="nav-link" href="' . $link[1] . '">' . $link[0] . '</a>';
+                //     echo '</li>';
+                // }
+                
+
+                if (findDir() == 'base') {
                     echo '<li class="nav-item">';
-                    echo '<a class="nav-link" href="' . $link[1] . '">' . $link[0] . '</a>';
+                    echo '<a class="nav-link" href="' . $navLinks['base'][0] . '">Home</a>';
                     echo '</li>';
+
+
+                    if ($userLevel != "Public") {
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="' . $navLinks['base'][1] . '">Property Listings</a>';
+                        echo '</li>';
+
+                    }
+                    if ($userLevel != "Public") {
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="' . $navLinks['base'][2] . '">Inventory Details</a>';
+                        echo '</li>';
+
+                    }
+                    if ($userLevel != "Public") {
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="' . $navLinks['base'][3] . '">Tenant Account</a>';
+                        echo '</li>';
+
+                    }
+                    if ($userLevel != "Public") {
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="' . $navLinks['base'][4] . '">Landlord Account</a>';
+                        echo '</li>';
+
+                    }
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link" href="' . $navLinks['base'][5] . '">Testimonials</a>';
+                    echo '</li>';
+
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link" href="' . $navLinks['base'][6] . '">Contact Us</a>';
+                    echo '</li>';
+
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link" href="' . $navLinks['base'][7] . '">Log Out</a>';
+                    echo '</li>';
+
+
+                } else {
+
                 }
 
 
-                echo '<a href="">Home</a>';
-                if ($userLevel != "Public") {
-                    echo '<a href="">Property Listings</a>';
-                }
-                if ($userLevel != "Public") {
-                    echo '<a href="">Inventory Details</a>';
-                }
-                if ($userLevel != "Public") {
-                    echo '<a href="">Tenant Account</a>';
-                }
-                if ($userLevel != "Public") {
-                    echo '<a href="">Landlord Account</a>';
-                }
-                echo '<a href="">Testimonials</a>';
-                echo '<a href="">Contact Us</a>';
-                echo '<a href="">Log Out</a>';
 
-
-
-                function findDir(){
-                    if ($SE)
+                function findDir()
+                {
+                    if (str_contains($_SERVER['PHP_SELF'], "pages")) {
+                        return 'pages';
+                    } else {
+                        return 'base';
+                    }
                 }
                 ?>
 

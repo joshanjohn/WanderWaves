@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="Assets/css/index.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../Assets/css/index.css?v=<?php echo time(); ?>">
     <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,19 +19,19 @@
 <body>
 
     <?php
-    include 'Components/header.php';
+    include '../../Components/header.php';
     ?>
     <?php
     //ADVERTS SECTION
-    include 'pages/adverts/adverts.php';
+    include '..//adverts/adverts.php';
 
     // TESTIMONIAL SECTION
-    include 'pages/testimonials/testimonial.php';
+    include '..//testimonials/testimonial.php';
 
-    include 'pages/testimonials/testimonial_add.php';
+    include '../testimonials/testimonial_add.php';
 
     // FOOTER
-    include 'pages/contact/contactUs.php';
+    include '../contact/contactUs.php';
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

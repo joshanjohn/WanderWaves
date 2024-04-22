@@ -20,7 +20,6 @@
 
     <!-- CARD AREA -->
     <?php
-    require_once './Components/connection.php';
     $stmt = $db_connection->prepare("
             SELECT u.name as name, r.message as message
             FROM reviews AS r

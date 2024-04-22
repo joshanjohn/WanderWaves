@@ -14,7 +14,7 @@
         echo '</div>';
     }
     ?>
-    
+
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
 
         <div class="carousel-inner">
@@ -33,7 +33,7 @@
                     ?>
 
                     <div class="carousel-item <?php echo $activeClass; ?>">
-                        <img src="././<?php echo $row['image']; ?>" class="d-block w-100" alt="<?php echo $row['image']; ?>">
+                        <img src="<?php echo getbaseURL(). $row['image']; ?>" class="d-block w-100" alt="<?php echo $row['image']; ?>">
                     </div>
 
                     <?php

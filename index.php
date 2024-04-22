@@ -40,7 +40,14 @@
 
 
 
+
+
     <?php
+
+    if (str_contains($_SERVER['PHP_SELF'], "script")){
+        echo "contains";
+    }
+
     //ADVERTS SECTION
     include 'pages/adverts/adverts.php';
 

@@ -74,6 +74,34 @@ $navLinks = array(
         array('Log Out', 'logout.php')
     )
 );
+
+
+$navLinks = array(
+    'base' => array(
+        array('Home', './index.php'),
+        array('Property Listings', '#propertyListings'),
+        array('Inventory Details', '#InventoryDetails'),
+        array('Tenant Account', '#tenantAccount'),
+        array('Landlord Account', '#landlordAccount'),
+        array('Adverts', './pages/adverts/adverts.php'),
+        array('Testimonials', './pages/testimonials/testimonials.php'),
+        array('Contact Us', '#contact'),
+        array('Log Out', 'logout.php')
+    ),
+    'pages' => array(
+        array('Home', './index.php'),
+        array('Property Listings', '#propertyListings'),
+        array('Inventory Details', '#InventoryDetails'),
+        array('Tenant Account', '#tenantAccount'),
+        array('Landlord Account', '#landlordAccount'),
+        array('Adverts', './pages/adverts/adverts.php'),
+        array('Testimonials', './pages/testimonials/testimonials.php'),
+        array('Contact Us', '#contact'),
+        array('Log Out', 'logout.php')
+    ),
+);
+
+
 $userLevel = "Public";
 if (isset($_SESSION["userLevel"])) {
     $userLevel = $_SESSION["userLevel"];
@@ -108,9 +136,34 @@ $links = $navLinks[$userLevel];
                     echo '<a class="nav-link" href="' . $link[1] . '">' . $link[0] . '</a>';
                     echo '</li>';
                 }
-                ?>
-            </ul>
 
+
+                echo '<a href="">Home</a>';
+                if ($userLevel != "Public") {
+                    echo '<a href="">Property Listings</a>';
+                }
+                if ($userLevel != "Public") {
+                    echo '<a href="">Inventory Details</a>';
+                }
+                if ($userLevel != "Public") {
+                    echo '<a href="">Tenant Account</a>';
+                }
+                if ($userLevel != "Public") {
+                    echo '<a href="">Landlord Account</a>';
+                }
+                echo '<a href="">Testimonials</a>';
+                echo '<a href="">Contact Us</a>';
+                echo '<a href="">Log Out</a>';
+
+
+
+                function findDir(){
+                    if ($SE)
+                }
+                ?>
+
+
+            </ul>
         </div>
     </div>
 </nav>

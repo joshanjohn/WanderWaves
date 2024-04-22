@@ -71,11 +71,11 @@
         function displayBtn($bool, $id)
         {
             if ($bool == "1") {
-                echo '<form action="../../control/changeVisibility.php" method="POST">';
+                echo '<form action="../../control/testimonialControl.php" method="POST">';
                 echo '<button class="btn btn-dark mx-2" name="private" value="' . $id . '"> private </button>';
                 echo '</form>';
             } else {
-                echo '<form action="../../control/changeVisibility.php" method="POST">';
+                echo '<form action="../../control/testimonialControl.php" method="POST">';
                 echo '<button class="btn btn-success mx-2" name="public" value="' . $id . '"> public </button>';
                 echo '</form>';
             }

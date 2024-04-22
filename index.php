@@ -19,14 +19,7 @@
 <body>
 
     <?php
-    require_once 'connection.php';
-    // NAVBAR
-
-    //strating a session 
-    session_start();
-    $_SESSION['access'] = 'public';
-
-    include 'Components/navbar.php';
+    include 'Components/header.php';
     ?>
 
     <!-- main page-->
@@ -57,7 +50,7 @@
     include 'pages/testimonials/testimonial_add.php';
 
     // FOOTER
-    include 'Components/footer.php';
+    include 'pages/contact/contactUs.php';
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

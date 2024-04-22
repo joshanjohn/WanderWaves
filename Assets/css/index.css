@@ -205,3 +205,80 @@ form button, .btn[type="submit"]:hover{
     color: var(--black);
     border: 2px solid var(--green);
 }
+/*LOG IN STYLING*/
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+/*REGISTERATION STYLING*/
+#reg{
+    background-color: var(--black);
+}
+   
+    
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+    #btnR{
+        background-color: var(--green);
+        border: none;
+    
+    }
+    #register{
+        padding-top: 20px;
+        
+    }
+
+    /*/* CONTACT */
+#contact {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+}
+
+#contact::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-green); 
+    background-image:  url(../images/counter.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#contact .form-control {
+    border-radius: 0;
+}
+
+#contact .form-control:focus {
+    box-shadow: none;
+    border-color: var(--dark-green);
+}
+#btnC{
+    background-color: var(--dark-green);
+    align-items: center;
+    justify-content: center;
+    border: none;
+}

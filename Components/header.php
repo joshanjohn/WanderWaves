@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['access'] = "public";
+$_SESSION['access'] = "Public";
 // Including the database connection
 if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
     // Path for the Knuth server
@@ -45,9 +45,8 @@ $navLinks = array(
         '/pages/landlordAccount',
         '#testimonial',
         '#contact',
-        './pages/testimonials/testimonials.php',
-        '#contact',
-        'logout.php'
+        './pages/logIn/Login.php',
+        './pages/logOut/'
     ),
     'pages' => array(
         './index.php',
@@ -64,7 +63,7 @@ $navLinks = array(
 );
 
 
-$userLevel = "Admin";
+$userLevel = "Public";
 if (isset($_SESSION["userLevel"])) {
     $userLevel = $_SESSION["userLevel"];
 }
@@ -139,7 +138,11 @@ if (isset($_SESSION["userLevel"])) {
                     echo '</li>';
 
                     echo '<li class="nav-item">';
-                    echo '<a class="nav-link" href="' . $navLinks['base'][7] . '">Log Out</a>';
+                    if ($userLevel == "Public"){
+                        echo '<a class="nav-link" href="' . $navLinks['base'][7] . '">Log in</a>';
+                    }else{
+                        echo '<a class="nav-link" href="' . $navLinks['base'][8] . '">Log Out</a>';
+                    }
                     echo '</li>';
 
 

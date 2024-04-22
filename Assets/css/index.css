@@ -1,4 +1,5 @@
 @import url(../css/clash-display.css);
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 :root {
     --green: #00be63;
@@ -165,9 +166,9 @@ img {
     border: var(--green) dashed 3px;
     font-family: var(--font-base);
     color: var(--white);
-    -webkit-box-shadow: 14px 23px 31px -9px rgba(98,145,122,1);
-    -moz-box-shadow: 14px 23px 31px -9px rgba(98,145,122,1);
-    box-shadow: 14px 23px 31px -9px rgba(98,145,122,1);
+    -webkit-box-shadow: 14px 23px 31px -9px rgba(98, 145, 122, 1);
+    -moz-box-shadow: 14px 23px 31px -9px rgba(98, 145, 122, 1);
+    box-shadow: 14px 23px 31px -9px rgba(98, 145, 122, 1);
     transition: all 1s ease;
 }
 
@@ -177,4 +178,30 @@ img {
     -webkit-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 5px -200px rgba(0, 0, 0, 0.75);
+}
+
+
+.form-group textarea:focus,
+.form-group input:focus {
+    background-color: #e6f0eb;
+}
+
+.form-group textarea, .form-group input{
+    border: 2px dashed var(--green);
+}
+
+form .form-control:focus {
+    border-color: var(--green);
+    box-shadow: inset 0 1px 1px rgba(48, 98, 41, 0.075), 0 0 8px rgba(115, 212, 106, 0.6);
+}
+
+form button, .btn[type="submit"]{
+    color: var(--white);
+    border: 2px solid #00be63;
+    background-color: var(--green);
+}
+
+form button, .btn[type="submit"]:hover{
+    color: var(--black);
+    border: 2px solid var(--green);
 }

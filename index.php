@@ -21,6 +21,11 @@
     <?php
     require_once 'connection.php';
     // NAVBAR
+
+    //strating a session 
+    session_start();
+    $_SESSION['access'] = 'public';
+
     include 'Components/navbar.php';
     ?>
 
@@ -48,6 +53,8 @@
 
     // TESTIMONIAL SECTION
     include 'pages/testimonials/testimonial.php';
+
+    include 'pages/testimonials/testimonial_add.php';
 
     // FOOTER
     include 'Components/footer.php';

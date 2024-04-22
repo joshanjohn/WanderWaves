@@ -28,7 +28,7 @@
 
     <!-- SAVE BUTTON -->
     <div class="container mb-4 d-flex justify-content-center">
-        <a class="btn btn-outline-secondary mx-4 text-dark" href="../../index.php#testimonial"><img width="25" height="25"
+        <a class="btn btn-outline-secondary mx-4" href="../../index.php#testimonial"><img width="25" height="25"
                 src="https://img.icons8.com/sf-black-filled/64/FAB005/checked-2.png" alt="checked-2" /> Save Reviews</a>
     </div>
 

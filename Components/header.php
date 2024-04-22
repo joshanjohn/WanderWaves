@@ -35,7 +35,7 @@ session_start();
             array('Adverts', './adverts/adverts.php'),
             array('Testimonials', './testimonials/testimonials.php'),
             array('Contact Us', '#contact'),
-            array('Log In', 'WanderWaves/pages/LogIn.php')
+            array('Log In', '../logIn/LogIn.php')
         ),
         'Landlord' => array(
             array('Home', './index.php'),

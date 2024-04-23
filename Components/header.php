@@ -2,6 +2,7 @@
 
 //starting a session 
 session_start();
+$_SESSION['access'] = 'admin';
 
 // Including the database connection
 if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {

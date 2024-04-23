@@ -8,12 +8,14 @@
 
     <!-- edit button -->
     <?php
-    if ($_SESSION['access'] == 'admin') {
-        echo '<div class="container mb-4 d-flex justify-content-center">';
-        echo '<a class="btn btn-outline-secondary mx-4 " href="pages/testimonials/testimonial_manage.php"><img width="25"';
-        echo 'height="25" src="https://img.icons8.com/color/48/pencil-tip.png" alt="pencil-tip" /> Edit';
-        echo 'Reviews</a>';
-        echo '</div>';
+    if (isset($_SESSION['access'])) {
+        if ($_SESSION['access'] == 'admin') {
+            echo '<div class="container mb-4 d-flex justify-content-center">';
+            echo '<a class="btn btn-outline-secondary mx-4 " href="pages/testimonials/testimonial_manage.php"><img width="25"';
+            echo 'height="25" src="https://img.icons8.com/color/48/pencil-tip.png" alt="pencil-tip" /> Edit';
+            echo 'Reviews</a>';
+            echo '</div>';
+        }
     }
     ?>
 

@@ -45,7 +45,9 @@
     // TESTIMONIAL SECTION
     include 'pages/testimonials/testimonial.php';
 
-    include 'pages/testimonials/testimonial_add.php';
+    if (isset($_SESSION['access']) && !empty($_SESSION['access'])){
+        include 'pages/testimonials/testimonial_add.php';
+    }
 
     // FOOTER
     include 'pages/contact/contactUs.php';

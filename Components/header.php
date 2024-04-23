@@ -1,6 +1,7 @@
 <?php
+
+//starting a session 
 session_start();
-$_SESSION['access'] = 'admin';
 
 // Including the database connection
 if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
@@ -30,7 +31,40 @@ function getbaseURL()
 }
 
 
-$userLevel = $_SESSION['access'];
+function getRelativePath()
+{
+    // Get the current URL
+    $currentURL = $_SERVER['REQUEST_URI'];
+
+    // Define the base directory to check
+    $baseDir = '/WanderWaves/';
+
+    // Check if the base directory is present in the URL
+    if (strpos($currentURL, $baseDir) !== false) {
+        // Get the subdirectories after the base directory
+        $subDirectories = substr($currentURL, strpos($currentURL, $baseDir) + strlen($baseDir));
+
+        // Check if there are any subdirectories
+        if (!empty($subDirectories)) {
+            // Count the number of subdirectories
+            $numSubDirectories = substr_count($subDirectories, '/');
+
+            // Generate the relative path to the base folder
+            $relativePath = '';
+            for ($i = 0; $i < $numSubDirectories; $i++) {
+                $relativePath .= '../';
+            }
+            return $relativePath;
+        } else {
+            // No subdirectories present, return empty string
+            return '';
+        }
+    } else {
+        // Base directory not found, return empty string
+        return '';
+    }
+}
+
 
 ?>
 
@@ -62,16 +96,27 @@ $userLevel = $_SESSION['access'];
                 echo '<a class="nav-link" href="' . getbaseURL() . '/index.php#testimonial">Testimonials</a>';
                 echo '</li>';
 
-                if ($userLevel == 'tenants' || $userLevel == 'admin' || $userLevel == 'landlord') {
-                    if ($userLevel == 'landlord' || $userLevel == 'admin') {
-                        if ($userLevel == 'admin') {
 
+                if (isset($_SESSION['access'])) {
+                    $userLevel = $_SESSION['access'];
+                    if ($userLevel == 'tenants' || $userLevel == 'admin' || $userLevel == 'landlord') {
+                        if ($userLevel == 'landlord' || $userLevel == 'admin') {
+                            if ($userLevel == 'admin') {
+                                //Log Out
+                                echo '<li class="nav-item">';
+                                echo '<a class="nav-link" href="' . getbaseURL() . '/pages/logIn/LogIn.php">Admin</a>';
+                                echo '</li>';
+                            }
+                            //Log Out
+                            echo '<li class="nav-item">';
+                            echo '<a class="nav-link" href="' . getbaseURL() . '/pages/inventory/inventory_details.php">Inventory</a>';
+                            echo '</li>';
                         }
+                        //Log Out
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="' . getbaseURL() . '/control/logout.php">Log Out</a>';
+                        echo '</li>';
                     }
-                    //Log Out
-                    echo '<li class="nav-item">';
-                    echo '<a class="nav-link" href="' . getbaseURL() . '/pages/logIn/LogIn.php">Log Out</a>';
-                    echo '</li>';
                 } else {
                     // Login
                     echo '<li class="nav-item">';

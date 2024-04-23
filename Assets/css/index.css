@@ -186,7 +186,8 @@ img {
     background-color: #e6f0eb;
 }
 
-.form-group textarea, .form-group input {
+.form-group textarea,
+.form-group input {
     border: 2px dashed var(--green);
 }
 
@@ -195,13 +196,15 @@ form .form-control:focus {
     box-shadow: inset 0 1px 1px rgba(48, 98, 41, 0.075), 0 0 8px rgba(115, 212, 106, 0.6);
 }
 
-form button, .btn[type="submit"] {
+form button,
+.btn[type="submit"] {
     color: var(--white);
     border: 2px solid #00be63;
     background-color: var(--green);
 }
 
-form button, .btn[type="submit"]:hover {
+form button,
+.btn[type="submit"]:hover {
     color: var(--black);
     border: 2px solid var(--green);
 }
@@ -309,11 +312,25 @@ form button, .btn[type="submit"]:hover {
 #appliance_container {
     background-color: #00be63;
 }
-#appliance_details{
+
+#appliance_details {
     font-size: larger;
 }
-.Message{
-    background-color: red;
-    font-size: larger;
-    text-align: center;
+
+.card-body .card-title {
+    font-family: var(--font-base);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: var(--dark-green);
+}
+
+.card-body p{
+    color: rgb(2, 119, 78);
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card-body .name{
+    color: rgb(127, 93, 6);
 }

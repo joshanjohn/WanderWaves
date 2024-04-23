@@ -34,7 +34,7 @@
     <section class="review my-5">
         <?php
         $stmt = $db_connection->prepare("
-            SELECT u.name as name, r.message as message, r.visible as visible, r.review_id as review_id
+            SELECT u.name as name, r.message as message, r.visible as visible, r.review_id as review_id, r.title as title
             FROM reviews AS r
             JOIN appuser AS u
             ON (r.user_id = u.user_id)
@@ -43,25 +43,32 @@
         ");
         $stmt->execute();
         $result = $stmt->get_result();
-        echo '<div class="row d-flex justify-content-lg-between justify-content-sm-center align-items-center mx-auto"
+        echo '<div class="row d-flex justify-content-lg-between justify-content-md-center align-items-center mx-auto"
             style="width: 85%;">';
-            
+
         for ($i = 0; $i < $result->num_rows; $i++) {
             $row = $result->fetch_assoc();
             // CARDS
             echo '<div class="card text-secondary my-4" id="card">';
-            echo '<div class="card-body d-flex align-items-start flex-column" style="min-height: 16rem">';
+            echo '<div class="card-body d-flex justify-content-between flex-column" style="min-height: 20rem">';
 
-            // Review Details
-            echo '<div class="mb-auto">';
-            echo '<h5 class="card-title">' . $row['name'] . '</h5>';
-            echo '<p class="card-text text-dark">' . $row['message'] . '</p>';
+
+            echo '<div class="row">';
+            echo '<h5 class="card-title">' . $row['title'] . '</h5>';
+            echo '<p class="card-text">' . $row['message'] . '</p>';
             echo '</div>';
 
-            // Review update button
-            echo '<div class="mt-auto container d-flex justify-content-end">';
+            echo '<div class="row justify-content-between">';
+            echo '<div class="col">';
+            echo '<p class="card-text name">@' . $row['name'] . '</p>';
+            echo '</div>';
+            echo '<div class="col">';
             displayBtn($row['visible'], $row['review_id']);
             echo '</div>';
+            echo '</div>';
+
+
+            // Review update button
 
             echo '</div>';
             echo '</div>';

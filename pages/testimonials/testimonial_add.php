@@ -44,12 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addTestimonial'])) {
 
         <div class="form-group px-2">
             <label for="exampleFormControlInput1" class="mb-2">Service Name</label>
-            <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title"
+            <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title" required
                 value="<?php echo (isset($_POST['title']) ? $_POST['title'] : "") ?>">
         </div><br>
         <div class="form-group px-2">
             <label for="exampleFormControlTextarea1" class="mb-2">Review message</label>
-            <textarea class="form-control" name="message" id="exampleFormControlTextarea1" cols="5"
+            <textarea class="form-control" name="message" id="exampleFormControlTextarea1" cols="5"required
                 rows="7"><?php echo (isset($_POST['message']) ? $_POST['message'] : "") ?></textarea>
         </div>
 

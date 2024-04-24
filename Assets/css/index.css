@@ -317,3 +317,14 @@ form button, .btn[type="submit"]:hover {
     font-size: larger;
     text-align: center;
 }
+
+#change_password{
+    display: flex;
+    flex-direction: column;
+    margin: 3rem auto;
+    background-color: #e6f0eb;
+    width:70%;
+}
+#change_pass_page{
+}
+

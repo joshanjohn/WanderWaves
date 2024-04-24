@@ -41,6 +41,7 @@
     <?php
     //ADVERTS SECTION
     include 'pages/adverts/adverts.php';
+    echo getbaseURL();
 
     // TESTIMONIAL SECTION
     include 'pages/testimonials/testimonial.php';

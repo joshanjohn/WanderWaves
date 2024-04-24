@@ -45,7 +45,11 @@
 
         $result = mysqli_query($db_connection, $sql);
         if (mysqli_num_rows($result) == 0) {
-            echo "<div class='Message'><p>No properties found matching the criteria.</p></div>";
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+            echo '<strong>No properties found matching the criteria.</strong>';
+            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo '</div>';
+            // echo "<div class='Message'><p>No properties found matching the criteria.</p></div>";
         } else {
             echo "<div class='container' id = 'appliance_container'>";
             echo "<h2 class='mt-5 text-center'>Property Inventory Details</h2>";

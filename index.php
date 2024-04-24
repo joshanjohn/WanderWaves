@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Wander Waves</title>
     <link rel="stylesheet" href="Assets/css/index.css?v=<?php echo time(); ?>">
     <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,16 @@
 <body>
 
     <?php
-    include 'Components/header.php';
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    
+    if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
+        $header_path = __DIR__ . '/Components/header.php';
+    } else {
+        $header_path = __DIR__ . '/Components/header.php';
+    }
+    require $header_path;
     ?>
 
     <!-- main page-->

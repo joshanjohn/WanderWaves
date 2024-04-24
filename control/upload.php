@@ -1,5 +1,5 @@
 <?php
-require '../connection.php';
+require '../Components/header.php';
 
 if (isset($_POST['submit']) && $_FILES['file']['error'] != 4) {
     $file = $_FILES['file'];

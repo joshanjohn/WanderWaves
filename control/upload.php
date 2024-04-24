@@ -27,19 +27,29 @@ if (isset($_POST['submit']) && $_FILES['file']['error'] != 4) {
                 // Generate a unique filename
                 $fileNameNew = uniqid() . "." . $fileActualExt;
                 // Set the file destination
-                $fileDestination = '../Assets/images/ads/' . $fileNameNew;
+
+                if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
+                    $fileDestination = getRelativePath() . '/Assets/images/ads/' . $fileNameNew;
+
+                } else {
+                    $fileDestination = '../Assets/images/ads/' . $fileNameNew;
+                }
 
                 // Move the uploaded file to the destination
-                move_uploaded_file($fileTempName, $fileDestination);
+                if (move_uploaded_file($fileTempName, $fileDestination)) {
+                    // Prepare and execute SQL statement to insert the file path into the database
+                    $stmt = $db_connection->prepare("INSERT INTO ads (image) VALUES (?)");
+                    $fileDestination = '/Assets/images/ads/' . $fileNameNew; // Update file destination for database
+                    $stmt->bind_param("s", $fileDestination);
+                    $stmt->execute();
 
-                // Prepare and execute SQL statement to insert the file path into the database
-                $stmt = $db_connection->prepare("INSERT INTO ads (image) VALUES (?)");
-                $fileDestination = '/Assets/images/ads/' . $fileNameNew; // Update file destination for database
-                $stmt->bind_param("s", $fileDestination);
-                $stmt->execute();
+                    // Redirect with success message
+                    echo "success";
+                    header("Location: ../pages/adverts/addAdverts.php?success=true");
+                } else {
+                    header("Location: ../pages/adverts/addAdverts.php?success=false");
+                }
 
-                // Redirect with success message
-                header("Location: ../pages/adverts/addAdverts.php?success=true");
             } else {
                 // File size exceeds the limit, display error message
                 echo "Your file is too big.";
@@ -55,8 +65,8 @@ if (isset($_POST['submit']) && $_FILES['file']['error'] != 4) {
         echo "Cannot upload this file type.";
         header("Location: ../pages/adverts/addAdverts.php?success=false");
     }
-    
-}else{
+
+} else {
     header("Location: ../pages/adverts/addAdverts.php");
 }
 ?>

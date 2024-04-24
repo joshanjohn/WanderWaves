@@ -7,7 +7,7 @@ $_SESSION['access'] = 'admin';
 // Including the database connection
 if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
     // Path for the Knuth server
-    $path_to_mysql_connect = __DIR__ . '../../../../../connection.php';
+    $path_to_mysql_connect = __DIR__ . '/connection.php';
 } else {
     // Path for the local XAMPP server
     $path_to_mysql_connect = 'connection.php';

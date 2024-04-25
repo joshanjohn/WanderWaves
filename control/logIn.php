@@ -30,8 +30,8 @@
                     while ($row = $result->fetch_assoc()){
                         if(password_verify($password, $row["password"])){
                             foreach($row as $key => $val){
-                                if($key=="access") $_SESSION["CURRENT_USER_ACCESS"]=$val;
-                                else if($key=="user_id") $_SESSION["CURRENT_USER_ID"]=$val;
+                                if($key=="access") $_SESSION["access"]=$val;
+                                else if($key=="user_id") $_SESSION["user"]=$val;
                                 else $_SESSION[$key]=$val;
                                  }
                     }

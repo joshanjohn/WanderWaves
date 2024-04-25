@@ -24,6 +24,7 @@
 
     <?php
     require '../../Components/header.php';
+    require_once '../../control/sessions.php';
     
     $sql_query=$db_connection->prepare("SELECT * FROM property");
     if($sql_query){

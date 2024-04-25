@@ -1,4 +1,5 @@
 <?php
+
             include '../../Components/header.php';
             $property_id=(isset($_GET["id"]))?$_GET["id"]:null;
             if($property_id){

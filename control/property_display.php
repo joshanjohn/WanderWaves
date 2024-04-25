@@ -1,5 +1,10 @@
 <?php
- $sql_query=$db_connection->prepare("SELECT * FROM property");
+ $sql_query=null;
+ //differentiating query for features and properties
+ if(!$limit)$sql_query= $db_connection->prepare("SELECT * FROM property");
+ else{
+    $sql_query= $db_connection->prepare("SELECT * FROM property LIMIT 3");
+ }
  if($sql_query){
      // Execute the prepared statement
      $sql_query->execute();
@@ -25,20 +30,22 @@
              $num_beds=$row["num_beds"];
              $size=$row["size"];
              $url="property_edit.php?id=".urlencode($row["property_id"]);
+             $url1="property_details.php?id=".urlencode($row["property_id"]);
              echo "<div class='card'>";
+             
                  echo "<div class='card-banner'>";
                      echo "<figure class='img-holder' style='--width: 585; --height: 390;'>";
                          echo "<img src='' width='585' height='390' alt=".$name." class='img-cover'>";
                      echo "</figure>";
                      echo "<button class='icon-btn fav-btn' aria-label='add to favorite' data-toggle-btn>";
-                         // echo "<span class='material-symbols-rounded' aria-hidden='true'>favorite</span>";
-                         echo "<a href=".$url.">A</a>";
+                          echo "<span class='material-symbols-rounded' aria-hidden='true'><a href=".$url.">edit</a> </span>";
+                        //  echo "";
                      echo "</button>";
                  echo "</div>";
                  echo "<div class='card-content' id='cardContent'>";
                      echo "<span class='title-large'>$".$price."</span>";
                      echo "<h3>";
-                         echo "<a href='#' class='title-small card-title'>".$name."</a>";
+                         echo "<a href=".$url1." class='title-small card-title'>".$name."</a>";
                      echo "</h3>";
                      echo "<address class='body-medium card-text'>";
                          echo $address;

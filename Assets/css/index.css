@@ -472,6 +472,7 @@ height: 100%;
     overflow: hidden;
     box-shadow: var(--shadow-2);
     transition: var(--transition-duration-quick) var(--transition-easing-quick);
+    
   }
   
   .card:where(:hover, :focus-within) { box-shadow: var(--shadow-4); }

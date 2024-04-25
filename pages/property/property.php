@@ -24,7 +24,8 @@
 
     <?php
     require '../../Components/header.php';
-    require_once '../../control/sessions.php';
+    // require_once '../../control/sessions.php';
+    $limit=false;
     require_once '../../control/property_display.php';
     
    

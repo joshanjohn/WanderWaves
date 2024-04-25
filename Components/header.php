@@ -23,10 +23,33 @@ session_start();
     }
 
     function validate_password($data){
-        return true;
+        if (strlen($data ) < 6) return false;
+            $uppercase=0;
+            $lowercase=0;
+            $special=0;
+            $numbers=0;
+            foreach(str_split($data) as $character){
+                // Check for uppercase letters
+        if (ctype_upper($character)) {
+            $uppercase++;
+        }
+        // Check for lowercase letters
+        elseif (ctype_lower($character)) {
+            $lowercase++;
+        }
+        // Check for special characters
+        elseif (preg_match('/[^\w\s]/', $character)) {
+            $special++;
+        }
+        // Check for numbers
+        elseif (ctype_digit($character)) {
+            $numbers++;
+        }
+            }
+        return $uppercase && $lowercase && $special && $numbers;
     }
     function validate_category($data){
-        return ($data!="Admin" && $data!="Landlord" && $data!="Tenant");
+        return ($data=="Admin" || $data=="Landlord" || $data=="Tenant");
     }
     // Define an array of links for each user level
     $navLinks = array(

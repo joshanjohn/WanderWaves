@@ -20,14 +20,14 @@
 <?php
     require '../../Components/header.php';
     ?>
- <section class="vh-100 gradient-custom">
-  <div id ="reg"class="container py-5 h-100">
+ <section id ="reg"class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-12 col-lg-9 col-xl-7">
-        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-          <div class="card-body p-4 p-md-5">
+        <div class="card shadow-2-strong card-registration " style="border-radius: 15px; ">
+          <div class="card-body ">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-            <form action="processor.php" method="POST" novalidate>
+            <form action="../../control/register.php" method="POST" novalidate>
 
               <div class="row">
                 <div class="col-md-6 mb-4">
@@ -94,7 +94,7 @@
                
 
               <div class="mt-4 pt-2">
-                <input id="btnR" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg " type="submit" value="Register" />
+              <button id="btn-editP"type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>Register</button>
               </div>
 
             </form>

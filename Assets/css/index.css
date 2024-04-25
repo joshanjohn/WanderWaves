@@ -348,6 +348,8 @@ height: 100%;
 /*REGISTERATION STYLING*/
 #reg{
     background-color: var(--black);
+    height: fit-content;
+    max-height: fit-content;
 }
    
     

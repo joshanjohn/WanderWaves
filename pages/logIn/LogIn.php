@@ -30,19 +30,19 @@
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
       <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Log In Form</h3>
 
-        <form>
+        <form action="../../control/logIn.php" method="POST" novalidate>
           
 
           <!-- Email input -->
           <div data-mdb-input-init class="form-outline mb-4">
-            <input type="email" id="form3Example3" class="form-control form-control-lg"
+            <input name="email"type="email" id="form3Example3" class="form-control form-control-lg"
               placeholder="Enter your email address" />
             <label class="form-label" for="form3Example3">Email address</label>
           </div>
 
           <!-- Password input -->
           <div data-mdb-input-init class="form-outline mb-3">
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
+            <input name="password"type="password" id="form3Example4" class="form-control form-control-lg"
               placeholder="Enter password" />
             <label class="form-label" for="form3Example4">Password</label>
           </div>
@@ -59,7 +59,7 @@
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <button  id="btnR"type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+            <button  id="btnR"type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="../../../WanderWaves/pages/register/register.php"
                 class="link-danger">Register</a></p>

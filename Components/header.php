@@ -93,8 +93,8 @@ session_start();
         )
     );
     $userLevel="Public";
-    if(isset($_SESSION["userLevel"])){
-        $userLevel= $_SESSION["userLevel"];
+    if(isset($_SESSION["access"])){
+        $userLevel= $_SESSION["access"];
     }
     $links=$navLinks[$userLevel];
     

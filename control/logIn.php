@@ -33,13 +33,15 @@
                                 if($key=="access") $_SESSION["access"]=$val;
                                 else if($key=="user_id") $_SESSION["user"]=$val;
                                 else $_SESSION[$key]=$val;
+
                                  }
+                                 $db_connection->close();
+                     header("Location:../index.php");
                     }
                     }
 
-                    // Close database connection
-                    $db_connection->close();
-                    header("Location:../index.php");
+                    
+                    
                 }
                 else $_SESSION["Response"]="User doesn't exist";
             }

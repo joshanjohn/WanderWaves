@@ -279,6 +279,26 @@ img {
     background-size: cover;
 }
 
+/* TESTIMONIAL CARDS STYLE  */
+.card-body .card-title {
+  font-family: var(--font-base);
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: var(--dark-green);
+}
+
+.card-body p{
+  color: rgb(2, 119, 78);
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card-body .name{
+  color: rgb(127, 93, 6);
+}
+/* ENDS */
+
 /* SECTION TITLE */
 .section-title {
     margin-bottom: 60px;

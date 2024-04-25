@@ -23,7 +23,7 @@
     <!-- CARD AREA -->
     <?php
     $stmt = $db_connection->prepare("
-            SELECT u.name as name, r.message as message, r.title as title
+            SELECT u.firstName as name, r.message as message, r.title as title
             FROM reviews AS r
             JOIN appuser AS u
             ON (r.user_id = u.user_id)

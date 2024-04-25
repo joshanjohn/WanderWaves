@@ -34,7 +34,7 @@
     <section class="review my-5">
         <?php
         $stmt = $db_connection->prepare("
-            SELECT u.name as name, r.message as message, r.visible as visible, r.review_id as review_id, r.title as title
+            SELECT u.firstName as firstName, u.lastName as lastName, r.message as message, r.visible as visible, r.review_id as review_id, r.title as title
             FROM reviews AS r
             JOIN appuser AS u
             ON (r.user_id = u.user_id)
@@ -60,7 +60,7 @@
 
             echo '<div class="row justify-content-between">';
             echo '<div class="col">';
-            echo '<p class="card-text name">@' . $row['name'] . '</p>';
+            echo '<p class="card-text name">@' . $row['firstName'] . ' ' . $row['lastName'] . '</p>';
             echo '</div>';
             echo '<div class="col">';
             displayBtn($row['visible'], $row['review_id']);
@@ -69,7 +69,7 @@
 
 
             // Review update button
-
+        
             echo '</div>';
             echo '</div>';
         }

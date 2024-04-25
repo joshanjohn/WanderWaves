@@ -73,7 +73,6 @@
       <div class="property-list">
 
         <div class="card">
-
           <div class="card-banner">
 
             <figure class="img-holder" style="--width: 585; --height: 390;">
@@ -82,118 +81,78 @@
             </figure>
 
             <span class="badge label-medium">New</span>
-
             <button class="icon-btn fav-btn" aria-label="add to favorite" data-toggle-btn>
-              <span class="material-symbols-rounded" aria-hidden="true">favorite</span>
-            </button>
-
+              <span class="material-symbols-rounded" aria-hidden="true">favorite</span></button>
           </div>
 
           <div class="card-content" id="cardContent">
-
             <span class="title-large">$710.68</span>
-
-            <h3>
-              <a href="#" class="title-small card-title">COVA Home Realty</a>
-            </h3>
-
-            <address class="body-medium card-text">
-              1901 Thornridge Cir. Shiloh, Hawaii 81063
-            </address>
+            <h3><a href="#" class="title-small card-title">COVA Home Realty</a></h3>
+            <address class="body-medium card-text">1901 Thornridge Cir. Shiloh, Hawaii 81063</address>
 
             <div class="card-meta-list">
-
               <div class="meta-item">
                 <span class="material-symbols-rounded meta-icon" aria-hidden="true">bed</span>
-
                 <span class="meta-text label-medium">3 Bed</span>
               </div>
 
-
-
               <div class="meta-item">
                 <span class="material-symbols-rounded meta-icon" aria-hidden="true">straighten</span>
-
                 <span class="meta-text label-medium">1430 sqft </span>
               </div>
 
             </div>
-
           </div>
-
         </div>
 
+
         <div class="card">
-
           <div class="card-banner">
-
             <figure class="img-holder" style="--width: 585; --height: 390;">
               <img src="Assets/images/images/property-2.jpg" width="585" height="390" alt="Exit Realty"
                 class="img-cover">
             </figure>
-
-            <button class="icon-btn fav-btn" aria-label="add to favorite" data-toggle-btn>
-              <span class="material-symbols-rounded" aria-hidden="true">favorite</span>
-            </button>
-
+            <button class="icon-btn fav-btn" aria-label="add to favorite" data-toggle-btn><span
+                class="material-symbols-rounded" aria-hidden="true">favorite</span></button>
           </div>
 
           <div class="card-content">
-
             <span class="title-large">$630.44</span>
-
-            <h3>
-              <a href="#" class="title-small card-title">Exit Realty</a>
-            </h3>
-
-            <address class="body-medium card-text">
-              2972 Westheimer Rd. Santa Ana, Illinois 85486
-            </address>
+            <h3><a href="#" class="title-small card-title">Exit Realty</a></h3>
+            <address class="body-medium card-text">2972 Westheimer Rd. Santa Ana, Illinois 85486</address>
 
             <div class="card-meta-list">
 
               <div class="meta-item">
                 <span class="material-symbols-rounded meta-icon" aria-hidden="true">bed</span>
-
                 <span class="meta-text label-medium">5 Bed</span>
               </div>
 
-
-
               <div class="meta-item">
                 <span class="material-symbols-rounded meta-icon" aria-hidden="true">straighten</span>
-
                 <span class="meta-text label-medium">1630 sqft </span>
               </div>
 
             </div>
-
           </div>
-
         </div>
 
+
         <div class="card">
-
           <div class="card-banner">
-
             <figure class="img-holder" style="--width: 585; --height: 390;">
               <img src="Assets/images/images/property-3.jpg" width="585" height="390" alt="The Real Estate Group"
                 class="img-cover">
             </figure>
 
-            <button class="icon-btn fav-btn" aria-label="add to favorite" data-toggle-btn>
-              <span class="material-symbols-rounded" aria-hidden="true">favorite</span>
-            </button>
-
+            <button class="icon-btn fav-btn" aria-label="add to favorite" data-toggle-btn><span
+                class="material-symbols-rounded" aria-hidden="true">favorite</span></button>
           </div>
-
           <div class="card-content">
 
             <span class="title-large">$475.22</span>
 
-            <h3>
-              <a href="#" class="title-small card-title">The Real Estate Group</a>
-            </h3>
+            <h3><a href="#" class="title-small card-title">The Real Estate Group</a></h3>
 
             <address class="body-medium card-text">
               2118 Thornridge Cir. Syracuse, Connecticut 35624

@@ -84,10 +84,10 @@ CREATE TABLE `appuser` (
 --
 
 INSERT INTO `appuser` (`user_id`, `firstName`, `lastName`, `email`, `mobile`, `access`, `password`) VALUES
-(1, 'Joshan John', '', 'joshanjohn2003@gmail.com', '+7 899837325', 'admin', '$2y$10$PUnHGfPYPNFoPtfoLVh/Lunu9s2Vm42vne5PeD7lBbsNCF2iv29pK'),
+(1, 'Joshan John', '', 'joshanjohn2003@gmail.com', '+7 899837325', 'admin', '$2y$10$W44fpfTDHQpCoWrAmcdlfuCz9aPv4W0MTZCNJr9rHcPhuIjMRVf3G'),
 (2, 'Anna Gromyko', '', 'anna.gromyko@student.griffith.ie', '+7 899837325', 'admin', ''),
 (3, 'Getrude', '', 'getty@gmail.com', '+353 80993423', 'admin', ''),
-(4, 'John Doe', '', 'john.doe@example.com', '+1 1234567890', 'admin', '$2y$10$8RQvmlNMINTuVqbWl5N7AegJP1aRTD8KqszBQ4CQTuxAlQnbu1Usa'),
+(4, 'John Doe', '', 'john.doe@example.com', '+1 1234567890', 'admin', ''),
 (5, 'Jane Smith', '', 'jane.smith@example.com', '+1 0987654321', 'landlord', ''),
 (6, 'Michael Johnson', '', 'michael.johnson@example.com', '+1 9876543210', 'public', ''),
 (7, 'Emily Brown', '', 'emily.brown@example.com', '+1 5678901234', 'admin', ''),
@@ -151,7 +151,7 @@ CREATE TABLE `property` (
 --
 
 INSERT INTO `property` (`property_id`, `user_id`, `Name`, `address`, `eircode`, `category`, `price`, `start_date`, `end_date`, `description`, `num_beds`, `size`, `agreement`) VALUES
-(1, 2, 'Ann\'s Home', 'Griffith Hall Of Residence South Circular road ', 'D08 H14U9', 'apartment', '1400', '2024-04-10', '2024-04-30', 'Griffith Halls of Residence (GHR) is purpose-built student accommodation located in Dublin 8, a desirable neighbourhood just a few minutes’ walk south of the city centre. GHR is pleased to open its doors to tourists from all over the world exclusively during our summer months.', 2, 2000, 'This agreement serves as a contract  for the tenancy of the property\r\nRent: The monthly rent for the property should be paid on time\r\nMaintenance: The tenant agrees to maintain the property in good condition and promptly report any damages or maintenance issues to the landlord.\r\nUse of Property: The property is to be used solely for residential purposes and not for any illegal activities.\r\nPets: No pets allowed\r\nSubletting: Subletting of the property is strictly prohibited without prior written consent from the landlord.\r\nTermination: Either party may terminate this agreement with written notice.\r\nBy signing this agreement, you agree to abide by the terms and conditions outlined herein.'),
+(1, 2, 'Ann\'s Home', 'Griffith Hall Of Residence South Circular road ', 'D08 H14U9', 'apartment', '1400', '2024-04-10', '2024-04-30', 'Griffith Halls of Residence (GHR) is purpose-built student accommodation located in Dublin 8, a desirable neighbourhood just a few minutes’ walk south of the city centre. GHR is pleased to open its doors to tourists from all over the world exclusively during our summer months.', 2, 2000, 'This agreement serves as a contract  for the tenancy of the property\r\n\r\nRent: The monthly rent for the property should be paid on time\r\nMaintenance: The tenant agrees to maintain the property in good condition and promptly report any damages or maintenance issues to the landlord.\r\nUse of Property: The property is to be used solely for residential purposes and not for any illegal activities.\r\nPets: No pets allowed\r\nSubletting: Subletting of the property is strictly prohibited without prior written consent from the landlord.\r\nTermination: Either party may terminate this agreement with [Notice Period] written notice.\r\nBy signing this agreement, you agree to abide by the terms and conditions outlined herein.'),
 (2, 2, 'greenspan', 'st mary', 'DFV102', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL),
 (3, 2, 'greenspan', 'st mary', 'DFV102', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL),
 (4, 2, 'greenspan', 'st mary', 'DFV102', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL),
@@ -231,7 +231,7 @@ CREATE TABLE `tenant` (
 --
 
 INSERT INTO `tenant` (`user_ID`, `property_ID`, `start_date`, `end_date`, `agreement`, `amountPaid`, `amountOwed`) VALUES
-(16, 2, '2024-04-27', '2024-05-07', 1, 650, 0);
+(16, NULL, NULL, NULL, NULL, 650, 0);
 
 --
 -- Indexes for dumped tables

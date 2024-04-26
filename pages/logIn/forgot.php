@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <!-- <link rel="stylesheet" href="../Assets/css/index.css?v=<?php echo time(); ?>"> -->
-    <link href="../../Assets/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../Assets/css/index.css?v=<?php echo time(); ?>">
+    <!-- <link href="../../Assets/css/index.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -20,33 +20,42 @@
     <?php
     require '../../Components/header.php';
 
-
-
     $email = $new_pass = $confirm_pass = '';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['change_password'])) {
             $errors = [];
 
-
             //Check if first name is submitted
             if (!isset($_POST['email']) || empty($_POST['email'])) {
                 $errors[] = 'Email address is required!';
             } else {
-                $email = htmlentities($_POST['email']);
+                $email = validate_input($_POST['email']);
+                $stmt = $db_connection->prepare("SELECT * FROM appuser WHERE email=?");
+                $stmt->bind_param('s', $email);
+                $stmt->execute();
+                if (!($stmt->num_rows>0)){
+                    $errors[] = "This mail address is not registred";
+                }
             }
 
             //Check if last name is submitted
             if (!isset($_POST['new_pass']) || empty($_POST['new_pass'])) {
                 $errors[] = 'New password is required!';
             } else {
-                $new_pass = htmlentities($_POST['new_pass']);
+                $new_pass = validate_input($_POST['new_pass']);
+                $new_pass = password_hash($new_pass, PASSWORD_BCRYPT);
             }
 
             if (!isset($_POST['confirm_pass']) || empty($_POST['confirm_pass'])) {
                 $errors[] = 'Confirm new password!';
             } else {
-                $new_pass = htmlentities($_POST['confirm_pass']);
+                $confirm_pass = validate_input($_POST['confirm_pass']);
+                if (!password_verify($confirm_pass, $new_pass)){
+                    $errors[] = "Confirm password does'nt match.";
+                }
             }
+
+
             if (!empty($errors)) {
                 echo "<div class='info'>";
                 foreach ($errors as $error) {
@@ -68,7 +77,7 @@
                         echo '<strong>Sucessfully updated password</strong>';
                         echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                         echo '</div>';
-                        echo " <button type='submit' name='back' class='btn btn-primary'><a href='../../../WanderWaves/pages/login/login.php'>Back to Login</a></button>";
+                        header("Refresh: 6,".getbaseURL().'/pages/logIn/Login.php');
                     } else {
                         echo "Error: " . mysqli_stmt_error($stmt);
                     }
@@ -93,29 +102,29 @@
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" novalidate class="mt-3">
                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">CHANGE PASSWORD</h3>
-                <div data-mdb-input-init class="form-outline mb-4">
+                <div data-mdb-input-init class="form-group mb-4">
                     <label class="form-label" for="email">Email address:</label>
                     <input type="email" id="email" class="form-control form-control-lg"
                         placeholder="Enter your email address" name="email" />
                 </div>
 
                 <!-- Password input -->
-                <div data-mdb-input-init class="form-outline mb-3">
+                <div data-mdb-input-init class="form-group mb-3">
                     <label class="form-label" for="password">New Password:</label>
                     <input type="password" id="new_pass" class="form-control form-control-lg"
                         placeholder="Enter password" name="new_pass" />
                 </div>
 
-                <div data-mdb-input-init class="form-outline mb-3">
+                <div data-mdb-input-init class="form-group mb-3">
                     <label class="form-label" for="password">Confirm Password:</label>
                     <input type="password" id="confirm_pass" class="form-control form-control-lg"
                         placeholder="Enter password" name="confirm_pass" />
                 </div>
 
-                <div>
-                    <button type="cancel" name="cancel_change_password" id="cancel_change_password"
-                        class="btn btn-primary"><a href="../../../WanderWaves/pages/login/login.php">Cancel</a></button>
-                    <button type="submit" name="change_password" class="btn btn-primary">Confirm</button>
+                <div class="form-group">
+                    <a class="btn btn-secondary btn-lg" href="../../../WanderWaves/pages/login/login.php">Cancel</a>
+                    <button type="submit" name="change_password"
+                        class="btn btn-success text-light btn-lg">Confirm</button>
                 </div>
         </div>
 

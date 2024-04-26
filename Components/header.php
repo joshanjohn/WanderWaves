@@ -2,7 +2,6 @@
 
 //starting a session 
 session_start();
-$_SESSION['access'] = 'admin';
 
 // Including the database connection
 if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
@@ -113,18 +112,26 @@ function getRelativePath()
                             echo '<a class="nav-link" href="' . getbaseURL() . '/pages/inventory/inventory_details.php">Inventory</a>';
                             echo '</li>';
                         }
+
+                        //Explore
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="' . getbaseURL() . '/pages/property/property.php">Explore</a>';
+                        echo '</li>';
+
+
                         //Log Out
                         echo '<li class="nav-item">';
                         echo '<a class="nav-link" href="' . getbaseURL() . '/control/logout.php">Log Out</a>';
                         echo '</li>';
                     }
-                } else {
+                }else{
                     // Login
                     echo '<li class="nav-item">';
                     echo '<a class="nav-link" href="' . getbaseURL() . '/pages/logIn/LogIn.php">Login</a>';
                     echo '</li>';
                 }
-                ?>
+                
+                    ?>
             </ul>
         </div>
     </div>
@@ -137,8 +144,9 @@ function validate_input($data)
     if (empty($data))
         return null;
     $data = trim($data);
-    $data = stripslashes($data);
     $data = htmlspecialchars($data);
+    $data = htmlentities($data);
+    $data = stripslashes($data);
     return $data;
 }
 
@@ -151,8 +159,11 @@ function validate_password($data)
 {
     return true;
 }
+
 function validate_category($data)
 {
     return ($data != "Admin" && $data != "Landlord" && $data != "Tenant");
 }
+
+
 ?>

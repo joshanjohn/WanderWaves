@@ -113,6 +113,13 @@ function getRelativePath()
                             echo '<a class="nav-link" href="' . getbaseURL() . '/pages/inventory/inventory_details.php">Inventory</a>';
                             echo '</li>';
                         }
+
+                        //Explore
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="' . getbaseURL() . '/pages/property/property.php">Explore</a>';
+                        echo '</li>';
+
+
                         //Log Out
                         echo '<li class="nav-item">';
                         echo '<a class="nav-link" href="' . getbaseURL() . '/control/logout.php">Log Out</a>';

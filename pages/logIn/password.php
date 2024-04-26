@@ -113,7 +113,8 @@
                 </div>
 
                 <div>
-                <button type="cancel" name="cancel_change_password" id = "cancel_change_password" class="btn btn-primary"><a href="../../../WanderWaves/pages/login/login.php">Cancel</a></button>
+                    <button type="cancel" name="cancel_change_password" id="cancel_change_password"
+                        class="btn btn-primary"><a href="../../../WanderWaves/pages/login/login.php">Cancel</a></button>
                     <button type="submit" name="change_password" class="btn btn-primary">Confirm</button>
                 </div>
         </div>

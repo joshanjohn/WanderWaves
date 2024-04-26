@@ -144,8 +144,9 @@ function validate_input($data)
     if (empty($data))
         return null;
     $data = trim($data);
-    $data = stripslashes($data);
     $data = htmlspecialchars($data);
+    $data = htmlentities($data);
+    $data = stripslashes($data);
     return $data;
 }
 

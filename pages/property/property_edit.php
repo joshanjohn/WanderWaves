@@ -81,7 +81,7 @@
                         </div>
                         <div class="form-group">
                             <label for="category">Category</label>
-                            <select class="custom-select">
+                            <select name="category"class="custom-select">
                             <option selected disabled>Choose category</option>
                                 <option value="house" 
                                 <?php if(isset($selected_property['category']) && $selected_property['category']=='house') echo "selected";?>

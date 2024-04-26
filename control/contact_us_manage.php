@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../Assets/css/index.css?v=<?php echo time(); ?>">
+    <!-- <link href="../../Assets/css/index.css" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <?php
+    require '../Components/header.php';
+
+    $sql = "SELECT * FROM feedbacks";
+    $result = $db_connection->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Output data of each row
+        echo "<table border='1'>";
+        echo "<tr><th>Feedback ID</th><th>Name</th><th>Email</th><th>Mobile</th><th>Subject</th><th>Message</th></tr>";
+
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row["feedback_id"] . "</td>";
+            echo "<td>" . $row["name"] . "</td>";
+            echo "<td>" . $row["mail"] . "</td>";
+            echo "<td>" . $row["mobile"] . "</td>";
+            echo "<td>" . $row["subject"] . "</td>";
+            echo "<td>" . $row["message"] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "0 results";
+    }
+    ?>
+</body>
+
+</html>

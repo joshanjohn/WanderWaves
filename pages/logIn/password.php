@@ -16,7 +16,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body id = "change_pass_page">
+<body id="change_pass_page">
     <?php
     require '../../Components/header.php';
 
@@ -51,7 +51,7 @@
                 echo "<div class='info'>";
                 foreach ($errors as $error) {
                     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-                    echo '<strong>'. $error. '</strong>';
+                    echo '<strong>' . $error . '</strong>';
                     echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                     echo '</div>';
                 }
@@ -68,7 +68,7 @@
                         echo '<strong>Sucessfully updated password</strong>';
                         echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                         echo '</div>';
-                        echo " <button type='submit' name='back' class='btn btn-primary'>Back to Login</button>";
+                        echo " <button type='submit' name='back' class='btn btn-primary'><a href='../../../WanderWaves/pages/login/login.php'>Back to Login</a></button>";
                     } else {
                         echo "Error: " . mysqli_stmt_error($stmt);
                     }
@@ -85,10 +85,14 @@
     }
     ?>
     <section class="vh-100">
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" id = "change_password">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">CHANGE PASSWORD</h3>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" id="change_password">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://img.freepik.com/free-vector/forgot-password-concept-illustration_114360-1095.jpg?t=st=1713998241~exp=1714001841~hmac=d6fb59f70ee05c078fd14bc28e48267c3d15c234c04f015a02fd456659a287ef&w=740"
+                    class="img-fluid" alt="Sample image">
+            </div>
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" novalidate class="mt-3">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">CHANGE PASSWORD</h3>
                 <div data-mdb-input-init class="form-outline mb-4">
                     <label class="form-label" for="email">Email address:</label>
                     <input type="email" id="email" class="form-control form-control-lg"
@@ -108,9 +112,13 @@
                         placeholder="Enter password" name="confirm_pass" />
                 </div>
 
-                <button type="submit" name="change_password" class="btn btn-primary">Confirm</button>
-            </form>
+                <div>
+                <button type="cancel" name="cancel_change_password" id = "cancel_change_password" class="btn btn-primary"><a href="../../../WanderWaves/pages/login/login.php">Cancel</a></button>
+                    <button type="submit" name="change_password" class="btn btn-primary">Confirm</button>
+                </div>
         </div>
+
+        </form>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

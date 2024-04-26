@@ -491,15 +491,50 @@ form button,
     text-align: center;
 }
 
+/* CHANGE PASSWORD PAGE */
 #change_password{
-    display: flex;
-    flex-direction: column;
-    margin: 3rem auto;
-    background-color: #e6f0eb;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:80%;
+}
+#change_password form{
+    margin: 5rem 5rem;
     width:70%;
 }
-#change_pass_page{
+#change_password #cancel_change_password{
+    background-color: #797C80;
+    border: #797C80;
+    
 }
+
+#change_password #cancel_change_password:hover{
+    background-color: #0D3166;
+}
+#change_password #cancel_change_password a:link{
+    color:white;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .col-md-8,
+    .col-md-9 {
+        width: 100%;
+        order: 0; /* Reset the order for mobile view */
+        flex-basis: auto; /* Reset the width for mobile view */
+    }
+}
+
+
 
   
  

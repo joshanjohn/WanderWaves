@@ -20,8 +20,6 @@
     <?php
     require '../../Components/header.php';
 
-
-
     $email = $new_pass = $confirm_pass = '';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['change_password'])) {

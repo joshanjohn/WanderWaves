@@ -59,11 +59,8 @@
     <div class="container">
 
       <div class="title-wrapper">
-
         <div>
           <h2 class="section-title headline-small">Best home in your city</h2>
-
-
         </div>
 
 
@@ -154,15 +151,11 @@
 
             <h3><a href="#" class="title-small card-title">The Real Estate Group</a></h3>
 
-            <address class="body-medium card-text">
-              2118 Thornridge Cir. Syracuse, Connecticut 35624
-            </address>
+            <address class="body-medium card-text">2118 Thornridge Cir. Syracuse, Connecticut 35624</address>
 
             <div class="card-meta-list">
-
               <div class="meta-item">
                 <span class="material-symbols-rounded meta-icon" aria-hidden="true">bed</span>
-
                 <span class="meta-text label-medium">8 Bed</span>
               </div>
 
@@ -170,17 +163,11 @@
 
               <div class="meta-item">
                 <span class="material-symbols-rounded meta-icon" aria-hidden="true">straighten</span>
-
                 <span class="meta-text label-medium">1240 sqft </span>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
-
       </div>
 
     </div>

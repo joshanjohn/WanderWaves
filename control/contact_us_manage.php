@@ -31,7 +31,6 @@
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td>" . $row["feedback_id"] . "</td>";
             echo "<td>" . $row["name"] . "</td>";
             echo "<td>" . $row["mail"] . "</td>";
             echo "<td>" . $row["mobile"] . "</td>";

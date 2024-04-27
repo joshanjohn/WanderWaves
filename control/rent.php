@@ -26,19 +26,19 @@
 
                 if($sql_query->execute()){
                     $_SESSION["Response"] = "Agreement signed successfully";
-
+                   
                     // Close database connection
                     $db_connection->close();
-                    header("Location:../pages/tenant/rent.php"); 
+                    header("Location:../pages/tenant/tenantAccount.php"); 
                 }
                 else $_SESSION["Errors"] = "Error: Agreement not signed";
             }
             else $_SESSION["Errors"]="System Error: Contact Support";
         }
         else $_SESSION["Errors"]="Error: $error";
-
-        // Close database connection
+        
+        // // Close database connection
         $db_connection->close();
-        header("Location:../pages/tenant/tenantAccount.php");
+        header("Location:../pages/tenant/rent.php");
     }
 ?>

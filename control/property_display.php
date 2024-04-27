@@ -41,7 +41,7 @@
              
                  echo "<div class='card-banner'>";
                      echo "<figure class='img-holder' style='--width: 585; --height: 390;'>";
-                         echo "<img src='' width='585' height='390' alt=".$name." class='img-cover'>";
+                         echo "<img src='https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/Stock-Modern-House-In-Twilight-AdobeStock-368976934-copy.jpg' width='585' height='390' alt=".$name." class='img-cover'>";
                      echo "</figure>";
                      echo "<button class='icon-btn fav-btn' aria-label='add to favorite' data-toggle-btn>";
                           echo "<span class='material-symbols-rounded' aria-hidden='true'><a href=".$url.">edit</a> </span>";

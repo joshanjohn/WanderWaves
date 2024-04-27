@@ -20,7 +20,7 @@
 <?php
     require '../../Components/header.php';
     ?>
- <section id ="reg"class="vh-100 gradient-custom">
+ <section id ="reg"class=" gradient-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-12 col-lg-9 col-xl-7">
@@ -75,9 +75,9 @@
 
                   <select name="userCategory"class="select form-control-lg">
                     <option value="userCategory" disabled>User Category</option>
-                    <option value="Tenant">Tenant</option>
-                    <option value="Landlord">Landlord</option>
-                    <option value="Admin">Admin</option>
+                    <option value="tenant">Tenant</option>
+                    <option value="landlord">Landlord</option>
+                    <option value="admin">Admin</option>
                   </select>
                   <label class="form-label select-label">User Category</label>
                   

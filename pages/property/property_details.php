@@ -98,6 +98,7 @@
                     </div>
 
                     <?php
+                    echo "<div style='height: 200px; color: black;'>===".$_SESSION['access']."</div> ";
                     if (isset($_SESSION['access'])) {
                         if ($_SESSION['access'] == 'tenants') {
                             echo '<a href="' . $url . '?id=' . $property_id . '"id="btn-editP" class="btn">Rent property</a>';

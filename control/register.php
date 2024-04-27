@@ -67,7 +67,7 @@
                     $sql_query->bind_param("ssssss", $firstName, $lastName, $email, $mobile, $userCategory, $password_hash);
                     if($sql_query->execute()) {
                         $_SESSION["Response"] = "User registered successfully";
-                        if($userCategory == "Tenant") tenantAccount(getUser($email, $db_connection),$db_connection);
+                        if($userCategory == "tenant") tenantAccount(getUser($email, $db_connection),$db_connection);
                         // Close database connection
                         $db_connection->close();
                         header("Location:../pages/logIn/LogIn.php");

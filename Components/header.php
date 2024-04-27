@@ -167,7 +167,7 @@ function validate_password($data)
 
 function validate_category($data)
 {
-    return ($data != "Admin" && $data != "Landlord" && $data != "Tenant");
+    return ($data == "admin" || $data == "landlord" || $data == "tenant");
 }
 
 

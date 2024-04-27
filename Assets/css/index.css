@@ -94,16 +94,14 @@
    * TRANSITION
    */
 
-    <<<<<<< HEAD --transition-easing-quick: cubic-bezier(0, 0.7, 0.3, 1);
+ --transition-easing-quick: cubic-bezier(0, 0.7, 0.3, 1);
     --transition-duration-quick: 200ms;
     --transition-duration-smooth: 500ms;
-    =======--transition-easing-quick: cubic-bezier(0, 0.7, 0.3, 1);
-    --transition-duration-quick: 200ms;
-    --transition-duration-smooth: 500ms;
+   
 
     /* gradient */
     --gradient: linear-gradient(270deg, #00be63 0%, #013b1f 100%);
-    >>>>>>>Getrude
+   
 }
 
 ion-icon {
@@ -310,9 +308,9 @@ img {
 }
 
 .card-body p {
-    color: rgb(2, 119, 78);
+    color: var(--black);
     font-size: 18px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: monospace;
 }
 
 .card-body .name {
@@ -355,7 +353,7 @@ img {
     width: 22rem;
     /* background-color: var(--white); */
     background-color: #92d5b5;
-    border: var(--green) dashed 3px;
+    border: var(--green);
     font-family: var(--font-base);
     color: var(--white);
     -webkit-box-shadow: 14px 23px 31px -9px rgba(98, 145, 122, 1);
@@ -909,7 +907,7 @@ td {
 th {
     background-color: #f2f2f2;
 }
-}
+
 
 /*-----------------------------------*\
     #HERO
@@ -1197,7 +1195,7 @@ th {
 
 #message-box {
     padding: 10px;
-    border-top: 2px solid var(--black);
+    /* border-top: 2px solid var(--black); */
     color: var(--green);
     font-size: 18px;
     text-align: center;

@@ -152,6 +152,20 @@
             }
             else $_SESSION["Errors"] = "Error: Failed to load user details";
         ?>
+<div id="message-box"
+    class="<?php echo (isset($_SESSION["Errors"]))? "container errors":"container";?>"
+>
+    <?php
+        if(isset($_SESSION["Response"])){
+            echo $_SESSION["Response"];
+            unset($_SESSION["Response"]);
+        }
+        else if(isset($_SESSION["Errors"])){
+            echo $_SESSION["Errors"];
+            unset($_SESSION["Errors"]);
+        }
+    ?>
+</div>
 
     
 

@@ -2,6 +2,7 @@
 require '../Components/header.php';
     if ($_SERVER["REQUEST_METHOD"]=="POST"){
         $error=null;
+        foreach ($_POST as $key => $value) echo $key ."-". $value ."<br>";
         $user=1;
         $name=validate_input($_POST['name']);
         $address=validate_input($_POST['address']);
@@ -24,28 +25,45 @@ require '../Components/header.php';
         else if($end_date <= $start_date) $error = "End Date should be greater than Start Date";
 
         if($error){
+           try{
             // SQL statement with prepared statement 
-            $sql_query=$db_connection->prepare(
+            $sql_query = $db_connection->prepare(
                 "INSERT INTO property(user_id,Name,address,eircode,category,price,
                 start_date,end_date,description,num_beds,size,agreement) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"
             );
-            if($sql_query){
+            if ($sql_query) {
                 // Bind parameters to the prepared statement
-                $sql_query->bind_param("issssdsssiss",
-                    $user, $name, $address, $eircode, $category, $price, 
-                    $start_date, $end_date, $description, $num_beds, $size, $agreement
+                $sql_query->bind_param(
+                    "issssdsssiss",
+                    $user,
+                    $name,
+                    $address,
+                    $eircode,
+                    $category,
+                    $price,
+                    $start_date,
+                    $end_date,
+                    $description,
+                    $num_beds,
+                    $size,
+                    $agreement
                 );
 
                 // Execute the query
-                if($sql_query->execute()) {
+                if ($sql_query->execute()) {
                     // Close database connection
-                    $_SESSION["Response"]="Property added successfully";
+                    $_SESSION["Response"] = "Property added successfully";
                     $db_connection->close();
-                    header("Location:../pages/property/property.php"); 
-                }
-                else $_SESSION["Errors"] = "Error: Property not added";
-            }
-            else $_SESSION["Errors"] = "System Error: Contact Support";
+                    header("Location:../pages/property/property.php");
+                } else
+                    $_SESSION["Errors"] = "Error: Property not added";
+            } else
+                $_SESSION["Errors"] = "System Error: Contact Support";
+
+           }
+           catch(mysqli_sql_exception $exception){
+            $_SESSION["Errors"] = "System Error: Contact Support";
+           }
         }
         else $_SESSION["Errors"] = "Error: $error";
 

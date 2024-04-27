@@ -111,8 +111,7 @@
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea type="text" name="description" class="form-control" id="description"
-                                placeholder="Description" >
-                                <?php echo (isset($selected_property['description']))?$selected_property['description']:'';?></textarea>
+                                placeholder="Description" ><?php echo (isset($selected_property['description']))?$selected_property['description']:'';?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="num_beds">Number of Beds</label>
@@ -133,8 +132,24 @@
                     </div>
                 </div>
             </form>
+            <div id="message-box"
+    class="<?php echo (isset($_SESSION["Errors"]))? "container errors":"container";?>"
+>
+    <?php
+        if(isset($_SESSION["Response"])){
+            echo $_SESSION["Response"];
+            unset($_SESSION["Response"]);
+        }
+        else if(isset($_SESSION["Errors"])){
+            echo $_SESSION["Errors"];
+            unset($_SESSION["Errors"]);
+        }
+    ?>
+</div>
+
         </div>
     </section>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

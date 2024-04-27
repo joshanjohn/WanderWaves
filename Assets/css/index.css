@@ -961,6 +961,21 @@ height: 100%;
   
   
   }
+  #message-box{
+    padding: 10px;
+    border-top: 2px solid var(--black);
+    color: var(--green);
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Monospace;
+    height: 100px;
+}
+.errors{
+  color: var(--error-100) !important;
+}
+
+
   
   
   

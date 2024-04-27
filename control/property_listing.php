@@ -1,6 +1,6 @@
 <?php
 require '../Components/header.php';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addProperty'])) {
     $error = null;
     foreach ($_POST as $key => $value)
         echo $key . "-" . $value . "<br>";

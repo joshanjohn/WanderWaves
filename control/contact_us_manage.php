@@ -27,11 +27,10 @@
     if ($result->num_rows > 0) {
         // Output data of each row
         echo "<table border='1'>";
-        echo "<tr><th>Feedback ID</th><th>Name</th><th>Email</th><th>Mobile</th><th>Subject</th><th>Message</th></tr>";
+        echo "<tr><th>Name</th><th>Email</th><th>Mobile</th><th>Subject</th><th>Message</th></tr>";
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td>" . $row["feedback_id"] . "</td>";
             echo "<td>" . $row["name"] . "</td>";
             echo "<td>" . $row["mail"] . "</td>";
             echo "<td>" . $row["mobile"] . "</td>";

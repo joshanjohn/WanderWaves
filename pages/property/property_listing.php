@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    
+
     <link rel="stylesheet" href="../../Assets/css/index.css?v=<?php echo time(); ?>">
     <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,7 +83,12 @@
                             <textarea type="text" name="agreement" class="form-control" id="agreement"
                                 placeholder="agreement"></textarea>
                         </div>
-                        <button id="btn-editP" type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>Add
+
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="inputGroupFile02">
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        </div>
+                        <button id="btn-editP" type="submit" name="addProperty" class="btn btn-outline-primary" data-mdb-ripple-init>Add
                             property</button>
                     </div>
                 </div>

@@ -23,6 +23,7 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     require '../../Components/header.php';
+    require '../../pages/cookies/show_cookies.php';
     $area = $min_price = $max_price = $num_rooms = $check_in = $check_out = '';
 
 
@@ -37,7 +38,7 @@
         $check_in = validate_input($_POST['check_in']);
         $check_out = validate_input($_POST['check_out']);
 
-
+        // require '../../pages/cookies/cookies.php';
         // VALIDATIONS 
     
         $sql = "SELECT * FROM property WHERE ";
@@ -104,23 +105,23 @@
                     <option value="D02">D02</option>
                     <option value="D03">D03</option>
                     <option value="D04">D04</option>
-                    <option value="5">D05</option>
-                    <option value="6">D06</option>
-                    <option value="7">D07</option>
+                    <option value="D05">D05</option>
+                    <option value="D06">D06</option>
+                    <option value="D07">D07</option>
                     <option value="D08">D08</option>
-                    <option value="9">D09</option>
-                    <option value="10">D10</option>
-                    <option value="11">D11</option>
-                    <option value="12">D12</option>
-                    <option value="13">D13</option>
-                    <option value="14">D14</option>
-                    <option value="15">D15</option>
-                    <option value="16">D16</option>
-                    <option value="17">D17</option>
-                    <option value="18">D18</option>
-                    <option value="20">D20</option>
-                    <option value="22">D22</option>
-                    <option value="24">D24</option>
+                    <option value="D09">D09</option>
+                    <option value="D10">D10</option>
+                    <option value="D11">D11</option>
+                    <option value="D12">D12</option>
+                    <option value="D13">D13</option>
+                    <option value="D14">D14</option>
+                    <option value="D15">D15</option>
+                    <option value="D16">D16</option>
+                    <option value="D17">D17</option>
+                    <option value="D18">D18</option>
+                    <option value="D20">D20</option>
+                    <option value="D22">D22</option>
+                    <option value="D24">D24</option>
                 </select>
             </div>
 

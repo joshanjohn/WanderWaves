@@ -1,10 +1,16 @@
 <?php
  $sql_query=null;
  //differentiating query for features and properties
- if(!$limit)$sql_query= $db_connection->prepare("SELECT * FROM property");
- else{
-    $sql_query= $db_connection->prepare("SELECT * FROM property LIMIT 3");
+//  if(!$limit)$sql_query= $db_connection->prepare("SELECT * FROM property");
+//  else{
+//     $sql_query= $db_connection->prepare("SELECT * FROM property LIMIT 3");
+//  }
+
+ if (isset($search) && !empty($search)){
+    $sql_query= $db_connection->prepare($search);
  }
+
+ 
  if($sql_query){
      // Execute the prepared statement
      $sql_query->execute();

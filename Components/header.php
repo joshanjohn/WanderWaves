@@ -96,6 +96,11 @@ function getRelativePath()
                 echo '<a class="nav-link" href="' . getbaseURL() . '/index.php#testimonial">Testimonials</a>';
                 echo '</li>';
 
+                // SEARCH
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link" href="' . getbaseURL() . '/pages/search/search.php">Search</a>';
+                echo '</li>';
+
 
                 if (isset($_SESSION['access'])) {
                     $userLevel = $_SESSION['access'];

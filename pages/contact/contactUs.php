@@ -12,25 +12,25 @@
             <div class="row justify-content-center" data-aos="fade-down" data-aos-delay="250">
                 <div class="col-lg-8">
 
-                    <form action="#" class="row g-3 p-lg-5 p-4 bg-white theme-shadow">
+                    <form action="#" class="row g-3 p-lg-5 p-4 bg-white theme-shadow" novalidate>
                         
                         <div class="form-group col-lg-6">
-                            <input type="text" class="form-control" placeholder="Enter first name">
+                            <input type="text" class="form-control" name="name" placeholder="Name">
                         </div>
                         <div class="form-group col-lg-6">
-                            <input type="text" class="form-control" placeholder="Enter Mobile number">
+                            <input type="text" inputmode="tel" class="" name="mobile"  placeholder="Mobile number">
                         </div>
                         <div class="form-group col-lg-12">
-                            <input type="email" class="form-control" placeholder="Enter Email address">
+                            <input type="email" class="form-control" name="mail" placeholder="Email address">
                         </div>
                         <div class="form-group col-lg-12">
-                            <input type="text" class="form-control" placeholder="Enter subject">
+                            <input type="text" class="form-control" name="subject" placeholder="subject">
                         </div>
                         <div class="form-group col-lg-12">
                             <textarea name="message" rows="5" class="form-control" placeholder="Enter Message"></textarea>
                         </div>
                         <div class="form-group ">
-                        <button  id="btnC"type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary "
+                        <button  id="btnC"type="button" data-mdb-button-init data-mdb-ripple-init class="btn text-light"
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Send Message</button>
                         </div>
                     </form>

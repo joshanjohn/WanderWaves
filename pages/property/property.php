@@ -26,7 +26,12 @@
     require '../../Components/header.php';
     // require_once '../../control/sessions.php';
     $limit=false;
-    require_once '../../control/property_display.php';
+    $search;
+    if (isset($_GET['sql'])){
+        $search = $_GET['sql'];
+    }
+    echo $search;
+    include '../../control/property_display.php';
     
    
 ?>

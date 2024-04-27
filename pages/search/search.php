@@ -23,10 +23,122 @@
 <body>
 
     <?php
+    error_reporting(E_ALL); ini_set('display_errors', 1);
     require '../../Components/header.php';
+    $area = $min_price = $max_price = $num_rooms = $check_in = $check_out = '';
+
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        if (isset($_POST['search'])) {
+            $errors = [];
+
+
+            if (!isset($_POST['area']) && !empty($_POST['area'])) {
+                $errors[] = 'Dublin area address is required!';
+            } else {
+                $area = htmlentities($_POST['area']);
+            }
+
+            if (!isset($_POST['min_price']) && !empty($_POST['min_price'])) {
+                $errors[] = 'Minimum price is required!';
+            } else {
+                $min_price = htmlentities($_POST['min_price']);
+            }
+
+            if (!isset($_POST['max_price']) && !empty($_POST['max_price'])) {
+                $errors[] = 'Maximum price id required!';
+            } else {
+                $max_price = htmlentities($_POST['max_price']);
+            }
+
+            if (!isset($_POST['num_rooms']) && !empty($_POST['num_rooms'])) {
+                $errors[] = 'Number of rooms is required!';
+            } else {
+                $num_rooms = htmlentities($_POST['num_rooms']);
+            }
+
+            if (!isset($_POST['check_in']) && !empty($_POST['check_in'])) {
+                $errors[] = 'Check in date is required!';
+            } else {
+                $check_out = htmlentities($_POST['check_in']);
+            }
+
+            if (!isset($_POST['check_out']) && !empty($_POST['check_out'])) {
+                $errors[] = 'Check out date is required!';
+            } else {
+                $check_out = htmlentities($_POST['check_out']);
+            }
+            if (!empty($errors)) {
+                echo "<div class='info'>";
+                foreach ($errors as $error) {
+                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+                    echo '<strong>' . $error . '</strong>';
+                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                    echo '</div>';
+                }
+
+            }
+        } else {
+            $area = htmlspecialchars($_POST['area']);
+            $min_price = htmlspecialchars(trim($_POST['min_price']));
+            $max_price = htmlspecialchars(trim($_POST['max_price']));
+            $num_rooms = htmlspecialchars(trim($_POST['num_rooms']));
+            $check_in = htmlspecialchars(trim($_POST['check_in']));
+            $check_out = htmlspecialchars(trim($_POST['check_out']));
+
+            $sql = "SELECT * FROM property WHERE ";
+
+            // Append the conditions based on the provided parameters
+    
+            // 1. Compare the area by the first three symbols
+            if (!empty($area)) {
+                $sql .= "LEFT(address, 3) = LEFT('$area', 3) AND ";
+            }
+
+            // 2. Price should be between max_price and min_price
+            if (!empty($min_price) && !empty($max_price)) {
+                $sql .= "price BETWEEN $min_price AND $max_price AND ";
+            }
+
+            // 3. Number of rooms
+            if (!empty($num_rooms)) {
+                $sql .= "num_beds = $num_rooms AND ";
+            }
+
+            // 4. Check-in and Check-out dates should be between available dates for the property
+            if (!empty($check_in) && !empty($check_out)) {
+                $sql .= "'$check_in' BETWEEN start_date AND end_date AND ";
+                $sql .= "'$check_out' BETWEEN start_date AND end_date AND ";
+            }
+
+            // Remove the trailing "AND" if it exists
+            $sql = rtrim($sql, " AND ");
+
+            // Execute the query
+            $result = mysqli_query($db_connection, $sql);
+
+
+                // If no results found
+                if (mysqli_num_rows($result) == 0) {
+                    echo "<div class='Message'><p>No appliances found matching the criteria.</p></div>";
+                }
+                //If results found
+                else {
+                    echo "hello";
+
+                    echo "</div>";
+                }
+
+                mysqli_free_result($result);
+                mysqli_close($db_connection);
+            }
+        }
+    
+
     ?>
     <div class="container">
-        <form action="search.php" method="GET">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" novalidate class="mt-3">
             <div class="form-group">
                 <label for="area">Select Dublin Area:</label>
                 <select class="form-control" name="area" id="area">
@@ -56,13 +168,14 @@
 
             <div class="form-group">
                 <label for="price">Price Range from:</label>
-                <input type="range" min="0" max="1000" value="500" class="slider" id="range_from">
+                <input type="range" min="0" max="1000" value="500" class="slider" id="range_from" name="min_price">
                 <div class="slider-value" id="slider_from">50</div>
             </div>
             <div class="form-group">
                 <label for="price">Price Range to:</label>
-                <input type="range" min="1000" max="5000" value="2500" class="slider" id="range_to">
-                <div class="slider-value" id="slider_to">2500</div>
+                <input type="range" min="1000" max="1000001" value="500001" class="slider" id="range_to"
+                    name="max_price">
+                <div class="slider-value" id="slider_to">50001</div>
             </div>
 
             <script>
@@ -86,40 +199,6 @@
                 }
             </script>
 
-            <div class="form-group checkbox">
-                <label for="room_type">Accomodation tenancy type:</label><br>
-                <div class="form-check form-check-inline">
-
-                    <label class="form-check-label" for="apartment">Apartment
-                        <input class="form-check-input" type="checkbox" name="acc_type[]" id="apartment"
-                            value="apartment">
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-
-                    <label class="form-check-label" for="house">House
-                        <input class="form-check-input" type="checkbox" name="acc_type[]" id="house" value="house">
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="form-group checkbox">
-                <label for="room_type">Room Type:</label><br>
-                <div class="form-check form-check-inline">
-
-                    <label class="form-check-label" for="single">Single
-                        <input class="form-check-input" type="checkbox" name="room_type[]" id="single" value="single">
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-
-                    <label class="form-check-label" for="double">Double
-                        <input class="form-check-input" type="checkbox" name="room_type[]" id="double" value="double">
-                    </label>
-                </div>
-            </div>
-
             <div class="form-group">
                 <label for="num_rooms">Number of Rooms:</label>
                 <input type="number" class="form-control" name="num_rooms" id="num_rooms" min="1" max="4">
@@ -134,15 +213,14 @@
                 <label for="check_out">Check-out Date:</label>
                 <input type="date" class="form-control" name="check_out" id="check_out">
             </div>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <br>
+            <button type="submit" name="search" class="btn btn-primary">Search</button>
         </form>
 
     </div>
 
 
 
-
-    </div>
     <?php
 
     // TESTIMONIAL SECTION

@@ -30,7 +30,6 @@
     if (isset($_GET['sql'])){
         $search = $_GET['sql'];
     }
-    echo $search;
     include '../../control/property_display.php';
     
    

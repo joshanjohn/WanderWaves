@@ -29,13 +29,16 @@
             if (!isset($_POST['email']) || empty($_POST['email'])) {
                 $errors[] = 'Email address is required!';
             } else {
+
                 $email = validate_input($_POST['email']);
                 $stmt = $db_connection->prepare("SELECT * FROM appuser WHERE email=?");
                 $stmt->bind_param('s', $email);
                 $stmt->execute();
-                if (!($stmt->num_rows>0)){
-                    $errors[] = "This mail address is not registred";
-                }
+                $result = $stmt->get_result();
+                if (!($result->num_rows > 0)) {
+                    $errors[] = "This email address is not registered";
+                 
+                } 
             }
 
             //Check if last name is submitted
@@ -50,7 +53,7 @@
                 $errors[] = 'Confirm new password!';
             } else {
                 $confirm_pass = validate_input($_POST['confirm_pass']);
-                if (!password_verify($confirm_pass, $new_pass)){
+                if (!password_verify($confirm_pass, $new_pass)) {
                     $errors[] = "Confirm password does'nt match.";
                 }
             }
@@ -77,7 +80,7 @@
                         echo '<strong>Sucessfully updated password</strong>';
                         echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                         echo '</div>';
-                        header("Refresh: 6,".getbaseURL().'/pages/logIn/Login.php');
+                        // header("Refresh: 6," . getbaseURL() . '/pages/logIn/Login.php');
                     } else {
                         echo "Error: " . mysqli_stmt_error($stmt);
                     }

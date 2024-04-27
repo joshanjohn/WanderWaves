@@ -44,9 +44,9 @@
             <p class="body hero-text">
               Find your perfect sanctuary with Wander Wave, where every step leads you closer to home.
             </p>
-            <button id="searchbtn" type="button" class="btn btn-lg btn-outline-success">
+            <a href="./pages/search/search.php"><button id="searchbtn" type="button" class="btn btn-lg btn-outline-success">
               <i class="fa fa-search"></i> Search Property
-            </button>
+            </button></a>
 
             <img src="Assets/images/images/hero.png" width="816" height="659" role="presentation" class="hero-banner">
             <img src="Assets/images/images/bg-pattern.png" width="1240" height="840" role="presentation"

@@ -1,5 +1,8 @@
 <?php 
+require '../Components/header.php';
 session_start();
-$_SESSION['access'] = 'admin';
-header("Location: ../index.php");
+if (isset($_SESSION['access']) && isset($_SESSION['user'])){
+    header('Location: '.getbaseURL());
+}
+
 ?>

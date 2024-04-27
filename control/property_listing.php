@@ -49,7 +49,7 @@ require '../Components/header.php';
         else $_SESSION["Errors"] = "Error: $error";
 
         // Close database connection
-        $db_connection->close();
+        $sql_query->close();
         header("Location:../pages/property/property_listing.php");  
     }
 ?>

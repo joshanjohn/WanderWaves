@@ -33,7 +33,7 @@
     $result = $stmt->get_result();
     echo '<div class="row d-flex justify-content-lg-between justify-content-sm-between align-items-center mx-auto"
             style="width: 85%;">';
-    for ($i = 0; $i < 3; $i++) {    // displaying 3 Reviews from Latest Review
+    for ($i = 0; $i < $result->num_rows; $i++) {    // displaying 3 Reviews from Latest Review
         $row = $result->fetch_assoc();
         // CARDS
         echo '<div class="card text-secondary my-4" id="card">';
@@ -52,7 +52,6 @@
         echo '</div>';
     }
     $stmt->close();
-    $db_connection->close();
     ?>
 
     </div>

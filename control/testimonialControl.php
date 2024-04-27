@@ -19,4 +19,5 @@ if (isset($_POST['private'])) {
     header("Location: ../pages/testimonials/testimonial_manage.php");
 }
 
+
 ?>

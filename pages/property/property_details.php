@@ -18,6 +18,18 @@
 
 <body>
     <?php
+
+    //function to check to return yes or no if appliance is included
+    function isIncluded($data)
+    {
+        $stmnt = '';
+        if ($data == 1) {
+            $stmnt = "Yes";
+        } else {
+            $stmnt = "No";
+        }
+        return $stmnt;
+    }
     include '../../Components/header.php';
     // Check if property ID is provided in the URL
     if (isset($_GET['id'])) {
@@ -27,11 +39,23 @@
 
         // Fetch property details from the database
         $query = "SELECT * FROM property WHERE property_id = $property_id";
+
+
         $result = mysqli_query($db_connection, $query);
 
         // Check if property exists
         if (mysqli_num_rows($result) > 0) {
             $property = mysqli_fetch_assoc($result);
+
+            // Show the appliances
+            $sql_appliance = "SELECT a.* 
+            FROM appliances a
+            JOIN property p ON a.property_id = p.property_id
+            WHERE p.eircode = '{$property['eircode']}'";
+            $result_appliance = mysqli_query($db_connection, $sql_appliance);
+            if (mysqli_num_rows($result_appliance) > 0)
+                $property_appliance = mysqli_fetch_assoc($result_appliance);
+
             ?>
             <section>
                 <div class="container mt-5" style="padding: 20px;">
@@ -39,6 +63,8 @@
                         <div class="card-header">
                             <h2 class="card-title"><?php echo $property['Name']; ?></h2>
                         </div>
+
+                        <!-- PROPERTY INFO -->
                         <div class="card-body">
                             <p class="card-text"><strong>Address:</strong> <?php echo $property['address']; ?></p>
                             <p class="card-text"><strong>Eircode:</strong> <?php echo $property['eircode']; ?></p>
@@ -50,23 +76,27 @@
                             <p class="card-text"><strong>Number of Beds:</strong> <?php echo $property['num_beds']; ?></p>
                             <p class="card-text"><strong>Size:</strong> <?php echo $property['size']; ?> sqft</p>
                         </div>
+
+                        <!-- APPLIANCES INFO -->
                         <div class="card">
                             <div class="card-header">
-                                <h2 class="card-title">Appliance</h2>
+                                <h2 class="card-title">Included appliances:</h2>
                             </div>
                             <div class="card-body">
-                                <p class="card-text"><strong>Address:</strong> <?php echo $property['address']; ?></p>
-                                <p class="card-text"><strong>Eircode:</strong> <?php echo $property['eircode']; ?></p>
-                                <p class="card-text"><strong>Category:</strong> <?php echo $property['category']; ?></p>
-                                <p class="card-text"><strong>Price:</strong> $<?php echo $property['price']; ?></p>
-                                <p class="card-text"><strong>Start Date:</strong> <?php echo $property['start_date']; ?></p>
-                                <p class="card-text"><strong>End Date:</strong> <?php echo $property['end_date']; ?></p>
-                                <p class="card-text"><strong>Description:</strong> <?php echo $property['description']; ?></p>
-                                <p class="card-text"><strong>Number of Beds:</strong> <?php echo $property['num_beds']; ?></p>
-                                <p class="card-text"><strong>Size:</strong> <?php echo $property['size']; ?> sqft</p>
+                                <p class="card-text"><strong>Washing machine:</strong>
+                                    <?php echo isIncluded($property_appliance['washing_machine']); ?></p>
+                                <p class="card-text"><strong>Microwave:</strong>
+                                    <?php echo isIncluded($property_appliance['microwave']); ?></p>
+                                <p class="card-text"><strong>Dryer:</strong>
+                                    <?php echo isIncluded($property_appliance['dryer']); ?></p>
+                                <p class="card-text"><strong>WiFi:</strong>
+                                    <?php echo isIncluded($property_appliance['wifi']); ?></p>
+                                <p class="card-text"><strong>TV:</strong>
+                                    <?php echo isIncluded($property_appliance['tv']); ?></p>
                             </div>
                         </div>
                     </div>
+
                     <?php
                     if (isset($_SESSION['access'])) {
                         if ($_SESSION['access'] == 'tenants') {

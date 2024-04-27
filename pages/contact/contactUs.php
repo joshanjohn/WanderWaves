@@ -1,11 +1,10 @@
 <?php
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['feedback'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contact'])) {
     $name = validate_input($_POST['name']);
     $mobile = validate_input($_POST['mobile']);
     $mail = validate_input($_POST['mail']);
     $subject = validate_input($_POST['subject']);
-    $message = validate_input($_POST['message']);
+    $message = $_POST['message'];
 
     $errors = []; // Initialize an empty array to store error messages
 
@@ -19,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['feedback'])) {
     // Mobile Number Validation
     if (empty($mobile)) {
         $errors[] = "Please enter the mobile number";
-    } else if (!preg_match('/^\+353[1-9][0-9]{6,9}$/', $mobile)) {
+    } else if (!preg_match('/^(\+353|0)(\s?\d){9}$/', $mobile)) {
         $errors[] = "Invalid Irish phone number format";
     }
 
@@ -40,18 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['feedback'])) {
     }
 
 
-    if (!empty($$error)) {
-        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-        foreach ($errors as $error) {
-            echo '<li>' . $error . '</li>';
-        }
-        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-        echo '</div>';
+    if (empty($errors)){
+        $stmt = $db_connection->prepare("INSERT INTO feedbacks (name, mail, mobile, subject, message) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("sssss", $name, $mail, $mobile, $subject, $message);
+        $stmt->execute();
     }
+    
+
 }
-
-
 ?>
+
 
 <!-- CONTACT -->
 <section class=" bg-light" id="contact">
@@ -65,12 +62,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['feedback'])) {
                         today!
                 </div>
 
-
             </div>
             <div class="row justify-content-center" data-aos="fade-down" data-aos-delay="250">
+                <?php 
+                    if (!empty($errors) && $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contact'])) {
+                        echo '<div class="alert alert-danger alert-dismissible fade show w-50 my-4" role="alert">';
+                        foreach ($errors as $error) {
+                            echo '<li>' . $error . '</li>';
+                        }
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                        echo '</div>';
+                    }
+                ?>
                 <div class="col-lg-8">
 
-                    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>"
+                    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']).'#contact'; ?>"
                         class="row g-3 p-lg-5 p-4 bg-white theme-shadow" novalidate method="POST">
 
                         <div class="form-group col-lg-6">
@@ -91,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['feedback'])) {
                                 placeholder="Enter Message"></textarea>
                         </div>
                         <div class="form-group ">
-                            <button id="btnC" name="feedback" type="submit" data-mdb-button-init data-mdb-ripple-init
+                            <button id="btnC" name="contact" type="submit" data-mdb-button-init data-mdb-ripple-init
                                 class="btn text-light" style="padding-left: 2.5rem; padding-right: 2.5rem;">Send
                                 Message</button>
                         </div>

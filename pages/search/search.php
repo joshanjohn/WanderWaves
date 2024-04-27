@@ -7,9 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../Assets/css/index.css?v=<?php echo time(); ?>">
     <title>Search Page</title>
-
-    <link rel="stylesheet" href="../../Assets/css/search.css?v=<?php echo time(); ?>">
-
     <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,133 +20,94 @@
 <body>
 
     <?php
-    error_reporting(E_ALL); ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
     require '../../Components/header.php';
     $area = $min_price = $max_price = $num_rooms = $check_in = $check_out = '';
 
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['search'])) {
 
-        if (isset($_POST['search'])) {
-            $errors = [];
+        $errors = [];
+
+        $area = validate_input($_POST['area']);
+        $min_price = validate_input($_POST['min_price']);
+        $max_price = validate_input($_POST['max_price']);
+        $num_rooms = validate_input($_POST['num_rooms']);
+        $check_in = validate_input($_POST['check_in']);
+        $check_out = validate_input($_POST['check_out']);
 
 
-            if (!isset($_POST['area']) && !empty($_POST['area'])) {
-                $errors[] = 'Dublin area address is required!';
-            } else {
-                $area = htmlentities($_POST['area']);
-            }
+        // VALIDATIONS 
+    
+        $sql = "SELECT * FROM property WHERE ";
 
-            if (!isset($_POST['min_price']) && !empty($_POST['min_price'])) {
-                $errors[] = 'Minimum price is required!';
-            } else {
-                $min_price = htmlentities($_POST['min_price']);
-            }
-
-            if (!isset($_POST['max_price']) && !empty($_POST['max_price'])) {
-                $errors[] = 'Maximum price id required!';
-            } else {
-                $max_price = htmlentities($_POST['max_price']);
-            }
-
-            if (!isset($_POST['num_rooms']) && !empty($_POST['num_rooms'])) {
-                $errors[] = 'Number of rooms is required!';
-            } else {
-                $num_rooms = htmlentities($_POST['num_rooms']);
-            }
-
-            if (!isset($_POST['check_in']) && !empty($_POST['check_in'])) {
-                $errors[] = 'Check in date is required!';
-            } else {
-                $check_out = htmlentities($_POST['check_in']);
-            }
-
-            if (!isset($_POST['check_out']) && !empty($_POST['check_out'])) {
-                $errors[] = 'Check out date is required!';
-            } else {
-                $check_out = htmlentities($_POST['check_out']);
-            }
-            if (!empty($errors)) {
-                echo "<div class='info'>";
-                foreach ($errors as $error) {
-                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-                    echo '<strong>' . $error . '</strong>';
-                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-                    echo '</div>';
-                }
-
-            }
+        if (empty($area)) {
+            $errors[] = 'Dublin area address is required!';
         } else {
-            $area = htmlspecialchars($_POST['area']);
-            $min_price = htmlspecialchars(trim($_POST['min_price']));
-            $max_price = htmlspecialchars(trim($_POST['max_price']));
-            $num_rooms = htmlspecialchars(trim($_POST['num_rooms']));
-            $check_in = htmlspecialchars(trim($_POST['check_in']));
-            $check_out = htmlspecialchars(trim($_POST['check_out']));
-
-            $sql = "SELECT * FROM property WHERE ";
-
-            // Append the conditions based on the provided parameters
-    
-            // 1. Compare the area by the first three symbols
-            if (!empty($area)) {
-                $sql .= "LEFT(address, 3) = LEFT('$area', 3) AND ";
-            }
-
-            // 2. Price should be between max_price and min_price
-            if (!empty($min_price) && !empty($max_price)) {
-                $sql .= "price BETWEEN $min_price AND $max_price AND ";
-            }
-
-            // 3. Number of rooms
-            if (!empty($num_rooms)) {
-                $sql .= "num_beds = $num_rooms AND ";
-            }
-
-            // 4. Check-in and Check-out dates should be between available dates for the property
-            if (!empty($check_in) && !empty($check_out)) {
-                $sql .= "'$check_in' BETWEEN start_date AND end_date AND ";
-                $sql .= "'$check_out' BETWEEN start_date AND end_date AND ";
-            }
-
-            // Remove the trailing "AND" if it exists
-            $sql = rtrim($sql, " AND ");
-
-            // Execute the query
-            $result = mysqli_query($db_connection, $sql);
-
-
-                // If no results found
-                if (mysqli_num_rows($result) == 0) {
-                    echo "<div class='Message'><p>No appliances found matching the criteria.</p></div>";
-                }
-                //If results found
-                else {
-                    echo "hello";
-
-                    echo "</div>";
-                }
-
-                mysqli_free_result($result);
-                mysqli_close($db_connection);
-            }
+            $sql .= "eircode like '" . $area . "%' ";
         }
-    
+
+        if (empty($min_price)) {
+            $errors[] = 'Minimum price is required!';
+        } else {
+            $sql .= "AND (PRICE BETWEEN " . $min_price;
+        }
+        if (empty($max_price)) {
+            $errors[] = 'Maximum price id required!';
+        } else {
+            $sql .= " AND " . $max_price . ") ";
+        }
+
+        if (empty($num_rooms)) {
+            $sql .= " AND num_beds >= 1";
+        } else {
+            $sql .= " AND num_beds >=" . $num_rooms;
+        }
+        if (!empty($check_in)) {
+            $sql .= " AND start_date >= " . $check_in;
+        }
+
+        if (!empty($check_out)) {
+            $sql .= " AND end_date >= " . $check_out;
+        }
+
+
+
+        if (!empty($errors)) {
+            echo "<div class='info'>";
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+            foreach ($errors as $error) {
+                echo '<li><strong>' . $error . '</strong></li>';
+            }
+            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo '</div>';
+        } else {
+            header("Location: ../property/property.php?sql=" . $sql);
+        }
+
+    }
+
 
     ?>
     <div class="container">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" novalidate class="mt-3">
+        <!-- CHANGE TO GETTY PATH -->
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" novalidate
+            class="w-75 mx-auto py-5">
+            <!-- AREA -->
+            <h1 class="text-center">SEARCH</h1>
             <div class="form-group">
                 <label for="area">Select Dublin Area:</label>
                 <select class="form-control" name="area" id="area">
-                    <option value="1">D01</option>
-                    <option value="2">D02</option>
-                    <option value="3">D03</option>
-                    <option value="4">D04</option>
+                    <option value="D">All</option>
+                    <option value="D01">D01</option>
+                    <option value="D02">D02</option>
+                    <option value="D03">D03</option>
+                    <option value="D04">D04</option>
                     <option value="5">D05</option>
                     <option value="6">D06</option>
                     <option value="7">D07</option>
-                    <option value="8">D08</option>
+                    <option value="D08">D08</option>
                     <option value="9">D09</option>
                     <option value="10">D10</option>
                     <option value="11">D11</option>
@@ -166,16 +124,22 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="price">Price Range from:</label>
-                <input type="range" min="0" max="1000" value="500" class="slider" id="range_from" name="min_price">
-                <div class="slider-value" id="slider_from">50</div>
-            </div>
-            <div class="form-group">
-                <label for="price">Price Range to:</label>
-                <input type="range" min="1000" max="1000001" value="500001" class="slider" id="range_to"
-                    name="max_price">
-                <div class="slider-value" id="slider_to">50001</div>
+            <!-- PRICE RANGE FROM-->
+            <div class="form-group d-flex justify-content-between ">
+                <div>
+                    <label for="price">Price Range from:</label>
+                    <input type="range" min="200" max="10000" value="200" class="slider" id="range_from"
+                        name="min_price">
+                    <div class="slider-value" id="slider_from">50</div>
+                </div>
+
+                <div class="mx-5">
+                    <label for="price">Price Range to:</label>
+                    <input type="range" min="1000" max="10000" value="5000" class="slider" id="range_to"
+                        name="max_price">
+                    <div class="slider-value" id="slider_to">5000</div> 
+                </div>
+
             </div>
 
             <script>
@@ -199,9 +163,10 @@
                 }
             </script>
 
+            <!-- ROOMS -->
             <div class="form-group">
                 <label for="num_rooms">Number of Rooms:</label>
-                <input type="number" class="form-control" name="num_rooms" id="num_rooms" min="1" max="4">
+                <input type="number" class="form-control" name="num_rooms" value="1" id="num_rooms" min="1" max="4">
             </div>
 
             <div class="form-group">
@@ -222,12 +187,6 @@
 
 
     <?php
-
-    // TESTIMONIAL SECTION
-    //include 'testimonial.php';
-    
-    // FOOTER
-    //include 'Components/footer.php';
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

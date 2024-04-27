@@ -42,101 +42,50 @@
     
         $sql = "SELECT * FROM property WHERE ";
 
-            if (!isset($_POST['min_price']) && !empty($_POST['min_price'])) {
-                $errors[] = 'Minimum price is required!';
-            } else {
-                $min_price = htmlentities($_POST['min_price']);
-            }
-
-            if (!isset($_POST['max_price']) && !empty($_POST['max_price'])) {
-                $errors[] = 'Maximum price id required!';
-            } else {
-                $max_price = htmlentities($_POST['max_price']);
-            }
-
-            if (!isset($_POST['num_rooms']) && !empty($_POST['num_rooms'])) {
-                $errors[] = 'Number of rooms is required!';
-            } else {
-                $num_rooms = htmlentities($_POST['num_rooms']);
-            }
-
-            if (!isset($_POST['check_in']) && !empty($_POST['check_in'])) {
-                $errors[] = 'Check in date is required!';
-            } else {
-                $check_out = htmlentities($_POST['check_in']);
-            }
-
-            if (!isset($_POST['check_out']) && !empty($_POST['check_out'])) {
-                $errors[] = 'Check out date is required!';
-            } else {
-                $check_out = htmlentities($_POST['check_out']);
-            }
-
-
-            if (!empty($errors)) {
-                echo "<div class='info'>";
-                foreach ($errors as $error) {
-                    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-                    echo '<strong>' . $error . '</strong>';
-                    echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-                    echo '</div>';
-                }
-
-            }
+        if (empty($area)) {
+            $errors[] = 'Dublin area address is required!';
         } else {
-            $area = htmlspecialchars($_POST['area']);
-            $min_price = htmlspecialchars(trim($_POST['min_price']));
-            $max_price = htmlspecialchars(trim($_POST['max_price']));
-            $num_rooms = htmlspecialchars(trim($_POST['num_rooms']));
-            $check_in = htmlspecialchars(trim($_POST['check_in']));
-            $check_out = htmlspecialchars(trim($_POST['check_out']));
-
-            $sql = "SELECT * FROM property WHERE ";
-
-            // Append the conditions based on the provided parameters
-    
-            // 1. Compare the area by the first three symbols
-            if (!empty($area)) {
-                $sql .= "LEFT(address, 3) = LEFT('$area', 3) AND ";
-            }
-
-            // 2. Price should be between max_price and min_price
-            if (!empty($min_price) && !empty($max_price)) {
-                $sql .= "price BETWEEN $min_price AND $max_price AND ";
-            }
-
-            // 3. Number of rooms
-            if (!empty($num_rooms)) {
-                $sql .= "num_beds = $num_rooms AND ";
-            }
-
-            // 4. Check-in and Check-out dates should be between available dates for the property
-            if (!empty($check_in) && !empty($check_out)) {
-                $sql .= "'$check_in' BETWEEN start_date AND end_date AND ";
-                $sql .= "'$check_out' BETWEEN start_date AND end_date AND ";
-            }
-
-            // Remove the trailing "AND" if it exists
-            $sql = rtrim($sql, " AND ");
-
-            // Execute the query
-            $result = mysqli_query($db_connection, $sql);
-
-
-            // If no results found
-            if (mysqli_num_rows($result) == 0) {
-                echo "<div class='Message'><p>No appliances found matching the criteria.</p></div>";
-            }
-            //If results found
-            else {
-                echo "hello";
-
-                echo "</div>";
-            }
-
-
-            
+            $sql .= "eircode like '" . $area . "%' ";
         }
+
+        if (empty($min_price)) {
+            $errors[] = 'Minimum price is required!';
+        } else {
+            $sql .= "AND (PRICE BETWEEN " . $min_price;
+        }
+        if (empty($max_price)) {
+            $errors[] = 'Maximum price id required!';
+        } else {
+            $sql .= " AND " . $max_price . ") ";
+        }
+
+        if (empty($num_rooms)) {
+            $sql .= " AND num_beds >= 1";
+        } else {
+            $sql .= " AND num_beds >=" . $num_rooms;
+        }
+        if (!empty($check_in)) {
+            $sql .= " AND start_date >= " . $check_in;
+        }
+
+        if (!empty($check_out)) {
+            $sql .= " AND end_date >= " . $check_out;
+        }
+
+
+
+        if (!empty($errors)) {
+            echo "<div class='info'>";
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+            foreach ($errors as $error) {
+                echo '<li><strong>' . $error . '</strong></li>';
+            }
+            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo '</div>';
+        } else {
+            header("Location: ../property/property.php?sql=" . $sql);
+        }
+
     }
 
 
@@ -184,7 +133,7 @@
                     <div class="slider-value" id="slider_from">50</div>
                 </div>
 
-                <div class="mx-5">
+                <div class="mx">
                     <label for="price">Price Range to:</label>
                     <input type="range" min="1000" max="10000" value="5000" class="slider" id="range_to"
                         name="max_price">

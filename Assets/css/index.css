@@ -96,6 +96,9 @@
    --transition-easing-quick: cubic-bezier(0, 0.7, 0.3, 1);
    --transition-duration-quick: 200ms;
    --transition-duration-smooth: 500ms;
+   
+    /* gradient */
+    --gradient: linear-gradient(270deg, #00be63 0%, #013b1f 100%);
 }
 ion-icon{
     pointer-events: none;
@@ -695,3 +698,270 @@ height: 100%;
   #btn-editP:hover{
     background-color: var(--black);
   }
+  /*-----------------------------------*\
+    #HERO
+  \*-----------------------------------*/
+  
+  .hero-banner { display: none; }
+  
+  .hero {
+    position: relative;
+    background-image: var(--gradient);
+    color: var(--neutral-90);
+    padding-block: 130px 60px;
+    overflow: hidden;
+    isolation: isolate;
+    max-height: 100% !important;
+  }
+  
+  .hero-title { color: var(--neutral-100); }
+  
+  
+  .hero-text { margin-block: 16px 32px; 
+  font-size: 1.4rem;}
+  
+  
+  .search-btn {
+    background: var(--primary-100);
+    color: var(--neutral-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    padding-inline: 24px;
+    gap: 12px;
+    border-radius: 12px;
+    transition: var(--transition-duration-quick) var(--transition-easing-quick);
+  }
+  #searchbtn{
+    color: white;
+  }
+  .search-btn:where(:hover, :focus) { background-color: var(--dark-green); }
+  
+  .search-btn:where(:active, :focus-visible) { background-color: var(--primary-70); }
+  
+  .hero .bg-pattern {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    right: 0;
+    translate: 0 -50%;
+    min-height: 100%;
+    pointer-events: none;
+    z-index: -2;
+  }
+  
+   
+  /*-----------------------------------*\
+    #MEDIA QUERIES
+  \*-----------------------------------*/
+  
+  
+  /**
+   * responsive for larger than 768px screen
+   */
+  
+   @media (min-width: 768px) {
+  
+    /**
+     * CUSTOM PROPERTY
+     */
+  
+    :root {
+  
+      /**
+       * TYPOGRAPHY
+       */
+  
+      /* font size */
+      --fs-headline-large: 5.2rem;
+      --fs-headline-medium: 4rem;
+      --fs-headline-small: 3.6rem;
+  
+      /* line height */
+      --lh-headline-large: 64px;
+      --lh-headline-medium: 52px;
+      --lh-headline-small: 48px;
+  
+    }
+  
+  
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container { max-width: 720px; }
+  
+    .section { padding-block-end: 80px; }
+  
+  
+    /**
+     * HERO
+     */
+  
+    .hero { padding-block: 160px 100px; }
+  
+    .search-bar {
+      grid-template-columns: 160px 160px 1fr max-content;
+      gap: 0;
+    }
+  
+    .search-item .material-symbols-rounded { display: none; }
+  
+    .search-item:not(:last-of-type)::after {
+      content: "";
+      position: absolute;
+      top: 16px;
+      left: 100%;
+      bottom: 16px;
+      width: 1px;
+      background-color: var(--neutral-90);
+    }
+  
+    .search-btn {
+      height: 100%;
+      margin-inline-start: 8px;
+    }
+  
+  
+  
+    
+  }
+  
+  
+  
+  
+  
+  /**
+   * responsive for larger than 992px screen
+   */
+  
+  @media (min-width: 992px) {
+  
+    /**
+     * CUSTOM PROPERTY
+     */
+  
+    :root {
+  
+      /**
+       * TYPOGRAPHY
+       */
+      
+      /* font size */
+      --fs-body-large: 1.8rem;
+  
+      /* line height */
+      --lh-body-large: 32px;
+  
+    }
+  
+  
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container { max-width: 950px; }
+  
+  
+  
+   
+  
+  
+    /**
+     * HERO
+     */
+  
+    .hero .container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+  
+    .hero-content { grid-column: 1 / 7; 
+   
+    }
+  
+    
+  
+    .hero-banner {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      max-width: 720px;
+      z-index: -1;
+    }
+  
+  
+  }
+  
+  
+  
+  
+  
+  /**
+   * responsive for larger than 1440px screen
+   */
+  
+  @media (min-width: 1440px) {
+  
+    /**
+     * CUSTOM PROPERTY
+     */
+  
+    :root {
+  
+      /**
+       * TYPOGRAPHY
+       */
+  
+      /* font size */
+      --fs-headline-large: 7.2rem;
+      --fs-headline-medium: 5.4rem;
+  
+      /* line height */
+      --lh-headline-large: 92px;
+      --lh-headline-medium: 72px;
+  
+    }
+  
+  
+  
+    /**
+     * REUSED STYLE
+     */
+  
+    .container { max-width: 1460px; }
+  
+  
+  
+    /**
+     * HERO
+     */
+  
+    .hero .container {
+      min-height: 580px;
+      align-items: center;
+    }
+  
+    .hero-content { grid-column: 1 / 6;
+     }
+  
+    .hero-banner {
+      max-width: 820px;
+      width: 100%;
+      left: calc(50% - 108px);
+    }
+  
+    .hero .bg-pattern { left: 36%; }
+  
+  
+  
+  }
+  
+  
+  
+  

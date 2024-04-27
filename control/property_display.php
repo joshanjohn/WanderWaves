@@ -18,7 +18,7 @@
          echo "<div class='container'>";
          echo "<div class='title-wrapper'>";
          echo "<div>";
-         echo "<h2 class='section-title headline-small'>Best home in your city</h2>";
+         echo "<h2 class='section-title headline-small'>Best homes in Dublin</h2>";
          echo "</div>";
          echo "</div>";
 

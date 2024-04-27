@@ -23,7 +23,9 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     require '../../Components/header.php';
-    include '../../pages/cookies/show_cookies.php';
+    if (isset($_COOKIE['area'])){
+        include '../../pages/cookies/show_cookies.php';
+    }
     $area = $min_price = $max_price = $num_rooms = $check_in = $check_out = '';
 
 

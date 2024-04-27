@@ -26,6 +26,7 @@
     require '../../Components/header.php';
     // require_once '../../control/sessions.php';
     $limit=false;
+    
     $search;
     if (isset($_GET['sql'])){
         $search = $_GET['sql'];

@@ -1,6 +1,6 @@
 <?php
  $sql_query=null;
-//  differentiating query for features and properties
+ //differentiating query for features and properties
  if(!$limit)$sql_query= $db_connection->prepare("SELECT * FROM property");
  else{
     $sql_query= $db_connection->prepare("SELECT * FROM property LIMIT 3");
@@ -24,7 +24,7 @@
          echo "<div class='container'>";
          echo "<div class='title-wrapper'>";
          echo "<div>";
-         echo "<h2 class='section-title headline-small'>Best home in your city</h2>";
+         echo "<h2 class='section-title headline-small'>Best homes in Dublin</h2>";
          echo "</div>";
          echo "</div>";
 
@@ -37,14 +37,15 @@
              $size=$row["size"];
              $url="property_edit.php?id=".urlencode($row["property_id"]);
              $url1="property_details.php?id=".urlencode($row["property_id"]);
-
-             echo "<div class='card w-lg-70'> ";
+             echo "<div class='card'>";
+             
                  echo "<div class='card-banner'>";
                      echo "<figure class='img-holder' style='--width: 585; --height: 390;'>";
-                         echo "<img src='https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' width='585' height='390' alt=".$name." class='img-cover'>";
+                         echo "<img src='' width='585' height='390' alt=".$name." class='img-cover'>";
                      echo "</figure>";
                      echo "<button class='icon-btn fav-btn' aria-label='add to favorite' data-toggle-btn>";
                           echo "<span class='material-symbols-rounded' aria-hidden='true'><a href=".$url.">edit</a> </span>";
+                        //  echo "";
                      echo "</button>";
                  echo "</div>";
                  echo "<div class='card-content' id='cardContent'>";
@@ -78,5 +79,3 @@
  }
  else $_SESSION["Errors"]="System Error: Contact Support";
 ?>
-
-

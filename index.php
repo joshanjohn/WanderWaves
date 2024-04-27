@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wander Waves</title>
+  <title>Home Page</title>
   <link rel="stylesheet" href="Assets/css/index.css?v=<?php echo time(); ?>">
   <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
@@ -35,22 +34,33 @@
   }
   require $header_path;
   ?>
-
   <!-- main page-->
-  <section id="index" class="min-vh-100 d-flex align-items-center text-center">
-    <div class="container">
-      <div class="row">
-        <div id="haventitle" class="col-12">
-          <h2 class="text-black mt-3 mb-4 fw-semibold" data-aos="fade-right">DISCOVER YOUR DREAM HAVEN</h2>
-          <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Search property" aria-label="Search"
-              aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>Search</button>
+  <main>
+    <article>
+      <section style="height:100vh;" class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="headline-large hero-title">Discover your dream Haven</h1>
+            <p class="body hero-text">
+              Find your perfect sanctuary with Wander Wave, where every step leads you closer to home.
+            </p>
+            <button id="searchbtn" type="button" class="btn btn-lg btn-outline-success">
+              <i class="fa fa-search"></i> Search Property
+            </button>
+
+            <img src="Assets/images/images/hero.png" width="816" height="659" role="presentation" class="hero-banner">
+            <img src="Assets/images/images/bg-pattern.png" width="1240" height="840" role="presentation"
+              class="bg-pattern">
+
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    </article>
+  </main>
+  <!--#PROPERTY SECTION-->
+  <?php
+  $limit = true;
+  require_once 'control/property_display.php'
+    ?>
 
 
   <!--- #PROPERTY SECTION-->

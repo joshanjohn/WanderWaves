@@ -51,9 +51,13 @@ if (isset($_GET['id'])) {
                         <p class="card-text"><strong>Size:</strong> <?php echo $property['size']; ?> sqft</p>
                     </div>
                 </div>
-                <a href="<?php echo $url;?>">
-                <button id="btn-editP"type="submit" class="btn btn-outline-primary " data-mdb-ripple-init>Rent property</button>
-    </a>
+               <?php 
+                if (isset($_SESSION['access'])){
+                    if ($_SESSION['access'] == 'tenants'){
+                        echo '<a href="<?php echo $url;?>" id="btn-editP" class="btn">Rent property</a>';
+                    }
+                }
+               ?>
             </div>
            
     </section>

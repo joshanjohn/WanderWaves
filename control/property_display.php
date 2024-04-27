@@ -35,8 +35,8 @@
              $address=$row["address"];
              $num_beds=$row["num_beds"];
              $size=$row["size"];
-             $url="property_edit.php?id=".urlencode($row["property_id"]);
-             $url1="property_details.php?id=".urlencode($row["property_id"]);
+             $url= getbaseURL()."/pages/property/property_edit.php?id=".$row["property_id"];
+             $url1=getbaseURL()."/pages/property/property_details.php?id=".$row["property_id"];
              echo "<div class='card'>";
              
                  echo "<div class='card-banner'>";

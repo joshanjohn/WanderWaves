@@ -42,7 +42,7 @@
           <div class="hero-content">
             <h1 class="headline-large hero-title">Discover your dream Haven</h1>
             <p class="body hero-text">
-              Find your perfect sanctuary with Wander Wave, where every step leads you closer to home.
+              Find your perfect sanctuary with Wander Waves, where every step leads you closer to home.
             </p>
             <button id="searchbtn" type="button" class="btn btn-lg btn-outline-success">
               <i class="fa fa-search"></i> Search Property

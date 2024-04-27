@@ -33,7 +33,7 @@
                 $stmt = $db_connection->prepare("SELECT * FROM appuser WHERE email=?");
                 $stmt->bind_param('s', $email);
                 $stmt->execute();
-                if (!($stmt->num_rows>0)){
+                if ($stmt->num_rows==0){
                     $errors[] = "This mail address is not registred";
                 }
             }

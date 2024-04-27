@@ -73,8 +73,8 @@
             echo '</div>';
             echo '</div>';
         }
+        
         $stmt->close();
-
         function displayBtn($bool, $id)
         {
             if ($bool == "1") {

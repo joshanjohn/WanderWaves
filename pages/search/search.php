@@ -23,7 +23,8 @@
 <body>
 
     <?php
-    error_reporting(E_ALL); ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
     require '../../Components/header.php';
     $area = $min_price = $max_price = $num_rooms = $check_in = $check_out = '';
 
@@ -69,6 +70,8 @@
             } else {
                 $check_out = htmlentities($_POST['check_out']);
             }
+
+
             if (!empty($errors)) {
                 echo "<div class='info'>";
                 foreach ($errors as $error) {
@@ -119,22 +122,22 @@
             $result = mysqli_query($db_connection, $sql);
 
 
-                // If no results found
-                if (mysqli_num_rows($result) == 0) {
-                    echo "<div class='Message'><p>No appliances found matching the criteria.</p></div>";
-                }
-                //If results found
-                else {
-                    echo "hello";
-
-                    echo "</div>";
-                }
-
-                mysqli_free_result($result);
-                mysqli_close($db_connection);
+            // If no results found
+            if (mysqli_num_rows($result) == 0) {
+                echo "<div class='Message'><p>No appliances found matching the criteria.</p></div>";
             }
+            //If results found
+            else {
+                echo "hello";
+
+                echo "</div>";
+            }
+
+
+            
         }
-    
+    }
+
 
     ?>
     <div class="container">

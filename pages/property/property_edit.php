@@ -26,7 +26,7 @@
                 }
                 else $_SESSION["Errors"]="System Error: Contact Support";
             }
-            else $_SESSION["Errors"]="Error: Missing Property ID"
+            else $_SESSION["Errors"]="Error: Missing Property ID";
         ?>
 
 <!DOCTYPE html>
@@ -123,6 +123,11 @@
                             <label for="size">Size</label>
                             <input type="text" name="size" class="form-control" id="size" placeholder="Size"
                              value="<?php echo (isset($selected_property['size']))?$selected_property['size']:'';?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="agreement">Tenant agreement</label>
+                            <textarea type="text" name="agreement" class="form-control" id="agreement"
+                                placeholder="agreement"> <?php echo (isset($selected_property['agreement']))?$selected_property['agreement']:'';?></textarea>
                         </div>
                         <button id="btn-editP"type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>Update property</button>
                     </div>

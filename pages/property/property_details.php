@@ -22,6 +22,8 @@
     // Check if property ID is provided in the URL
 if (isset($_GET['id'])) {
     $property_id = $_GET['id'];
+    $url="../tenant/rent.php?id=".urlencode($property_id);
+
 
     // Fetch property details from the database
     $query = "SELECT * FROM property WHERE property_id = $property_id";
@@ -34,7 +36,7 @@ if (isset($_GET['id'])) {
     <section >
     
     
-            <div class="container mt-5">
+            <div class="container mt-5" style="padding: 20px;">
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title"><?php echo $property['Name']; ?></h2>
@@ -51,6 +53,9 @@ if (isset($_GET['id'])) {
                         <p class="card-text"><strong>Size:</strong> <?php echo $property['size']; ?> sqft</p>
                     </div>
                 </div>
+                <a href="<?php echo $url;?>">
+                <button id="btn-editP"type="submit" class="btn btn-outline-primary " data-mdb-ripple-init>Rent property</button>
+    </a>
             </div>
            
     </section>

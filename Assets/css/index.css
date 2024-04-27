@@ -654,6 +654,7 @@ height: 100%;
     border-radius: var(--radius-full);
     max-width: max-content;
     transition: var(--transition-duration-quick) var(--transition-easing-quick);
+    
   }
   
   .btn-fill {

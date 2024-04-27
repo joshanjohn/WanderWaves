@@ -1,6 +1,39 @@
 <?php
     require "../Components/header.php";
+     //create tenant account only for tenant access level
+    function tenantAccount($tenant_ID, $db_connection){
+        $sql_query = $db_connection->prepare(
+            "INSERT INTO tenant(user_ID) VALUES(?)"
+        );
+        if($sql_query){
+             // Bind parameters to the prepared statement
+             $sql_query->bind_param("s", $tenant_ID);
+            
+             if($sql_query->execute()) $_SESSION["Response"]="Tenant account created";
+             else $_SESSION["Errors"]="Error: Tenant account not created";
 
+        } else $_SESSION["Errors"]="System Error: Contact Support";
+    }
+    function getUser($email, $db_connection){
+        $sql_query = $db_connection->prepare(
+            "SELECT user_id FROM appuser WHERE email=?"
+        );
+        if($sql_query){
+            // Bind parameters to the prepared statement
+            $sql_query->bind_param("s", $email);
+            $sql_query->execute();
+
+              // Get result
+              $result = $sql_query->get_result();
+
+              // Check if any rows were returned
+              if ($result->num_rows > 0) {
+                  // Fetch data
+                  while ($row = $result->fetch_assoc())
+                  return $row['user_id'];
+              }
+        }
+    }
     // Checking if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve form data
@@ -34,7 +67,7 @@
                     $sql_query->bind_param("ssssss", $firstName, $lastName, $email, $mobile, $userCategory, $password_hash);
                     if($sql_query->execute()) {
                         $_SESSION["Response"] = "User registered successfully";
-
+                        if($userCategory == "Tenant") tenantAccount(getUser($email, $db_connection),$db_connection);
                         // Close database connection
                         $db_connection->close();
                         header("Location:../pages/logIn/LogIn.php");

@@ -77,6 +77,11 @@
                             <label for="size">Size</label>
                             <input type="text" name="size" class="form-control" id="size" placeholder="Size">
                                              </div>
+                                             <div class="form-group">
+                            <label for="agreement">Tenant agreement</label>
+                            <textarea type="text" name="agreement" class="form-control" id="agreement"
+                                placeholder="agreement"></textarea>
+                        </div>
                         <button id="btn-editP"type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>Add property</button>
                     </div>
                 </div>

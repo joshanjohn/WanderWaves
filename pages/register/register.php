@@ -75,7 +75,7 @@
 
                   <select name="userCategory"class="select form-control-lg">
                     <option value="userCategory" disabled>User Category</option>
-                    <option value="tenant">Tenant</option>
+                    <option value="tenants">Tenant</option>
                     <option value="landlord">Landlord</option>
                     <option value="admin">Admin</option>
                   </select>

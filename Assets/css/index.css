@@ -378,7 +378,7 @@ form .form-group input:focus {
 
 form .form-group textarea,
 form .form-group input {
-    border: 2px dashed var(--green);
+    border: 1px solid var(--black);
 }
 
 form .form-control:focus {

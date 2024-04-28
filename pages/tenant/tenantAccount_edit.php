@@ -32,7 +32,7 @@
             <div class="title-wrapper">
                 <h2 style="margin-left: 35%;"class="section-title">Edit Tenant account</h2>
             </div>
-            <form action="../../control/tenancyAccount_edit.php" method="POST">
+            <form action="../../control/tenancyAccount_edit.php" method="POST" novalidate>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">

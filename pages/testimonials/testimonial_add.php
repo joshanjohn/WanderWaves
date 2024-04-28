@@ -44,7 +44,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 if (!($result->num_rows>0)){
     echo '<div class="conatiner mx-auto my-5 w-lg-6500" id="addReview">';
-echo '<form class="mt-lg-3 col-lg-6 p-sm-3 mx-auto" method="POST" action="'.htmlentities($_SERVER['PHP_SELF']).'#addReview"';
+echo '<form class="mt-lg-3 col-lg-6 p-sm-3 mx-auto" method="POST" action="'.htmlentities($_SERVER['PHP_SELF']).'#addReview" novalidate';
 echo 'novalidate>';
 echo '';
 echo '<!-- title -->';

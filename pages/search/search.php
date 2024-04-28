@@ -183,12 +183,12 @@ if (!isset($_COOKIE['area'])) {
 
             <div class="form-group">
                 <label for="check_in">Check-in Date:</label>
-                <input type="date" class="form-control" name="check_in" id="check_in">
+                <input type="date" class="form-control" value="<?php echo $_COOKIE['checkIn'];?>" min="<?php echo $_COOKIE['checkIn'];?>" name="check_in"  id="check_in">
             </div>
 
             <div class="form-group">
                 <label for="check_out">Check-out Date:</label>
-                <input type="date" class="form-control" name="check_out" id="check_out"  min="2018-01-01">
+                <input type="date" class="form-control" name="check_out" id="check_out" value="<?php echo $_COOKIE['checkOut'];?>"  min="<?php echo $_COOKIE['checkIn'];?>">
             </div>
             <br>
             <button type="submit" name="search" class="btn btn-primary">Search</button>

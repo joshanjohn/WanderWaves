@@ -75,9 +75,9 @@ function getRelativePath()
             <!-- <img src="./Assets/images/logo.png" alt="Wander Waves Logo" width="50px" height="50px"> -->
             <img src="https://i.ibb.co/NYFdhbq/logo.png" alt="Wander Waves Logo" width="50px" height="50px">
         </a>
-        <!-- <div class="img2"><img src="./Assets/images/navImage.png" alt="Wander Waves header pic" width="200px" height="100px"></div> -->
-        <div class="img2"><img src="https://i.ibb.co/KVzw7r9/navImage.png" alt="Wander Waves header pic" width="200px"
-                height="100px"></div>
+        <div class="img2"><img src="./Assets/images/image.png" alt="Wander Waves header pic" width="200px" height="100px"></div>
+        <!-- <div class="img2"><img src="https://i.ibb.co/KVzw7r9/navImage.png" alt="Wander Waves header pic" width="200px"
+                height="100px"></div> -->
         <!-- Toggle button for smaller screens -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

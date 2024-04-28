@@ -20,11 +20,14 @@
 
 <body>
     <?php
+    error_reporting(E_ALL);
+    // header
     include '../../Components/header.php';
+    //storing the errors
     $errors = [];
-
+    //variables
     $userID = $income = $commission = $mfee = $net = "";
-    // function to fetch user data
+    //find landlord
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['find_landlord'])) {
         $userID = $_POST['userID'];
         $stmt = $db_connection->prepare("SELECT * FROM landlord WHERE user_id=?");
@@ -42,8 +45,9 @@
         }
         $stmt->close();
     }
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_landlord'])) {
+    // UPDATE
+    if (isset($_POST['update_landlord'])) {
+        $userID = $_POST['userID'];
         $income = validate_input($_POST['income']);
         $commission = validate_input($_POST['commission']);
         $mfee = validate_input($_POST['mfee']);
@@ -70,6 +74,7 @@
         if (empty($errors)) {
             $stmt = $db_connection->prepare("UPDATE landlord SET income=?, commission=?, management_fees=?, net_income=? WHERE user_id=?");
             $stmt->bind_param("iiiii", $income, $commission, $mfee, $net, $userID);
+            echo $userID;
             if ($stmt->execute()) {
                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
                 echo 'Updated Successfully';
@@ -89,6 +94,7 @@
 
     ?>
 
+<!-- FORMS -->
     <div class="conatiner mx-auto my-5 w-lg-6500" id="update_landlord">
         <!-- SEARCH -->
         <h4 class=" text-center mt-5" id="title">Landlord Edit</h4>
@@ -108,7 +114,10 @@
 
         <form class="mt-lg-3 col-lg-6 p-sm-3 mx-auto" method="POST"
             action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>" novalidate>
-
+            <div class="input-group mb-3">
+                <span class="input-group-text" for="userID">User ID:</span>
+                <input type="text" name="userID" class="form-control" required value="<?php echo $userID;?>">
+            </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="income">Income</span>
                 <input type="text" class="form-control" name="income" value="<?php echo $income; ?>">
@@ -132,7 +141,7 @@
         </form>
     </div>
 
-
+    <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

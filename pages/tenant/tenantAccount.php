@@ -111,7 +111,7 @@
             }
 
 
-            $user=16; // $_SESSION["user"];
+            $user= $_SESSION["user"];
             $user_details=getUserDetails($user,$db_connection);
             $rent_details=getRentDetails($user,$db_connection);
            
@@ -146,7 +146,9 @@
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
-                    echo "</section>";
+        echo "<a href='tenantAccount_edit.php'><button style='margin:25px;margin-left:125px;'id='btn-editP' class='btn btn-outline-primary' data-mdb-ripple-init>Edit account</button></a>";
+
+        echo "</section>";
                 }
                 else $_SESSION["Errors"] = "Error: Failed to load user details";
             }

@@ -3,9 +3,7 @@
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error=null;
-        // $user=$_SESSION["user"];
-        $user=16;
-        // $property=isset($_GET["id"])?$_GET["id"]:null;
+         $user=$_SESSION["user"];
        $property= validate_input($_POST['property']);
         $start_date=validate_input($_POST['start_date']);
         $end_date=validate_input($_POST['end_date']);

@@ -110,12 +110,12 @@ function getRelativePath()
                     if ($userLevel == 'tenants' || $userLevel == 'admin' || $userLevel == 'landlord') {
                         if ($userLevel == 'landlord' || $userLevel == 'admin') {
                             if ($userLevel == 'admin') {
-                                //Log Out
-                                echo '<li class="nav-item">';
-                                echo '<a class="nav-link" href="' . getbaseURL() . '/pages/property/property.php">Properties</a>';
-                                echo '</li>';
+                                 //Inventory
+                                 echo '<li class="nav-item">';
+                                 echo '<a class="nav-link" href="' . getbaseURL() . '/pages/contact/contact_us_manage.php"> Manage FeedBacks</a>';
+                                 echo '</li>';
 
-                                //Inventory
+                                //LandLord Edit
                                 echo '<li class="nav-item">';
                                 echo '<a class="nav-link" href="' . getbaseURL() . '/pages/landlord/landlord_edit.php">LandLord Edit</a>';
                                 echo '</li>';

@@ -100,6 +100,11 @@ if (!isset($_COOKIE['area'])) {
 
     }
 
+    function getCookie($name){
+        if (isset($_COOKIE[$name])){
+            return $_COOKIE[$name];
+        }
+    }
 
     ?>
     <div class="container">
@@ -111,28 +116,28 @@ if (!isset($_COOKIE['area'])) {
             <div class="form-group">
                 <label for="area">Select Dublin Area:</label>
                 <select class="form-control" name="area" id="area">
-                    <option <?php echo ($_COOKIE['area'] == "D") ? "selected" : "" ?> value="D">All</option>
-                    <option <?php echo ($_COOKIE['area'] == "D01") ? "selected" : "" ?> value="D01">D01</option>
-                    <option <?php echo ($_COOKIE['area'] == "D02") ? "selected" : "" ?> value="D02">D02</option>
-                    <option <?php echo ($_COOKIE['area'] == "D03") ? "selected" : "" ?> value="D03">D03</option>
-                    <option <?php echo ($_COOKIE['area'] == "D04") ? "selected" : "" ?> value="D04">D04</option>
-                    <option <?php echo ($_COOKIE['area'] == "D05") ? "selected" : "" ?> value="D05">D05</option>
-                    <option <?php echo ($_COOKIE['area'] == "D06") ? "selected" : "" ?> value="D06">D06</option>
-                    <option <?php echo ($_COOKIE['area'] == "D07") ? "selected" : "" ?> value="D07">D07</option>
-                    <option <?php echo ($_COOKIE['area'] == "D08") ? "selected" : "" ?> value="D08">D08</option>
-                    <option <?php echo ($_COOKIE['area'] == "D09") ? "selected" : "" ?> value="D09">D09</option>
-                    <option <?php echo ($_COOKIE['area'] == "D10") ? "selected" : "" ?> value="D10">D10</option>
-                    <option <?php echo ($_COOKIE['area'] == "D11") ? "selected" : "" ?> value="D11">D11</option>
-                    <option <?php echo ($_COOKIE['area'] == "D12") ? "selected" : "" ?> value="D12">D12</option>
-                    <option <?php echo ($_COOKIE['area'] == "D13") ? "selected" : "" ?> value="D13">D13</option>
-                    <option <?php echo ($_COOKIE['area'] == "D14") ? "selected" : "" ?> value="D14">D14</option>
-                    <option <?php echo ($_COOKIE['area'] == "D15") ? "selected" : "" ?> value="D15">D15</option>
-                    <option <?php echo ($_COOKIE['area'] == "D16") ? "selected" : "" ?> value="D16">D16</option>
-                    <option <?php echo ($_COOKIE['area'] == "D17") ? "selected" : "" ?> value="D17">D17</option>
-                    <option <?php echo ($_COOKIE['area'] == "D18") ? "selected" : "" ?> value="D18">D18</option>
-                    <option <?php echo ($_COOKIE['area'] == "D20") ? "selected" : "" ?> value="D20">D20</option>
-                    <option <?php echo ($_COOKIE['area'] == "D22") ? "selected" : "" ?> value="D22">D22</option>
-                    <option <?php echo ($_COOKIE['area'] == "D24") ? "selected" : "" ?> value="D24">D24</option>
+                    <option <?php echo (getCookie('area') == "D") ? "selected" : "" ?> value="D">All</option>
+                    <option <?php echo (getCookie('area') == "D01") ? "selected" : "" ?> value="D01">D01</option>
+                    <option <?php echo (getCookie('area') == "D02") ? "selected" : "" ?> value="D02">D02</option>
+                    <option <?php echo (getCookie('area') == "D03") ? "selected" : "" ?> value="D03">D03</option>
+                    <option <?php echo (getCookie('area') == "D04") ? "selected" : "" ?> value="D04">D04</option>
+                    <option <?php echo (getCookie('area') == "D05") ? "selected" : "" ?> value="D05">D05</option>
+                    <option <?php echo (getCookie('area') == "D06") ? "selected" : "" ?> value="D06">D06</option>
+                    <option <?php echo (getCookie('area') == "D07") ? "selected" : "" ?> value="D07">D07</option>
+                    <option <?php echo (getCookie('area') == "D08") ? "selected" : "" ?> value="D08">D08</option>
+                    <option <?php echo (getCookie('area') == "D09") ? "selected" : "" ?> value="D09">D09</option>
+                    <option <?php echo (getCookie('area') == "D10") ? "selected" : "" ?> value="D10">D10</option>
+                    <option <?php echo (getCookie('area') == "D11") ? "selected" : "" ?> value="D11">D11</option>
+                    <option <?php echo (getCookie('area') == "D12") ? "selected" : "" ?> value="D12">D12</option>
+                    <option <?php echo (getCookie('area') == "D13") ? "selected" : "" ?> value="D13">D13</option>
+                    <option <?php echo (getCookie('area') == "D14") ? "selected" : "" ?> value="D14">D14</option>
+                    <option <?php echo (getCookie('area') == "D15") ? "selected" : "" ?> value="D15">D15</option>
+                    <option <?php echo (getCookie('area') == "D16") ? "selected" : "" ?> value="D16">D16</option>
+                    <option <?php echo (getCookie('area') == "D17") ? "selected" : "" ?> value="D17">D17</option>
+                    <option <?php echo (getCookie('area') == "D18") ? "selected" : "" ?> value="D18">D18</option>
+                    <option <?php echo (getCookie('area') == "D20") ? "selected" : "" ?> value="D20">D20</option>
+                    <option <?php echo (getCookie('area') == "D22") ? "selected" : "" ?> value="D22">D22</option>
+                    <option <?php echo (getCookie('area') == "D24") ? "selected" : "" ?> value="D24">D24</option>
                 </select>
             </div>
 
@@ -140,14 +145,14 @@ if (!isset($_COOKIE['area'])) {
             <div class="form-group d-flex justify-content-between ">
                 <div>
                     <label for="price">Price Range from:</label>
-                    <input type="range" min="200" max="10000" value="<?php echo $_COOKIE['minPrice'];?>" class="slider"
+                    <input type="range" min="200" max="10000" value="<?php echo getCookie('minPrice');?>" class="slider"
                         id="range_from" name="min_price">
                     <div class="slider-value" id="slider_from">50</div>
                 </div>
 
                 <div class="mx">
                     <label for="price">Price Range to:</label>
-                    <input type="range" min="1000" max="10000" value="<?php echo $_COOKIE['maxPrice'];?>" class="slider" id="range_to"
+                    <input type="range" min="1000" max="10000" value="<?php echo getCookie('maxPrice');?>" class="slider" id="range_to"
                         name="max_price">
                     <div class="slider-value" id="slider_to">5000</div>
                 </div>
@@ -178,17 +183,17 @@ if (!isset($_COOKIE['area'])) {
             <!-- ROOMS -->
             <div class="form-group">
                 <label for="num_rooms">Number of Rooms:</label>
-                <input type="number" class="form-control" name="num_rooms" value="<?php echo $_COOKIE['numRooms'];?>" id="num_rooms" min="1" max="4">
+                <input type="number" class="form-control" name="num_rooms" value="<?php echo getCookie('numRooms')?>" id="num_rooms" min="1" max="4">
             </div>
 
             <div class="form-group">
                 <label for="check_in">Check-in Date:</label>
-                <input type="date" class="form-control" value="<?php echo $_COOKIE['checkIn'];?>" min="<?php echo $_COOKIE['checkIn'];?>" name="check_in"  id="check_in">
+                <input type="date" class="form-control" value="<?php echo getCookie('checkIn');?>" min="<?php echo getCookie('checkIn');?>" name="check_in"  id="check_in">
             </div>
 
             <div class="form-group">
                 <label for="check_out">Check-out Date:</label>
-                <input type="date" class="form-control" name="check_out" id="check_out" value="<?php echo $_COOKIE['checkOut'];?>"  min="<?php echo $_COOKIE['checkIn'];?>">
+                <input type="date" class="form-control" name="check_out" id="check_out" value="<?php echo getCookie('checkOut');?>"  min="<?php echo getCookie('checkIn');?>">
             </div>
             <br>
             <button type="submit" name="search" class="btn btn-primary">Search</button>

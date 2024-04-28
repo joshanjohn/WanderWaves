@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         //Content
                         $mail->isHTML(true);                                  //Set email format to HTML
                         $mail->Subject = 'Wonder Waves';
-                        $mail->Body = "Welcome to Wonder Waves";
+                        $mail->Body = "Hey ".$firstName." ".$lastName.", Welcome to Wonder Waves.\n You have successfully registred using ".$email;
                         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
                         $mail->send();
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                     
                     header("Location:../pages/logIn/LogIn.php");
-                } else
+                } else  
                     $_SESSION["Errors"] = "Error: Email address already exists";
             } else {
                 $_SESSION["Errors"] = "System Error: Contact Support";

@@ -19,8 +19,10 @@
 <body>
 
     <?php
+    //header
     include '../../Components/header.php';
 
+    //function to change 1 or 0 to yes or no
     function isIncluded($data)
     {
         $stmnt = '';
@@ -43,13 +45,13 @@
         JOIN property p ON a.property_id = p.property_id
         WHERE p.eircode = '$eircode'";
 
+        // SHOWING THE RESULTS
         $result = mysqli_query($db_connection, $sql);
         if (mysqli_num_rows($result) == 0) {
             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
             echo '<strong>No properties found matching the criteria.</strong>';
             echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
             echo '</div>';
-            // echo "<div class='Message'><p>No properties found matching the criteria.</p></div>";
         } else {
             echo "<div class='container' id = 'appliance_container'>";
             echo "<h2 class='mt-5 text-center'>Property Inventory Details</h2>";
@@ -73,6 +75,7 @@
         }
     }
     ?>
+    <!-- FORM -->
     <div id="invent_content">
 
         <div class="col-md-9 col-lg-6 col-xl-5">
@@ -90,6 +93,7 @@
 
     </div>
 
+    <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

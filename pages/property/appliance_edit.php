@@ -9,20 +9,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <style>
+        form input, form label{
+            font-size: 18px;
+            padding: 4px;
+        }
+    </style>
 </head>
 
 <body>
 
     <?php
     include '../../Components/header.php';
-    
+
     $property_id;
     if (!(isset($_GET['id']))) {
         $errors[] = 'Property ID not found';
     } else {
         $property_id = $_GET['id'];
-        echo $property_id;
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateAppliance'])) {
@@ -63,7 +67,7 @@
     ?>
     <div class="conatiner mx-auto my-5 w-lg-6500" id="updateAppliance">
         <form class="mt-lg-3 col-lg-6 p-sm-3 mx-auto" method="POST"
-            action="<?php echo htmlentities($_SERVER['PHP_SELF']).'?id='.$property_id; ?>">
+            action="<?php echo htmlentities($_SERVER['PHP_SELF']) . '?id=' . $property_id; ?>">
             <!-- title -->
             <h4 class=" text-center mt-5" id="title">Appliance Edit</h4>
 
@@ -102,8 +106,10 @@
                 </label>
             </div>
 
-
-            <button type="submit" name="updateAppliance" class="btn mx-3 my-3">Submit</button>
+            <div class="form-group w-50 mx-auto">
+                <button type="submit" name="updateAppliance" class="btn btn-lg mx-auto my-3">Apply</button>
+                <a href="<?php echo getbaseURL().'/pages/property/property_details.php?id='.$property_id;?>" class="btn btn-lg btn-secondary">Back</a>
+            </div>
         </form>
     </div>
 

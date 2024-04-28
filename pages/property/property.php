@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="../../Assets/css/index.css?v=<?php echo time(); ?>">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,6 +37,9 @@
     echo "<a href='property_listing.php'><button style='margin:25px;margin-left:125px;'id='btn-editP' class='btn btn-outline-primary' data-mdb-ripple-init>Add new property</button></a>";
         }
     }
+     echo '<a href="./pages/search/search.php"><button id="search-btn" type="button" class="btn btn-lg btn-outline-success">
+              <i class="fa fa-search"></i> Search Property
+            </button></a>';
     include '../../control/property_display.php';
     
    

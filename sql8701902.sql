@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql8.freesqldatabase.com
--- Generation Time: Apr 28, 2024 at 10:18 AM
+-- Generation Time: Apr 28, 2024 at 02:26 PM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
@@ -61,7 +61,27 @@ CREATE TABLE `appliances` (
 --
 
 INSERT INTO `appliances` (`washing_machine`, `microwave`, `dryer`, `wifi`, `tv`, `property_id`) VALUES
-(1, 1, 1, 1, 0, 1);
+(0, 1, 1, 1, 1, 1),
+(1, 1, 1, 1, 1, 2),
+(1, 1, 0, 0, 1, 3),
+(1, 0, 0, 1, 1, 4),
+(0, 0, 0, 0, 0, 5),
+(1, 1, 1, 1, 1, 6),
+(1, 1, 1, 1, 1, 7),
+(1, 1, 1, 1, 1, 8),
+(1, 1, 1, 1, 1, 9),
+(1, 1, 1, 1, 1, 10),
+(1, 1, 1, 1, 1, 11),
+(1, 0, 0, 0, 0, 12),
+(1, 1, 1, 1, 1, 13),
+(1, 1, 0, 1, 1, 14),
+(1, 1, 1, 1, 1, 15),
+(1, 1, 1, 1, 1, 16),
+(1, 1, 1, 1, 1, 17),
+(1, 1, 1, 1, 1, 18),
+(1, 1, 0, 1, 0, 19),
+(1, 1, 1, 1, 1, 20),
+(1, 1, 1, 1, 1, 21);
 
 -- --------------------------------------------------------
 
@@ -84,7 +104,7 @@ CREATE TABLE `appuser` (
 --
 
 INSERT INTO `appuser` (`user_id`, `firstName`, `lastName`, `email`, `mobile`, `access`, `password`) VALUES
-(1, 'Joshan John', '', 'joshanjohn2003@gmail.com', '+7 899837325', 'tenants', '$2y$10$3ZVDMQ06L4zfwHaBQg2uUeiUnrbIKqQjwvvvQHabOaGdu/hEXIztO'),
+(1, 'Joshan John', '', 'joshanjohn2003@gmail.com', '+7 899837325', 'landlord', '$2y$10$3ZVDMQ06L4zfwHaBQg2uUeiUnrbIKqQjwvvvQHabOaGdu/hEXIztO'),
 (2, 'Anna Gromyko', '', 'anna.gromyko@student.griffith.ie', '+7 899837325', 'admin', ''),
 (3, 'Getrude', '', 'getty@gmail.com', '+353 80993423', 'admin', ''),
 (4, 'John Doe', '', 'john.doe@example.com', '+1 1234567890', 'admin', '$2y$10$8RQvmlNMINTuVqbWl5N7AegJP1aRTD8KqszBQ4CQTuxAlQnbu1Usa'),
@@ -100,7 +120,7 @@ INSERT INTO `appuser` (`user_id`, `firstName`, `lastName`, `email`, `mobile`, `a
 (14, 'getrude', 'cherono', 'gcherono15@gmail.com', '+353899797711', 'public', '$2y$10$VLhnFsG64RaTgrc0AuFdven8o214WMpoKA1j0dS2z/E'),
 (15, 'gemie', 'cherono', 'gcherono156@gmail.com', '+353899797711', '', '$2y$10$lK4AHoDxn4W81E9jtRPFVOc3VcDKF4TCAy0c7goH9bS'),
 (16, 'getrude', 'cherono', 'gcherono@gmail.com', '+353899797711', '', '$2y$10$Wm7/i418AuH8uCT7s5VWYu7nBjetPpMi0P9/MWjlJU4'),
-(17, 'Anna', 'Gromyko', '2004gromyko@gmail.com', '+353874118317', '', '$2y$10$G025o5QbRVlPIlKNI/EA9.zB.8hfm8MMCWRJRaXBnj8QJYQjBZPdq'),
+(17, 'Anna', 'Gromyko', '2004gromyko@gmail.com', '+353874118317', 'public', '$2y$10$G025o5QbRVlPIlKNI/EA9.zB.8hfm8MMCWRJRaXBnj8QJYQjBZPdq'),
 (19, 'getrude', 'cherono', '12@gmail.com', '+353899797711', 'tenants', '$2y$10$3eK7sgmWtfLcH.NtdckK9.OBJB6f2gXdURBHtJkoQPuZo7033oCM.'),
 (20, 'george', 'Mobisa', 'gm@gmail.com', '+353899797711', '', '$2y$10$erwwaSxCGIl3EseB2xfpNedJdVsUQB4Kn/pxvG/IsrZXETqHqIG9.'),
 (21, 'ggetty', 'jjuu', 'gn@gmail.com', '+353899797711', 'tenants', '$2y$10$5dvZpNAmm8xmTzqziRE8geljbdi74dhmWyLGEYdru3ITI1IicG5Ha'),
@@ -134,7 +154,14 @@ INSERT INTO `feedbacks` (`feedback_id`, `name`, `mail`, `mobile`, `subject`, `me
 (7, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'gggg'),
 (8, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'gggg'),
 (9, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'ggg'),
-(10, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'ggg');
+(10, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'ggg'),
+(11, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'hh', 'mm'),
+(12, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'hh', 'mm'),
+(13, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'hh', 'mm'),
+(14, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'hh', 'mm'),
+(15, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'hh', 'mm'),
+(16, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'hh', 'mm'),
+(17, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'hh', 'mm');
 
 -- --------------------------------------------------------
 
@@ -157,7 +184,7 @@ CREATE TABLE `landlord` (
 --
 
 INSERT INTO `landlord` (`user_id`, `property_id`, `tenant_id`, `income`, `commission`, `management_fees`, `net_income`) VALUES
-(5, 1, 16, 0, 0, 0, 0);
+(5, 1, 16, 1950, 59, 98, 1794);
 
 -- --------------------------------------------------------
 
@@ -269,7 +296,7 @@ CREATE TABLE `tenant` (
 --
 
 INSERT INTO `tenant` (`user_ID`, `property_ID`, `start_date`, `end_date`, `agreement`, `amountPaid`, `amountOwed`) VALUES
-(16, 1, '2024-05-08', '2024-05-10', 1, 650, 0),
+(16, 1, '2024-04-30', '2024-05-11', 1, 650, 0),
 (19, NULL, NULL, NULL, NULL, 650, 0),
 (21, NULL, NULL, NULL, NULL, 650, 0);
 
@@ -349,7 +376,7 @@ ALTER TABLE `ads`
 -- AUTO_INCREMENT for table `appliances`
 --
 ALTER TABLE `appliances`
-  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `appuser`
 --
@@ -359,7 +386,7 @@ ALTER TABLE `appuser`
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique feedback ID', AUTO_INCREMENT=11;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique feedback ID', AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `property`
 --

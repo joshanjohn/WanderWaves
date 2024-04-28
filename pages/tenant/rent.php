@@ -56,7 +56,7 @@
                             <label for="start_date">start_date</label>
                             <input type="date" name="start_date" class="form-control" id="start_date" placeholder="start_date">
                                              </div>
-                        <div class="form-group">
+                        <div class="form-group my-2">
                             <label for="end_date">End_date</label>
                             <input type="date" name="end_date" class="form-control" id="end_date" placeholder="End_date">
                                                  </div>
@@ -64,9 +64,9 @@
                                 
                                              <div class="form-group">
                             <label for="agreement">Tenant agreement</label>
-                            <textarea disabled type="text" name="agreement" class="form-control" id="agreement"
+                            <textarea disabled type="text" name="agreement" class="form-control" id="agreement" rows="6"
                                 placeholder="agreement"><?php echo isset($agreement)?$agreement:"No agreement provided";?></textarea>
-                        </div>
+                        </div><br>
                         <button id="btn-editP"type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>Confirm</button>
 
                     </div>

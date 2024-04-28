@@ -85,6 +85,8 @@ if ($sql_query) {
         echo "</div>";
         echo "</section>";
 
+    }else{
+        echo '<h1 class="text-center text-secondary">No Match Found<h1>';
     }
 
 } else

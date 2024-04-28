@@ -94,7 +94,7 @@
 
     ?>
 
-<!-- FORMS -->
+    <!-- FORMS -->
     <div class="conatiner mx-auto my-5 w-lg-6500" id="update_landlord">
         <!-- SEARCH -->
         <h4 class=" text-center mt-5" id="title">Landlord Edit</h4>
@@ -102,11 +102,10 @@
             class="mt-lg-3 col-lg-6 p-sm-3 mx-auto">
             <div class="input-group mb-3">
                 <span class="input-group-text" for="userID">User ID:</span>
-                <input type="text" name="userID" class="form-control" required value="<?php echo $userID;?>">
+                <input type="text" name="userID" class="form-control" required value="<?php echo $userID; ?>">
             </div>
             <div class="form-group w-50 mx-auto">
                 <button type="submit" name="find_landlord" class="btn btn-lg mx-auto my-3">Find</button>
-                <a href="#" class="btn btn-lg btn-secondary">Back</a>
             </div>
         </form>
 
@@ -116,7 +115,7 @@
             action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>" novalidate>
             <div class="input-group mb-3">
                 <span class="input-group-text" for="userID">User ID:</span>
-                <input type="text" name="userID" class="form-control" required value="<?php echo $userID;?>">
+                <input type="text" name="userID" class="form-control" required value="<?php echo $userID; ?>">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="income">Income</span>
@@ -136,6 +135,7 @@
             </div>
             <div class="form-group w-50 mx-auto">
                 <button type="submit" name="update_landlord" class="btn btn-lg mx-auto my-3">Update</button>
+                <a href="<?php echo getbaseURL().'/pages/property/property.php'?>" class="btn btn-lg btn-secondary">Back</a>
 
             </div>
         </form>

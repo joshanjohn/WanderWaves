@@ -40,7 +40,6 @@
         $check_in = validate_input($_POST['check_in']);
         $check_out = validate_input($_POST['check_out']);
 
-        // require '../../pages/cookies/cookies.php';
         // VALIDATIONS 
     
         $sql = "SELECT * FROM property WHERE ";

@@ -24,12 +24,16 @@
 
     <?php
     require '../../Components/header.php';
-    // require_once '../../control/sessions.php';
     $limit=false;
     
     $search;
     if (isset($_GET['sql'])){
         $search = $_GET['sql'];
+    }
+    if (isset($_SESSION['access'])) {
+        if ($_SESSION['access'] == 'admin' || ($_SESSION['access'] == 'landlord')) {
+    echo "<a href='property_listing.php'><button style='margin:25px;margin-left:125px;'id='btn-editP' class='btn btn-outline-primary' data-mdb-ripple-init>Add new property</button></a>";
+        }
     }
     include '../../control/property_display.php';
     

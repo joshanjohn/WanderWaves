@@ -26,6 +26,7 @@ if ($sql_query) {
         echo "<div class='title-wrapper'>";
         echo "<div>";
         echo "<h2 class='section-title headline-small'>Best homes in Dublin</h2>";
+
         echo "</div>";
         echo "</div>";
         echo "<div class='property-list'>";

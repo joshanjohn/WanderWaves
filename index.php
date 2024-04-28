@@ -85,6 +85,15 @@
   // FOOTER
   include 'pages/contact/contactUs.php';
   ?>
+  <footer class="bg-body-tertiary text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: ;">
+   <strong> © 2024 Copyright:</strong>
+    <a class="text-body" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; " href="https://knuth.griffith.ie/~s3092883/Scripts/Assignment/WanderWaves/"><strong>Wander Waves</strong></a>
+  </div>
+  <!-- Copyright -->
+</footer>
+ 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql8.freesqldatabase.com
--- Generation Time: Apr 26, 2024 at 10:18 PM
+-- Generation Time: Apr 28, 2024 at 09:52 AM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
@@ -84,10 +84,10 @@ CREATE TABLE `appuser` (
 --
 
 INSERT INTO `appuser` (`user_id`, `firstName`, `lastName`, `email`, `mobile`, `access`, `password`) VALUES
-(1, 'Joshan John', '', 'joshanjohn2003@gmail.com', '+7 899837325', 'admin', '$2y$10$W44fpfTDHQpCoWrAmcdlfuCz9aPv4W0MTZCNJr9rHcPhuIjMRVf3G'),
+(1, 'Joshan John', '', 'joshanjohn2003@gmail.com', '+7 899837325', 'tenants', '$2y$10$3ZVDMQ06L4zfwHaBQg2uUeiUnrbIKqQjwvvvQHabOaGdu/hEXIztO'),
 (2, 'Anna Gromyko', '', 'anna.gromyko@student.griffith.ie', '+7 899837325', 'admin', ''),
 (3, 'Getrude', '', 'getty@gmail.com', '+353 80993423', 'admin', ''),
-(4, 'John Doe', '', 'john.doe@example.com', '+1 1234567890', 'admin', ''),
+(4, 'John Doe', '', 'john.doe@example.com', '+1 1234567890', 'admin', '$2y$10$8RQvmlNMINTuVqbWl5N7AegJP1aRTD8KqszBQ4CQTuxAlQnbu1Usa'),
 (5, 'Jane Smith', '', 'jane.smith@example.com', '+1 0987654321', 'landlord', ''),
 (6, 'Michael Johnson', '', 'michael.johnson@example.com', '+1 9876543210', 'public', ''),
 (7, 'Emily Brown', '', 'emily.brown@example.com', '+1 5678901234', 'admin', ''),
@@ -97,9 +97,14 @@ INSERT INTO `appuser` (`user_id`, `firstName`, `lastName`, `email`, `mobile`, `a
 (11, 'Matthew Taylor', '', 'matthew.taylor@example.com', '+1 7890123456', 'landlord', ''),
 (12, 'Olivia Martinez', '', 'olivia.martinez@example.com', '+1 9012345678', 'public', ''),
 (13, 'Daniel Rodriguez', '', 'daniel.rodriguez@example.com', '+1 3456789012', 'admin', ''),
-(14, 'getrude', 'cherono', 'gcherono15@gmail.com', '+353899797711', '', '$2y$10$VLhnFsG64RaTgrc0AuFdven8o214WMpoKA1j0dS2z/E'),
+(14, 'getrude', 'cherono', 'gcherono15@gmail.com', '+353899797711', 'public', '$2y$10$VLhnFsG64RaTgrc0AuFdven8o214WMpoKA1j0dS2z/E'),
 (15, 'gemie', 'cherono', 'gcherono156@gmail.com', '+353899797711', '', '$2y$10$lK4AHoDxn4W81E9jtRPFVOc3VcDKF4TCAy0c7goH9bS'),
-(16, 'getrude', 'cherono', 'gcherono@gmail.com', '+353899797711', '', '$2y$10$Wm7/i418AuH8uCT7s5VWYu7nBjetPpMi0P9/MWjlJU4');
+(16, 'getrude', 'cherono', 'gcherono@gmail.com', '+353899797711', '', '$2y$10$Wm7/i418AuH8uCT7s5VWYu7nBjetPpMi0P9/MWjlJU4'),
+(17, 'Anna', 'Gromyko', '2004gromyko@gmail.com', '+353874118317', '', '$2y$10$G025o5QbRVlPIlKNI/EA9.zB.8hfm8MMCWRJRaXBnj8QJYQjBZPdq'),
+(19, 'getrude', 'cherono', '12@gmail.com', '+353899797711', 'tenants', '$2y$10$3eK7sgmWtfLcH.NtdckK9.OBJB6f2gXdURBHtJkoQPuZo7033oCM.'),
+(20, 'george', 'Mobisa', 'gm@gmail.com', '+353899797711', '', '$2y$10$erwwaSxCGIl3EseB2xfpNedJdVsUQB4Kn/pxvG/IsrZXETqHqIG9.'),
+(21, 'ggetty', 'jjuu', 'gn@gmail.com', '+353899797711', 'tenants', '$2y$10$5dvZpNAmm8xmTzqziRE8geljbdi74dhmWyLGEYdru3ITI1IicG5Ha'),
+(22, 'admin', 'Getrude', 'admin@gmail.com', '+353899797711', 'admin', '$2y$10$wT.5cVBTPWR/jG9tY9FDHex4fSvlRE77kkJW0c7KQcQmLSSRzTexO');
 
 -- --------------------------------------------------------
 
@@ -122,7 +127,30 @@ CREATE TABLE `feedbacks` (
 
 INSERT INTO `feedbacks` (`feedback_id`, `name`, `mail`, `mobile`, `subject`, `message`) VALUES
 (1, 'ANNA GROMYKO', '2004gromyko@gmail.com', '+1234566', 'blabla', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec ipsum vel mi viverra efficitur. In felis enim, finibus et fringilla eu, pellentesque dictum dolor. Proin aliquam facilisis justo, ac condimentum mi. Suspendisse vel ipsum pharetra, consectetur neque lacinia, malesuada metus. Ut quis augue neque. Quisque semper vehicula nunc, sit amet facilisis lacus luctus vel. Quisque tincidunt fringilla eros, sed euismod mauris rutrum vitae. Nulla quis odio eleifend, accumsan est ut, maximus turpis. Nam convallis dolor ac urna dictum facilisis. Nunc eu porta orci, in iaculis odio. Pellentesque commodo metus nisl, sed posuere augue bibendum vitae. Quisque quis lacus efficitur, luctus arcu nec, tincidunt leo. Vivamus ac pharetra risus. Proin dapibus malesuada urna ut pretium.'),
-(2, 'Anastasiia Gromyko ', 'anastasiia.gromyko@gmail.com', '+12345677', 'Apartment ', 'Nullam lacinia erat id est iaculis, vitae aliquet ligula sollicitudin. Nulla tortor dolor, accumsan non blandit non, ultricies fringilla quam. Phasellus et sem et magna ullamcorper congue. Proin in ligula tempor, condimentum libero non, tempus lectus. Mauris ut metus et arcu porta vulputate eu eget lorem. In hac habitasse platea dictumst. Quisque laoreet lorem rutrum quam vestibulum, ac pellentesque urna suscipit. Mauris sed massa in lorem efficitur gravida sit amet in risus. Nunc lacinia tortor non nunc accumsan, eu aliquam magna malesuada. Suspendisse sed dictum sapien. Mauris ultrices congue nisl, vel sagittis urna pretium eu. Nam sagittis, lacus id imperdiet luctus, mauris odio commodo orci, ut ornare lacus purus vel elit.\r\n\r\n');
+(2, 'Anastasiia Gromyko ', 'anastasiia.gromyko@gmail.com', '+12345677', 'Apartment ', 'Nullam lacinia erat id est iaculis, vitae aliquet ligula sollicitudin. Nulla tortor dolor, accumsan non blandit non, ultricies fringilla quam. Phasellus et sem et magna ullamcorper congue. Proin in ligula tempor, condimentum libero non, tempus lectus. Mauris ut metus et arcu porta vulputate eu eget lorem. In hac habitasse platea dictumst. Quisque laoreet lorem rutrum quam vestibulum, ac pellentesque urna suscipit. Mauris sed massa in lorem efficitur gravida sit amet in risus. Nunc lacinia tortor non nunc accumsan, eu aliquam magna malesuada. Suspendisse sed dictum sapien. Mauris ultrices congue nisl, vel sagittis urna pretium eu. Nam sagittis, lacus id imperdiet luctus, mauris odio commodo orci, ut ornare lacus purus vel elit.\r\n\r\n'),
+(4, 'joshan', 'edwin.wilson@student.griffith.ie', '+353899856434', 'Bug 2.0', 'I can\'t view Contact Us form as a landlord'),
+(5, 'joshan', 'edwin.wilson@student.griffith.ie', '+353899856434', 'Bug 2.0', 'I can\'t view Contact Us form as a landlord'),
+(6, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'gggg'),
+(7, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'gggg'),
+(8, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'gggg'),
+(9, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'ggg'),
+(10, 'Getrude Cherono', 'gcherono15@gmail.com', '0899797711', 'gghh', 'ggg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lanlord`
+--
+
+CREATE TABLE `lanlord` (
+  `user_id` int(11) NOT NULL,
+  `property_id` int(11) NOT NULL,
+  `tenant_id` int(11) NOT NULL,
+  `income` int(11) NOT NULL,
+  `commission` int(11) NOT NULL,
+  `management_fees` int(11) NOT NULL,
+  `net_income` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -151,7 +179,7 @@ CREATE TABLE `property` (
 --
 
 INSERT INTO `property` (`property_id`, `user_id`, `Name`, `address`, `eircode`, `category`, `price`, `start_date`, `end_date`, `description`, `num_beds`, `size`, `agreement`) VALUES
-(1, 2, 'Ann\'s Home', 'Griffith Hall Of Residence South Circular road ', 'D08 H14U9', 'apartment', '1400', '2024-04-10', '2024-04-30', 'Griffith Halls of Residence (GHR) is purpose-built student accommodation located in Dublin 8, a desirable neighbourhood just a few minutes’ walk south of the city centre. GHR is pleased to open its doors to tourists from all over the world exclusively during our summer months.', 2, 2000, 'This agreement serves as a contract  for the tenancy of the property\r\n\r\nRent: The monthly rent for the property should be paid on time\r\nMaintenance: The tenant agrees to maintain the property in good condition and promptly report any damages or maintenance issues to the landlord.\r\nUse of Property: The property is to be used solely for residential purposes and not for any illegal activities.\r\nPets: No pets allowed\r\nSubletting: Subletting of the property is strictly prohibited without prior written consent from the landlord.\r\nTermination: Either party may terminate this agreement with [Notice Period] written notice.\r\nBy signing this agreement, you agree to abide by the terms and conditions outlined herein.'),
+(1, 2, 'Ann\'s Home', 'Griffith Hall Of Residence South Circular road ', 'D08 H14U9', 'apartment', '1400', '2024-04-10', '2024-04-30', 'Griffith Halls of Residence (GHR) is purpose-built student accommodation located in Dublin 8, a desirable neighbourhood just a few minutes’ walk south of the city centre. GHR is pleased to open its doors to tourists from all over the world exclusively during our summer months.', 2, 2000, 'This agreement serves as a contract  for the tenancy of the property\r\nRent: The monthly rent for the property should be paid on time\r\nMaintenance: The tenant agrees to maintain the property in good condition and promptly report any damages or maintenance issues to the landlord.\r\nUse of Property: The property is to be used solely for residential purposes and not for any illegal activities.\r\nPets: No pets allowed\r\nSubletting: Subletting of the property is strictly prohibited without prior written consent from the landlord.\r\nTermination: Either party may terminate this agreement with written notice.\r\nBy signing this agreement, you agree to abide by the terms and conditions outlined herein.'),
 (2, 2, 'greenspan', 'st mary', 'DFV102', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL),
 (3, 2, 'greenspan', 'st mary', 'DFV102', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL),
 (4, 2, 'greenspan', 'st mary', 'DFV102', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL),
@@ -168,7 +196,10 @@ INSERT INTO `property` (`property_id`, `user_id`, `Name`, `address`, `eircode`, 
 (15, 2, 'greenspan', 'st mary', 'DFV102', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL),
 (16, 1, 'Tyrell', '12 st', 'D15N6X2', 'house', '230', '2024-04-04', '2024-04-30', 'gggh', 2, 300, NULL),
 (17, 1, 'Tyrell', '12 st', 'D15N6X2', 'house', '230', '2024-04-04', '2024-04-30', 'gggh', 2, 300, NULL),
-(18, 1, 'Gracefield view', '12 mary', 'A344555', 'apartment', '2300', '2024-04-05', '2024-04-30', 'Loft apartment', 2, 3000, NULL);
+(18, 1, 'Gracefield view', '12 mary', 'A344555', 'apartment', '2300', '2024-04-05', '2024-04-30', 'Loft apartment', 2, 3000, NULL),
+(19, 1, 'Hotel', '15 The Boulevard, Mount Eustace', 'D05FV12', 'house', '6000', '2024-05-03', '2024-05-07', 'very good', 5, 300, 'do not shout'),
+(20, 1, 'joshan', 'SHHDNSJodn sdohsld vs', 'D01AY09', 'apartment', '19099299', '2024-05-03', '2024-05-23', 'hello getty it&amp;#039;s me joshan. I&amp;#039;m so bad', 4, 22000, 'I have no rules'),
+(21, 1, 'Hotel', 'hj', 'D05FV12', 'house', '78', '2024-04-25', '2024-05-09', 'jhjj', 7, 3000, 'nnnnn');
 
 -- --------------------------------------------------------
 
@@ -231,7 +262,9 @@ CREATE TABLE `tenant` (
 --
 
 INSERT INTO `tenant` (`user_ID`, `property_ID`, `start_date`, `end_date`, `agreement`, `amountPaid`, `amountOwed`) VALUES
-(16, NULL, NULL, NULL, NULL, 650, 0);
+(16, 1, '2024-05-08', '2024-05-10', 1, 650, 0),
+(19, NULL, NULL, NULL, NULL, 650, 0),
+(21, NULL, NULL, NULL, NULL, 650, 0);
 
 --
 -- Indexes for dumped tables
@@ -261,6 +294,12 @@ ALTER TABLE `appuser`
 --
 ALTER TABLE `feedbacks`
   ADD PRIMARY KEY (`feedback_id`);
+
+--
+-- Indexes for table `lanlord`
+--
+ALTER TABLE `lanlord`
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- Indexes for table `property`
@@ -307,22 +346,22 @@ ALTER TABLE `appliances`
 -- AUTO_INCREMENT for table `appuser`
 --
 ALTER TABLE `appuser`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique user ID', AUTO_INCREMENT=17;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique user ID', AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique feedback ID', AUTO_INCREMENT=3;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique feedback ID', AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique property ID', AUTO_INCREMENT=19;
+  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique property ID', AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique review ID', AUTO_INCREMENT=16;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique review ID', AUTO_INCREMENT=29;
 --
 -- Constraints for dumped tables
 --

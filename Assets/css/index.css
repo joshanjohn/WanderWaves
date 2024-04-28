@@ -1212,3 +1212,9 @@ th {
 .errors {
     color: var(--error-100) !important;
 }
+footer{
+    margin: 0px;
+    padding: 5px;
+    height: fit-content;
+    background-color: var(--black);
+}

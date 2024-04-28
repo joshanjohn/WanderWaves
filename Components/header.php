@@ -75,7 +75,8 @@ function getRelativePath()
             <!-- <img src="./Assets/images/logo.png" alt="Wander Waves Logo" width="50px" height="50px"> -->
             <img src="https://i.ibb.co/NYFdhbq/logo.png" alt="Wander Waves Logo" width="50px" height="50px">
         </a>
-        <div class="img2"><img src="<?php echo getbaseURL().'/Assets/images/image.png'?>" alt="Wander Waves header pic" width="200px" height="70px"></div>
+        <div class="img2"><img src="<?php echo getbaseURL() . '/Assets/images/image.png' ?>" alt="Wander Waves header pic"
+                width="200px" height="70px"></div>
         <!-- <div class="img2"><img src="https://i.ibb.co/KVzw7r9/navImage.png" alt="Wander Waves header pic" width="200px"
                 height="100px"></div> -->
         <!-- Toggle button for smaller screens -->
@@ -87,7 +88,7 @@ function getRelativePath()
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
 
-            
+
                 <?php
                 //HOME
                 echo '<li class="nav-item">';
@@ -109,25 +110,30 @@ function getRelativePath()
                     if ($userLevel == 'tenants' || $userLevel == 'admin' || $userLevel == 'landlord') {
                         if ($userLevel == 'landlord' || $userLevel == 'admin') {
                             if ($userLevel == 'admin') {
-                                //Log Out
+                                 //Inventory
+                                 echo '<li class="nav-item">';
+                                 echo '<a class="nav-link" href="' . getbaseURL() . '/pages/contact/contact_us_manage.php"> Manage FeedBacks</a>';
+                                 echo '</li>';
+
+                                //LandLord Edit
                                 echo '<li class="nav-item">';
-                                echo '<a class="nav-link" href="' . getbaseURL() . '/pages/property/property.php">Properties</a>';
+                                echo '<a class="nav-link" href="' . getbaseURL() . '/pages/landlord/landlord_edit.php">LandLord Edit</a>';
                                 echo '</li>';
                             }
-                            if($userLevel == 'landlord'){
+                            if ($userLevel == 'landlord') {
                                 //Account
                                 echo '<li class="nav-item">';
                                 echo '<a class="nav-link" href="' . getbaseURL() . '/pages/landlord/landlord_account.php">Account</a>';
                                 echo '</li>';
                             }
-                            //Log Out
+                            //Inventory
                             echo '<li class="nav-item">';
                             echo '<a class="nav-link" href="' . getbaseURL() . '/pages/inventory/inventory_details.php">Inventory</a>';
                             echo '</li>';
 
-                           
-                        }
-                        else if($userLevel == 'tenants'){
+
+                        } else if ($userLevel == 'tenants') {
+                            //tenant
                             echo '<li class="nav-item">';
                             echo '<a class="nav-link" href="' . getbaseURL() . '/pages/tenant/tenantAccount.php">Profile</a>';
                             echo '</li>';
@@ -143,14 +149,14 @@ function getRelativePath()
                         echo '<a class="nav-link" href="' . getbaseURL() . '/control/logout.php">Log Out</a>';
                         echo '</li>';
                     }
-                }else{
+                } else {
                     // Login
                     echo '<li class="nav-item">';
                     echo '<a class="nav-link" href="' . getbaseURL() . '/pages/logIn/LogIn.php">Login</a>';
                     echo '</li>';
                 }
-                
-                    ?>
+
+                ?>
             </ul>
         </div>
     </div>

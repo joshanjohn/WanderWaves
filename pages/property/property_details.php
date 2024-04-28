@@ -79,8 +79,19 @@
 
                         <!-- APPLIANCES INFO -->
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-flex justify-content-between">
                                 <h2 class="card-title">Included appliances:</h2>
+
+                                <?php
+                                if (isset($_SESSION['access'])) {
+                                    if ($_SESSION['access'] == 'admin' || $_SESSION['access'] == 'landlord') {
+                                        echo '<a href=appliance_edit.php?id=' . $property_id . '><img width="40" height="40"';
+                                        echo 'src="https://img.icons8.com/external-becris-lineal-becris/64/40C057/external-edit-mintab-for-ios-becris-lineal-becris.png"';
+                                        echo 'alt="external-edit-mintab-for-ios-becris-lineal-becris" /></a>';
+                                    }
+                                }
+                                ?>
+
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><strong>Washing machine:</strong>

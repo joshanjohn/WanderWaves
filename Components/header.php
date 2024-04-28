@@ -114,10 +114,18 @@ function getRelativePath()
                                 echo '<a class="nav-link" href="' . getbaseURL() . '/pages/property/property.php">Properties</a>';
                                 echo '</li>';
                             }
+                            if($userLevel == 'landlord'){
+                                //Account
+                                echo '<li class="nav-item">';
+                                echo '<a class="nav-link" href="' . getbaseURL() . '/pages/landlord/landlord_account.php">Account</a>';
+                                echo '</li>';
+                            }
                             //Log Out
                             echo '<li class="nav-item">';
                             echo '<a class="nav-link" href="' . getbaseURL() . '/pages/inventory/inventory_details.php">Inventory</a>';
                             echo '</li>';
+
+                           
                         }
                         else if($userLevel == 'tenants'){
                             echo '<li class="nav-item">';

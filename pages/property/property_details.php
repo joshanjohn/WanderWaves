@@ -79,8 +79,11 @@
 
                         <!-- APPLIANCES INFO -->
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-flex justify-content-between">
                                 <h2 class="card-title">Included appliances:</h2>
+                                <a href="appliance_edit.php<?php echo '?id=' . $property_id; ?>"><img width="40" height="40"
+                                        src="https://img.icons8.com/external-becris-lineal-becris/64/40C057/external-edit-mintab-for-ios-becris-lineal-becris.png"
+                                        alt="external-edit-mintab-for-ios-becris-lineal-becris" /></a>
                             </div>
                             <div class="card-body">
                                 <p class="card-text"><strong>Washing machine:</strong>

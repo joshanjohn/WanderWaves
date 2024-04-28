@@ -954,6 +954,11 @@ th {
 #searchbtn {
     color: white;
 }
+#search-btn {
+    color: var(--black);
+    margin-left: 40%;
+    margin-top: 30px;
+}
 
 .search-btn:where(:hover, :focus) {
     background-color: var(--dark-green);

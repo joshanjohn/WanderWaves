@@ -77,7 +77,6 @@
                     <option value="userCategory" disabled>User Category</option>
                     <option value="tenants">Tenant</option>
                     <option value="landlord">Landlord</option>
-                    <option value="admin">Admin</option>
                   </select>
                   <label class="form-label select-label">User Category</label>
                   

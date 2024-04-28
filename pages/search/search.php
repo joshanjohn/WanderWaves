@@ -220,7 +220,7 @@ if (!isset($_COOKIE['area'])) {
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <!-- Script to automatically show the modal -->
+    <!-- Script to automatically show the modal of cookies -->
     <script>
         $(document).ready(function () {
             $('#exampleModalCenter').modal('show');

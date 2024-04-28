@@ -31,7 +31,7 @@
         $search = $_GET['sql'];
     }
     if (isset($_SESSION['access'])) {
-        if ($_SESSION['access'] == 'admin' || ($_SESSION['access'] == 'landlord')) {
+        if ($_SESSION['access'] == 'admin' || $_SESSION['access'] == 'landlord') {
     echo "<a href='property_listing.php'><button style='margin:25px;margin-left:125px;'id='btn-editP' class='btn btn-outline-primary' data-mdb-ripple-init>Add new property</button></a>";
         }
     }

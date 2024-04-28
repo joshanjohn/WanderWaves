@@ -86,6 +86,8 @@ function getRelativePath()
         <!-- Navbar links -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
+
+            
                 <?php
                 //HOME
                 echo '<li class="nav-item">';

@@ -1,3 +1,15 @@
+<?php 
+
+setcookie("area", "D", time()+ 84000);
+setcookie("minPrice", "200", time()+ 84000);
+setcookie("maxPrice", "5000", time()+ 84000);
+setcookie("numRooms", "1", time()+ 84000);
+setcookie("checkIn", date("Y-m-d"), time()+ 84000);
+setcookie("checkOut", date("Y-m-d"), time()+ 84000);
+
+
+?>
+
 <div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

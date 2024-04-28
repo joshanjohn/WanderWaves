@@ -36,6 +36,7 @@ if ($sql_query) {
             $address = $row["address"];
             $num_beds = $row["num_beds"];
             $size = $row["size"];
+            $image = $row["image"];
             if (isset($_SESSION['access'])) {
                 $url1 = getbaseURL() . "/pages/property/property_details.php?id=" . $row["property_id"];
             } else {
@@ -47,7 +48,7 @@ if ($sql_query) {
 
             echo "<div class='card-banner'>";
             echo "<figure class='img-holder' style='--width: 585; --height: 390;'>";
-            echo "<img src='https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/Stock-Modern-House-In-Twilight-AdobeStock-368976934-copy.jpg' width='585' height='390' alt=" . $name . " class='img-cover'>";
+            echo "<img src='".getbaseURL().$image."' width='585' height='390' alt=" . $name . " class='img-cover'>";
             echo "</figure>";
             if (isset($_SESSION['access'])) {
                 if ($_SESSION['access'] == 'admin') {

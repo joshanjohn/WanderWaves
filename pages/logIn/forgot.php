@@ -25,7 +25,7 @@
         if (isset($_POST['change_password'])) {
             $errors = [];
 
-            //Check if first name is submitted
+            //Check if email is submitted
             if (!isset($_POST['email']) || empty($_POST['email'])) {
                 $errors[] = 'Email address is required!';
             } else {
@@ -41,14 +41,14 @@
                 } 
             }
 
-            //Check if last name is submitted
+            //Check if new password is submitted
             if (!isset($_POST['new_pass']) || empty($_POST['new_pass'])) {
                 $errors[] = 'New password is required!';
             } else {
                 $new_pass = validate_input($_POST['new_pass']);
                 $new_pass = password_hash($new_pass, PASSWORD_BCRYPT);
             }
-
+            //Check if confirm password is submitted
             if (!isset($_POST['confirm_pass']) || empty($_POST['confirm_pass'])) {
                 $errors[] = 'Confirm new password!';
             } else {
@@ -80,7 +80,6 @@
                         echo '<strong>Sucessfully updated password</strong>';
                         echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
                         echo '</div>';
-                        // header("Refresh: 6," . getbaseURL() . '/pages/logIn/Login.php');
                     } else {
                         echo "Error: " . mysqli_stmt_error($stmt);
                     }
@@ -102,7 +101,7 @@
                 <img src="https://img.freepik.com/free-vector/forgot-password-concept-illustration_114360-1095.jpg?t=st=1713998241~exp=1714001841~hmac=d6fb59f70ee05c078fd14bc28e48267c3d15c234c04f015a02fd456659a287ef&w=740"
                     class="img-fluid" alt="Sample image">
             </div>
-
+            <!-- INPUTS -->
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" novalidate class="mt-3">
                 <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">CHANGE PASSWORD</h3>
                 <div data-mdb-input-init class="form-group mb-4">
@@ -111,7 +110,7 @@
                         placeholder="Enter your email address" name="email" />
                 </div>
 
-                <!-- Password input -->
+            
                 <div data-mdb-input-init class="form-group mb-3">
                     <label class="form-label" for="password">New Password:</label>
                     <input type="password" id="new_pass" class="form-control form-control-lg"
@@ -133,7 +132,7 @@
 
         </form>
     </section>
-
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

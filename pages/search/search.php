@@ -10,10 +10,9 @@ if (!isset($_COOKIE['area'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Search</title>
     <link rel="stylesheet" href="../../Assets/css/index.css?v=<?php echo time(); ?>">
     <title>Search Page</title>
-    <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -28,12 +27,16 @@ if (!isset($_COOKIE['area'])) {
     <?php
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
+    // header
     require '../../Components/header.php';
+
+    // variables
     $area = $min_price = $max_price = $num_rooms = $check_in = $check_out = '';
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['search'])) {
 
+        //for stroing errors
         $errors = [];
 
         $area = validate_input($_POST['area']);
@@ -100,6 +103,7 @@ if (!isset($_COOKIE['area'])) {
 
     }
 
+    //function to get cookies
     function getCookie($name){
         if (isset($_COOKIE[$name])){
             return $_COOKIE[$name];
@@ -108,7 +112,6 @@ if (!isset($_COOKIE['area'])) {
 
     ?>
     <div class="container">
-        <!-- CHANGE TO GETTY PATH -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" novalidate
             class="w-75 mx-auto py-5">
             <!-- AREA -->
@@ -186,6 +189,7 @@ if (!isset($_COOKIE['area'])) {
                 <input type="number" class="form-control" name="num_rooms" value="<?php echo getCookie('numRooms')?>" id="num_rooms" min="1" max="4">
             </div>
 
+            <!-- DATES -->
             <div class="form-group">
                 <label for="check_in">Check-in Date:</label>
                 <input type="date" class="form-control" value="<?php echo getCookie('checkIn');?>" min="<?php echo getCookie('checkIn');?>" name="check_in"  id="check_in">
@@ -216,7 +220,7 @@ if (!isset($_COOKIE['area'])) {
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <!-- Script to automatically show the modal -->
+    <!-- Script to automatically show the modal of cookies -->
     <script>
         $(document).ready(function () {
             $('#exampleModalCenter').modal('show');

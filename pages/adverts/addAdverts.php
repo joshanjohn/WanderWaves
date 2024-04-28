@@ -44,7 +44,7 @@
 
     <div class="container mx-auto container-sm-fluid m-5 p-5">
         <!-- upload form -->
-        <form action="../../control/upload.php" class="mx-auto w-50 mb-5" method="POST" enctype="multipart/form-data">
+        <form action="../../control/upload.php" class="mx-auto w-50 mb-5" method="POST" enctype="multipart/form-data" novalidate>
             <!-- title -->
             <h1 class="text-center mb-5 pb-5">Upload<br> Advertising Photo<br><img width="100" height="100"
                     src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/100/40C057/external-upload-arrows-tanah-basah-basic-outline-tanah-basah.png"

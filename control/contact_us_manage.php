@@ -19,6 +19,7 @@
 <body>
 
     <?php
+    //header
     require '../Components/header.php';
 
     $sql = "SELECT * FROM feedbacks";

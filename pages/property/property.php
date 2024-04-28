@@ -37,7 +37,7 @@
     echo "<a href='property_listing.php'><button style='margin:25px;margin-left:125px;'id='btn-editP' class='btn btn-outline-primary' data-mdb-ripple-init>Add new property</button></a>";
         }
     }
-     echo '<a href="./pages/search/search.php"><button id="search-btn" type="button" class="btn btn-lg btn-outline-success">
+     echo '<a href="../search/search.php"><button id="search-btn" type="button" class="btn btn-lg btn-outline-success">
               <i class="fa fa-search"></i> Search Property
             </button></a>';
     include '../../control/property_display.php';

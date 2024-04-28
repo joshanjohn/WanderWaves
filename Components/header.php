@@ -75,7 +75,7 @@ function getRelativePath()
             <!-- <img src="./Assets/images/logo.png" alt="Wander Waves Logo" width="50px" height="50px"> -->
             <img src="https://i.ibb.co/NYFdhbq/logo.png" alt="Wander Waves Logo" width="50px" height="50px">
         </a>
-        <div class="img2"><img src="https://ibb.co/Q6BmhMM/image.png" alt="Wander Waves header pic" width="200px" height="70px"></div>
+        <div class="img2"><img src="<?php echo getbaseURL().'/Assets/images/image.png'?>" alt="Wander Waves header pic" width="200px" height="70px"></div>
         <!-- <div class="img2"><img src="https://i.ibb.co/KVzw7r9/navImage.png" alt="Wander Waves header pic" width="200px"
                 height="100px"></div> -->
         <!-- Toggle button for smaller screens -->
@@ -86,6 +86,8 @@ function getRelativePath()
         <!-- Navbar links -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
+
+            
                 <?php
                 //HOME
                 echo '<li class="nav-item">';

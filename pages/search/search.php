@@ -1,3 +1,9 @@
+<?php
+if (!isset($_COOKIE['area'])) {
+    include '../../pages/cookies/show_cookies.php';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,9 +29,6 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     require '../../Components/header.php';
-    if (isset($_COOKIE['area'])){
-        include '../../pages/cookies/show_cookies.php';
-    }
     $area = $min_price = $max_price = $num_rooms = $check_in = $check_out = '';
 
 
@@ -40,7 +43,6 @@
         $check_in = validate_input($_POST['check_in']);
         $check_out = validate_input($_POST['check_out']);
 
-        // require '../../pages/cookies/cookies.php';
         // VALIDATIONS 
     
         $sql = "SELECT * FROM property WHERE ";
@@ -48,30 +50,37 @@
         if (empty($area)) {
             $errors[] = 'Dublin area address is required!';
         } else {
+            setcookie("area", $area, time() + 84000);
             $sql .= "eircode like '" . $area . "%' ";
         }
 
         if (empty($min_price)) {
             $errors[] = 'Minimum price is required!';
         } else {
+            setcookie("minPrice", $min_price, time() + 84000);
             $sql .= "AND (PRICE BETWEEN " . $min_price;
         }
         if (empty($max_price)) {
             $errors[] = 'Maximum price id required!';
         } else {
+            setcookie("maxPrice", $max_price, time() + 84000);
             $sql .= " AND " . $max_price . ") ";
         }
 
         if (empty($num_rooms)) {
             $sql .= " AND num_beds >= 1";
         } else {
+            setcookie("numRooms", $num_rooms, time() + 84000);
             $sql .= " AND num_beds >=" . $num_rooms;
         }
+
         if (!empty($check_in)) {
+            setcookie("checkIn", $check_in, time() + 84000);
             $sql .= " AND start_date >= " . $check_in;
         }
 
         if (!empty($check_out)) {
+            setcookie("checkOut", $check_out, time() + 84000);
             $sql .= " AND end_date >= " . $check_out;
         }
 
@@ -102,28 +111,28 @@
             <div class="form-group">
                 <label for="area">Select Dublin Area:</label>
                 <select class="form-control" name="area" id="area">
-                    <option value="D">All</option>
-                    <option value="D01">D01</option>
-                    <option value="D02">D02</option>
-                    <option value="D03">D03</option>
-                    <option value="D04">D04</option>
-                    <option value="D05">D05</option>
-                    <option value="D06">D06</option>
-                    <option value="D07">D07</option>
-                    <option value="D08">D08</option>
-                    <option value="D09">D09</option>
-                    <option value="D10">D10</option>
-                    <option value="D11">D11</option>
-                    <option value="D12">D12</option>
-                    <option value="D13">D13</option>
-                    <option value="D14">D14</option>
-                    <option value="D15">D15</option>
-                    <option value="D16">D16</option>
-                    <option value="D17">D17</option>
-                    <option value="D18">D18</option>
-                    <option value="D20">D20</option>
-                    <option value="D22">D22</option>
-                    <option value="D24">D24</option>
+                    <option <?php echo ($_COOKIE['area'] == "D") ? "selected" : "" ?> value="D">All</option>
+                    <option <?php echo ($_COOKIE['area'] == "D01") ? "selected" : "" ?> value="D01">D01</option>
+                    <option <?php echo ($_COOKIE['area'] == "D02") ? "selected" : "" ?> value="D02">D02</option>
+                    <option <?php echo ($_COOKIE['area'] == "D03") ? "selected" : "" ?> value="D03">D03</option>
+                    <option <?php echo ($_COOKIE['area'] == "D04") ? "selected" : "" ?> value="D04">D04</option>
+                    <option <?php echo ($_COOKIE['area'] == "D05") ? "selected" : "" ?> value="D05">D05</option>
+                    <option <?php echo ($_COOKIE['area'] == "D06") ? "selected" : "" ?> value="D06">D06</option>
+                    <option <?php echo ($_COOKIE['area'] == "D07") ? "selected" : "" ?> value="D07">D07</option>
+                    <option <?php echo ($_COOKIE['area'] == "D08") ? "selected" : "" ?> value="D08">D08</option>
+                    <option <?php echo ($_COOKIE['area'] == "D09") ? "selected" : "" ?> value="D09">D09</option>
+                    <option <?php echo ($_COOKIE['area'] == "D10") ? "selected" : "" ?> value="D10">D10</option>
+                    <option <?php echo ($_COOKIE['area'] == "D11") ? "selected" : "" ?> value="D11">D11</option>
+                    <option <?php echo ($_COOKIE['area'] == "D12") ? "selected" : "" ?> value="D12">D12</option>
+                    <option <?php echo ($_COOKIE['area'] == "D13") ? "selected" : "" ?> value="D13">D13</option>
+                    <option <?php echo ($_COOKIE['area'] == "D14") ? "selected" : "" ?> value="D14">D14</option>
+                    <option <?php echo ($_COOKIE['area'] == "D15") ? "selected" : "" ?> value="D15">D15</option>
+                    <option <?php echo ($_COOKIE['area'] == "D16") ? "selected" : "" ?> value="D16">D16</option>
+                    <option <?php echo ($_COOKIE['area'] == "D17") ? "selected" : "" ?> value="D17">D17</option>
+                    <option <?php echo ($_COOKIE['area'] == "D18") ? "selected" : "" ?> value="D18">D18</option>
+                    <option <?php echo ($_COOKIE['area'] == "D20") ? "selected" : "" ?> value="D20">D20</option>
+                    <option <?php echo ($_COOKIE['area'] == "D22") ? "selected" : "" ?> value="D22">D22</option>
+                    <option <?php echo ($_COOKIE['area'] == "D24") ? "selected" : "" ?> value="D24">D24</option>
                 </select>
             </div>
 
@@ -131,14 +140,14 @@
             <div class="form-group d-flex justify-content-between ">
                 <div>
                     <label for="price">Price Range from:</label>
-                    <input type="range" min="200" max="10000" value="200" class="slider" id="range_from"
-                        name="min_price">
+                    <input type="range" min="200" max="10000" value="<?php echo $_COOKIE['minPrice'];?>" class="slider"
+                        id="range_from" name="min_price">
                     <div class="slider-value" id="slider_from">50</div>
                 </div>
 
                 <div class="mx">
                     <label for="price">Price Range to:</label>
-                    <input type="range" min="1000" max="10000" value="5000" class="slider" id="range_to"
+                    <input type="range" min="1000" max="10000" value="<?php echo $_COOKIE['maxPrice'];?>" class="slider" id="range_to"
                         name="max_price">
                     <div class="slider-value" id="slider_to">5000</div>
                 </div>
@@ -169,7 +178,7 @@
             <!-- ROOMS -->
             <div class="form-group">
                 <label for="num_rooms">Number of Rooms:</label>
-                <input type="number" class="form-control" name="num_rooms" value="1" id="num_rooms" min="1" max="4">
+                <input type="number" class="form-control" name="num_rooms" value="<?php echo $_COOKIE['numRooms'];?>" id="num_rooms" min="1" max="4">
             </div>
 
             <div class="form-group">
@@ -179,7 +188,7 @@
 
             <div class="form-group">
                 <label for="check_out">Check-out Date:</label>
-                <input type="date" class="form-control" name="check_out" id="check_out">
+                <input type="date" class="form-control" name="check_out" id="check_out"  min="2018-01-01">
             </div>
             <br>
             <button type="submit" name="search" class="btn btn-primary">Search</button>

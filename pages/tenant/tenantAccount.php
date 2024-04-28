@@ -111,7 +111,7 @@
             }
 
 
-            $user= $_SESSION["user"];
+            $user=$_SESSION['user']; // $_SESSION["user"];
             $user_details=getUserDetails($user,$db_connection);
             $rent_details=getRentDetails($user,$db_connection);
            

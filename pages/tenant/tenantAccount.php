@@ -18,142 +18,143 @@
 
 <body>
 <?php
-            require '../../Components/header.php';
-            function getUserDetails($user_id,$db_connection){
-                // stores the user results
-                $details=[];
+    require '../../Components/header.php';
+    function getUserDetails($user_id,$db_connection){
+        // stores the user results
+        $details=[];
 
-                $sql_query=$db_connection->prepare(
-                    "SELECT firstName, lastName from appuser where user_id=?"
-                );
+        $sql_query=$db_connection->prepare(
+            "SELECT firstName, lastName from appuser where user_id=?"
+        );
 
-                if($sql_query){
-                    // Bind parameters to the prepared statment
-                    $sql_query->bind_param("i",$user_id);
-                    $sql_query->execute();
+        if($sql_query){
+            // Bind parameters to the prepared statment
+            $sql_query->bind_param("i",$user_id);
+            $sql_query->execute();
 
-                    // Get result
-                    $result = $sql_query->get_result();
+            // Get result
+            $result = $sql_query->get_result();
 
-                    // Check if any rows were returned
-                    if ($result->num_rows > 0) {
-                        // Fetch data
-                        while ($row = $result->fetch_assoc()){
-                            foreach($row as $key => $value) $details[$key]=$value;
-                        }
-                        return $details;
-                    }
+            // Check if any rows were returned
+            if ($result->num_rows > 0) {
+                // Fetch data
+                while ($row = $result->fetch_assoc()){
+                    foreach($row as $key => $value) $details[$key]=$value;
                 }
-                else $_SESSION["Errors"]="System Error: Contact Support";
-
-                return null;
+                return $details;
             }
+        }
+        else $_SESSION["Errors"]="System Error: Contact Support";
 
-            function getPropertyDetails($property_id,$db_connection){
-                // stores the user results
-                $details=[];
+        return null;
+    }
 
-                $sql_query=$db_connection->prepare(
-                    "SELECT price, agreement from property where property_id=?"
-                );
+    function getPropertyDetails($property_id,$db_connection){
+        // stores the user results
+        $details=[];
 
-                if($sql_query){
-                    // Bind parameters to the prepared statment
-                    $sql_query->bind_param("i",$property_id);
-                    $sql_query->execute();
+        $sql_query=$db_connection->prepare(
+            "SELECT price, agreement from property where property_id=?"
+        );
 
-                    // Get result
-                    $result = $sql_query->get_result();
+        if($sql_query){
+            // Bind parameters to the prepared statment
+            $sql_query->bind_param("i",$property_id);
+            $sql_query->execute();
 
-                    // Check if any rows were returned
-                    if ($result->num_rows > 0) {
-                        // Fetch data
-                        while ($row = $result->fetch_assoc()){
-                            foreach($row as $key => $value) $details[$key]=$value;
-                        }
-                        return $details;
-                    }
+            // Get result
+            $result = $sql_query->get_result();
+
+            // Check if any rows were returned
+            if ($result->num_rows > 0) {
+                // Fetch data
+                while ($row = $result->fetch_assoc()){
+                    foreach($row as $key => $value) $details[$key]=$value;
                 }
-                else $_SESSION["Errors"]="System Error: Contact Support";
-
-                return null;
+                return $details;
             }
+        }
+        else $_SESSION["Errors"]="System Error: Contact Support";
 
-            function getRentDetails($user_id,$db_connection){
-                // stores the user results
-                $details=[];
+        return null;
+    }
 
-                $sql_query=$db_connection->prepare(
-                    "SELECT property_ID, start_date, end_date, 
-                    amountPaid, amountOwed from tenant where user_ID=?"
-                );
+    function getRentDetails($user_id,$db_connection){
+        // stores the user results
+        $details=[];
 
-                if($sql_query){
-                    // Bind parameters to the prepared statment
-                    $sql_query->bind_param("i",$user_id);
-                    $sql_query->execute();
+        $sql_query=$db_connection->prepare(
+            "SELECT property_ID, start_date, end_date, 
+            amountPaid, amountOwed from tenant where user_ID=?"
+        );
 
-                    // Get result
-                    $result = $sql_query->get_result();
+        if($sql_query){
+            // Bind parameters to the prepared statment
+            $sql_query->bind_param("i",$user_id);
+            $sql_query->execute();
 
-                    // Check if any rows were returned
-                    if ($result->num_rows > 0) {
-                        // Fetch data
-                        while ($row = $result->fetch_assoc()){
-                            foreach($row as $key => $value) $details[$key]=$value;
-                        }
-                        return $details;
-                    }
+            // Get result
+            $result = $sql_query->get_result();
+            // Check if any rows were returned
+            if ($result->num_rows > 0) {
+                // Fetch data
+                while ($row = $result->fetch_assoc()){
+                    foreach($row as $key => $value) $details[$key]=$value;
                 }
-                else $_SESSION["Errors"]="System Error: Contact Support";
-
-                return null;
+                return $details;
             }
+        }
+        else $_SESSION["Errors"]="System Error: Contact Support";
+
+        return null;
+    }
 
 
-            $user=$_SESSION['user']; // $_SESSION["user"];
-            $user_details=getUserDetails($user,$db_connection);
-            $rent_details=getRentDetails($user,$db_connection);
-           
-            if($user_details && $rent_details){
-                $property_id=$rent_details["property_ID"];;
-                $property_details=getPropertyDetails($property_id,$db_connection);
-                
-                if($property_details){
-                    $end_date=new DateTime($rent_details["end_date"]);
-                    $start_date=new DateTime($rent_details["start_date"]);
-                    $length=strval($start_date->diff($end_date)->days);
-                   
-                    $agreement=($property_details["agreement"])?$property_details["agreement"]:"No agreement was provided";
+ $user =$_SESSION['user'];
+$user_details = getUserDetails($user, $db_connection);
+$rent_details = getRentDetails($user, $db_connection);
+if ($user_details && $rent_details) {
+    echo "<section>";
+    echo "<img src='../../Assets/images/profile.png' alt='User profile' style='max-height:10%;max-width:15%; padding: none;margin-right:45%; margin-left: 40%;'>";
+    echo "<div class='container mt-5' style='padding: 20px;'>";
+    echo "<div class='card'>";
+    echo "<div class='card-header'>";
+    echo "<h2 class='card-title'>" . $user_details["firstName"] . " " . $user_details["lastName"] . "</h2>";
+    echo "</div>";
+    echo "<div class='card-body'>";
+    if ($rent_details["property_ID"]) {
+        $property_id = $rent_details["property_ID"];
+        $property_details = getPropertyDetails($property_id, $db_connection);
 
-                    
-                    echo "<section>";
-                    echo "<img src='../../Assets/images/profile.png' alt='User profile' style='max-height:10%;max-width:15%; padding: none;margin-right:45%; margin-left: 40%;'>";
-                        echo "<div class='container mt-5' style='padding: 20px;'>";
-                            echo "<div class='card'>";
-                           
-                                echo "<div class='card-header'>";
-                                    echo "<h2 class='card-title'>".$user_details["firstName"]." ".$user_details["lastName"]."</h2>";
-                                echo "</div>";
-                                echo "<div class='card-body'>";
-                                    echo "<p class='card-text'><strong>Monthly Rental fee:</strong>"." ".$property_details["price"]."</p>";
-                                    echo "<p class='card-text'><strong>Tenancy length:</strong>"." ".$length."</p>";
-                                    echo "<p class='card-text'><strong>Tenancy agreement:</strong>"." ".$agreement."</p>";
-                                    echo "<p class='card-text'><strong>Start Date</strong>"." ". $rent_details["start_date"]."</p>";
-                                    echo "<p class='card-text'><strong>End Date:</strong>"." ". $rent_details["end_date"]."</p>";
-                                    echo "<p class='card-text'><strong>Amount paid:</strong>"." ".$rent_details["amountPaid"]."</p>";
-                                    echo "<p class='card-text'><strong>Amount owed:</strong>"." ".$rent_details["amountOwed"]."</p>";
-                                echo "</div>";
-                            echo "</div>";
-                        echo "</div>";
+        if ($property_details) {
+            $end_date = new DateTime($rent_details["end_date"]);
+            $start_date = new DateTime($rent_details["start_date"]);
+            $length = strval($start_date->diff($end_date)->days);
+            $agreement = ($property_details["agreement"]) ? $property_details["agreement"] : "No agreement was provided";
+
+            echo "<p class='card-text'><strong>Monthly Rental fee:</strong>" . " " . $property_details["price"] . "</p>";
+            echo "<p class='card-text'><strong>Tenancy length:</strong>" . " " . $length . "</p>";
+            echo "<p class='card-text'><strong>Tenancy agreement:</strong>" . " " . $agreement . "</p>";
+            echo "<p class='card-text'><strong>Start Date</strong>" . " " . $rent_details["start_date"] . "</p>";
+            echo "<p class='card-text'><strong>End Date:</strong>" . " " . $rent_details["end_date"] . "</p>";
+            echo "<p class='card-text'><strong>Amount paid:</strong>" . " " . $rent_details["amountPaid"] . "</p>";
+            echo "<p class='card-text'><strong>Amount owed:</strong>" . " " . $rent_details["amountOwed"] . "</p>";
+        } else
+            $_SESSION["Errors"] = "Error: Failed to load property details";
+    } else
+        echo "<p class='card-text'><strong>Information:</strong>You have not rented any property</p>";
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
+    if ($rent_details["property_ID"])
         echo "<a href='tenantAccount_edit.php'><button style='margin:25px;margin-left:125px;'id='btn-editP' class='btn btn-outline-primary' data-mdb-ripple-init>Edit account</button></a>";
+    echo "</section>";
+} else
+    $_SESSION["Errors"] = "Error: Failed to load this user details";
 
-        echo "</section>";
-                }
-                else $_SESSION["Errors"] = "Error: Failed to load user details";
-            }
-            else $_SESSION["Errors"] = "Error: Failed to load user details";
-        ?>
+?>
+
+
 <div id="message-box"
     class="<?php echo (isset($_SESSION["Errors"]))? "container errors":"container";?>"
 >

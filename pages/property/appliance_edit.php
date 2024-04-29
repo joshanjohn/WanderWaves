@@ -93,7 +93,7 @@
     ?>
     <div class="conatiner mx-auto my-5 w-lg-6500" id="updateAppliance">
         <form class="mt-lg-3 col-lg-6 p-sm-3 mx-auto" method="POST"
-            action="<?php echo htmlentities($_SERVER['PHP_SELF']) . '?id=' . $property_id; ?>">
+            action="<?php echo htmlentities($_SERVER['PHP_SELF']) . '?id=' . $property_id; ?>" novalidate>
             <!-- title -->
             <h4 class=" text-center mt-5" id="title">Appliance Edit</h4>
 

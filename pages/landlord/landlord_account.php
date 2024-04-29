@@ -53,35 +53,7 @@
         return null;
 
     }
-    function getPropertyDetails($property_id,$db_connection){
-        // stores the user results
-        $details=[];
 
-        $sql_query=$db_connection->prepare(
-            "SELECT price, agreement from property where property_id=?"
-        );
-
-        if($sql_query){
-            // Bind parameters to the prepared statment
-            $sql_query->bind_param("i",$property_id);
-            $sql_query->execute();
-
-            // Get result
-            $result = $sql_query->get_result();
-
-            // Check if any rows were returned
-            if ($result->num_rows > 0) {
-                // Fetch data
-                while ($row = $result->fetch_assoc()){
-                    foreach($row as $key => $value) $details[$key]=$value;
-                }
-                return $details;
-            }
-        }
-        else $_SESSION["Errors"]="System Error: Contact Support";
-
-        return null;
-    }
 
     // function to get details of landlords income
     function getIncomeDetails($user_id, $db_connection)
@@ -109,13 +81,20 @@
                         $details[$key] = $value;
                 }
                 return $details;
+            } else {
+                // Echo statement if landlord details not found
+                echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+                echo '<strong>Landlord account is not found</strong>';
+                echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                echo '</div>';
+                echo '<button type="submit" name="back" class="btn btn-lg mx-auto my-3 "><a href = "../../">Back</a></button>';
             }
         } else
             $_SESSION["Errors"] = "System Error: Contact Support";
 
         return null;
     }
-    $user = 5; // $_SESSION["user"];
+    $user = $_SESSION["user"];
     $user_details = getUserDetails($user, $db_connection);
     $income_details = getIncomeDetails($user, $db_connection);
 
@@ -133,9 +112,9 @@
             echo "</div>";
             echo "<div class='card-body'>";
             echo "<p class='card-text'><strong>Income: $</strong>" . $income_details["income"] . "</p>";
-            echo "<p class='card-text'><strong>Commission: $</strong>" .  $income_details["commission"] . "</p>";
-            echo "<p class='card-text'><strong>Management fees: $</strong>" .  $income_details["management_fees"] . "</p>";
-            echo "<p class='card-text'><strong>Net income: $</strong>" .  $income_details["net_income"] . "</p>";
+            echo "<p class='card-text'><strong>Commission: $</strong>" . $income_details["commission"] . "</p>";
+            echo "<p class='card-text'><strong>Management fees: $</strong>" . $income_details["management_fees"] . "</p>";
+            echo "<p class='card-text'><strong>Net income: $</strong>" . $income_details["net_income"] . "</p>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -157,6 +136,7 @@
         ?>
     </div>
     
+    <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -167,7 +147,7 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
 
-    
+
 
 </body>
 

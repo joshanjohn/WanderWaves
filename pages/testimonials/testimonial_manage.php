@@ -78,7 +78,7 @@
         function displayBtn($bool, $id)
         {
             if ($bool == "1") {
-                echo '<form action="../../control/testimonialControl.php" method="POST">';
+                echo '<form action="../../control/testimonialControl.php" method="POST" novalidate>';
                 echo '<button class="btn btn-dark mx-2" name="private" value="' . $id . '"> private </button>';
                 echo '</form>';
             } else {

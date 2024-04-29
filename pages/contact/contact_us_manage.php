@@ -19,7 +19,8 @@
 <body>
 
     <?php
-    require '../Components/header.php';
+    //header
+    require '../../Components/header.php';
 
     $sql = "SELECT * FROM feedbacks";
     $result = $db_connection->query($sql);

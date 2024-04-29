@@ -3,6 +3,12 @@
 //starting a session 
 session_start();
 
+// if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
+//     $conenction_path = __DIR__ . '../../../../connection.php';
+// } else {
+//     $conenction_path = __DIR__ . "../../../connection.php";
+// }
+
 // Including the database connection
 if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
     // Path for the Knuth server

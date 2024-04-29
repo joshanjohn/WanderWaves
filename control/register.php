@@ -118,20 +118,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     } catch (Exception $e) {
                         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                     }
-                    
-                    header("Location:../pages/logIn/LogIn.php");
                 } else  
-                    $_SESSION["Errors"] = "Error: Email address already exists";
+                $_SESSION["Errors"] = "Error: Email address already exists";
             } else {
                 $_SESSION["Errors"] = "System Error: Contact Support";
-
+                
             }
         } catch (mysqli_sql_exception $exception) {
             if ($exception->getCode() === 1062)
-                $_SESSION["Errors"] = "Error: Email address already exists";
-            $_SESSION["Errors"] = "System Error: Contact Support";
-
-        }
+            $_SESSION["Errors"] = "Error: Email address already exists";
+        $_SESSION["Errors"] = "System Error: Contact Support";
+        
+    }
     } else
         $_SESSION["Errors"] = "Error: $error";
 }

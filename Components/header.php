@@ -3,19 +3,13 @@
 //starting a session 
 session_start();
 
-// if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
-//     $conenction_path = __DIR__ . '../../../../connection.php';
-// } else {
-//     $conenction_path = __DIR__ . "../../../connection.php";
-// }
-
 // Including the database connection
 if ($_SERVER['SERVER_NAME'] == 'knuth.griffith.ie') {
     // Path for the Knuth server
-    $path_to_mysql_connect = __DIR__ . '/connection.php';
+    $path_to_mysql_connect = __DIR__ . '../../../../../../connection.php';
 } else {
     // Path for the local XAMPP server
-    $path_to_mysql_connect = 'connection.php';
+    $path_to_mysql_connect = __DIR__ . '../../../../connection.php';
 }
 require $path_to_mysql_connect;
 
@@ -187,21 +181,11 @@ function validate_text($data)
 }
 
 function validate_password($data){
-  if(strlen($data)<6) return false;
-
-  $upper=0;
-  $lower=0;
-  $numbers=0;
-  $special=0;
-  
-  for(str_split($data) as $character){
-    if(ctype_upper($characeter)) $upper+=1;
-    else if(ctype_lower($characeter)) $lower+=1;
-    else if(ctype_digit($characeter)) $digit+=1;
-    else $special+=1;
-  }
-  
-  return $upper && $lower && $numbers && $special;
+    if (preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/", $data)) {
+        return true;
+    }else{
+        return false;
+    }
 }
 
 

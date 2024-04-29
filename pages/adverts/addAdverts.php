@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Wander Waves</title>
+    <link rel="icon" type="image/x-icon" href="../..//Assets/images/logo.png">
     <!-- CSS -->
     <link rel="stylesheet" href="../../Assets/css/index.css?v=<?php echo time(); ?>">
     <!-- <link href="Assets/css/index.css" rel="stylesheet"> -->
@@ -44,7 +45,8 @@
 
     <div class="container mx-auto container-sm-fluid m-5 p-5">
         <!-- upload form -->
-        <form action="../../control/upload.php" class="mx-auto w-50 mb-5" method="POST" enctype="multipart/form-data" novalidate>
+        <form action="../../control/upload.php" class="mx-auto w-50 mb-5" method="POST" enctype="multipart/form-data"
+            novalidate>
             <!-- title -->
             <h1 class="text-center mb-5 pb-5">Upload<br> Advertising Photo<br><img width="100" height="100"
                     src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/100/40C057/external-upload-arrows-tanah-basah-basic-outline-tanah-basah.png"

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: sql8.freesqldatabase.com
--- Generation Time: Apr 28, 2024 at 09:48 PM
--- Server version: 5.5.62-0ubuntu0.14.04.1
--- PHP Version: 7.0.33-0ubuntu0.16.04.16
+-- Host: 127.0.0.1
+-- Generation Time: Apr 29, 2024 at 05:40 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sql8701902`
+-- Database: `s3092883`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `ads` (
   `ad_id` int(11) NOT NULL COMMENT 'unique ad ID',
   `image` varchar(50) NOT NULL COMMENT 'path of image'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ads`
@@ -40,6 +39,33 @@ CREATE TABLE `ads` (
 INSERT INTO `ads` (`ad_id`, `image`) VALUES
 (12, '/Assets/images/ads/6629614c5cabb.png'),
 (13, '/Assets/images/ads/662962780987d.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appliance`
+--
+
+CREATE TABLE `appliance` (
+  `appliance_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `brand` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `model` varchar(20) NOT NULL,
+  `serial` varchar(50) NOT NULL,
+  `p_date` date NOT NULL,
+  `w_date` date NOT NULL,
+  `cost` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='table to store appliances';
+
+--
+-- Dumping data for table `appliance`
+--
+
+INSERT INTO `appliance` (`appliance_id`, `user_id`, `brand`, `type`, `model`, `serial`, `p_date`, `w_date`, `cost`) VALUES
+(100, 303, 'LG', 'Air Condiotioner', 'WH2', '52165465', '2024-05-11', '2024-05-24', 800.00),
+(103, 303, 'Samsung', 'Projector', 'sdsd', '52162345', '2024-04-08', '2024-05-04', 800.00),
+(104, 303, 'Samsung', 'Projector', 'sdsd', '5216232345', '2024-04-08', '2024-05-04', -1.00);
 
 -- --------------------------------------------------------
 
@@ -54,7 +80,7 @@ CREATE TABLE `appliances` (
   `wifi` tinyint(1) NOT NULL,
   `tv` tinyint(1) NOT NULL,
   `property_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `appliances`
@@ -97,7 +123,7 @@ CREATE TABLE `appuser` (
   `mobile` varchar(20) NOT NULL COMMENT 'mobile number of user',
   `access` enum('landlord','tenants','admin') NOT NULL DEFAULT 'tenants' COMMENT 'type of access for user (admin, landlord, Tenants)',
   `password` varchar(80) NOT NULL COMMENT 'user password'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `appuser`
@@ -134,6 +160,33 @@ INSERT INTO `appuser` (`user_id`, `firstName`, `lastName`, `email`, `mobile`, `a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `customer_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `postcode` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`customer_id`, `first_name`, `last_name`, `email`, `phone`, `address`, `city`, `postcode`) VALUES
+(1, 'John', 'Doe', 'johndoe@example.com', '555-1234', '123 Main St', 'Anytown', '12345'),
+(2, 'Jane', 'Smith', 'janesmith@example.com', '555-5678', '456 Oak St', 'Othertown', '67890'),
+(5, 'Mark', 'John', 'joshanjohn2003@gmail.com', '0899856434', '49 Apartment', 'Dublin15', 'D15AY09'),
+(7, 'Joshan', 'John', 'joshanjohn2003@gmail.com', '0899856434', '49 Apartment', 'Dublin45', 'D15AY09');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `feedbacks`
 --
 
@@ -144,7 +197,7 @@ CREATE TABLE `feedbacks` (
   `mobile` varchar(20) NOT NULL COMMENT 'mobile number of person',
   `subject` varchar(200) NOT NULL COMMENT 'subject of feedback',
   `message` text NOT NULL COMMENT 'feedback message '
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `feedbacks`
@@ -182,7 +235,7 @@ CREATE TABLE `landlord` (
   `commission` int(11) NOT NULL,
   `management_fees` int(11) NOT NULL,
   `net_income` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `landlord`
@@ -190,6 +243,73 @@ CREATE TABLE `landlord` (
 
 INSERT INTO `landlord` (`user_id`, `property_id`, `tenant_id`, `income`, `commission`, `management_fees`, `net_income`) VALUES
 (5, 1, 16, 13, 12, 12, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `order_date` date NOT NULL,
+  `order_total` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `customer_id`, `order_date`, `order_total`) VALUES
+(1, 1, '2022-03-17', 29.98),
+(2, 2, '2022-03-18', 9.99),
+(3, 1, '2022-03-18', 19.99);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `item_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`item_id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
+(1, 1, 1, 2, 19.98),
+(2, 2, 3, 1, 9.99),
+(3, 3, 2, 1, 14.99);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(50) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_name`, `description`, `price`) VALUES
+(1, 'Product A', 'HDMI Cable', 9.99),
+(2, 'Product B', 'USB Charger', 14.99),
+(3, 'Product C', 'Power Adapter', 19.99);
 
 -- --------------------------------------------------------
 
@@ -210,36 +330,36 @@ CREATE TABLE `property` (
   `description` text NOT NULL COMMENT 'description for property',
   `num_beds` int(50) NOT NULL,
   `size` int(50) NOT NULL,
-  `agreement` text,
+  `agreement` text DEFAULT NULL,
   `image` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `property`
 --
 
 INSERT INTO `property` (`property_id`, `user_id`, `Name`, `address`, `eircode`, `category`, `price`, `start_date`, `end_date`, `description`, `num_beds`, `size`, `agreement`, `image`) VALUES
-(1, 2, 'Ann\'s Home', 'Griffith Hall Of Residence South Circular road ', 'D08 H4U9', 'apartment', '1400', '2024-04-10', '2024-04-30', 'Griffith Halls of Residence (GHR) is purpose-built student accommodation located in Dublin 8, a desirable neighbourhood just a few minutes’ walk south of the city centre. GHR is pleased to open its doors to tourists from all over the world exclusively during our summer months.', 2, 2000, 'This agreement serves as a contract  for the tenancy of the property\r\nRent: The monthly rent for the property should be paid on time\r\nMaintenance: The tenant agrees to maintain the property in good condition and promptly report any damages or maintenance issues to the landlord.\r\nUse of Property: The property is to be used solely for residential purposes and not for any illegal activities.\r\nPets: No pets allowed\r\nSubletting: Subletting of the property is strictly prohibited without prior written consent from the landlord.\r\nTermination: Either party may terminate this agreement with written notice.\r\nBy signing this agreement, you agree to abide by the terms and conditions outlined herein.', '/Assets/images/property/1.jpg'),
-(2, 2, 'greenspan', 'st mary', 'D09T1UT', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/2.jpg'),
-(3, 2, 'greenspan', 'st mary', 'D01GH7T', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/3.jpg'),
-(4, 2, 'greenspan', 'st mary', 'D02R4EF', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/4.jpg'),
-(5, 2, 'greenspan', 'st mary', 'D03T6B4', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/5.jpg'),
-(6, 2, 'greenspan', 'st mary', 'D05W8QS', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/6.jpg'),
-(7, 2, 'greenspan', 'st mary', 'D07HJ8I', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
-(8, 2, 'greenspan', 'st mary', 'D10PI7Y', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
-(9, 2, 'greenspan', 'st mary', 'D11X3ER', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
-(10, 2, 'greenspan', 'st mary', 'D12K9IK', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
-(11, 2, 'greenspan', 'st mary', 'D13O9PC', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
-(12, 2, 'greenspan', 'st mary', 'D16SE7Y', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
-(13, 2, 'greenspan', 'st mary', 'D24P0IK', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
-(14, 2, 'greenspan', 'st mary', 'D22KM9I', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
-(15, 2, 'greenspan', 'st mary', 'D01IOP2', 'apartment', '2100', '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
-(16, 1, 'Tyrell', '12 st', 'D15N6X2', 'house', '230', '2024-04-04', '2024-04-30', 'gggh', 2, 300, NULL, '/Assets/images/property/1.jpg'),
-(17, 1, '', '12 st', 'D15N6X2', 'house', '230', '2024-04-04', '2024-04-30', 'gggh', 2, 300, NULL, '/Assets/images/property/1.jpg'),
-(18, 1, 'Gracefield view', '12 mary', 'D16LI9O', 'apartment', '2300', '2024-04-05', '2024-04-30', 'Loft apartment', 2, 3000, NULL, '/Assets/images/property/1.jpg'),
-(19, 1, 'Hotel', '15 The Boulevard, Mount Eustace', 'D05FV12', 'house', '6000', '2024-05-03', '2024-05-07', 'very good', 5, 300, 'do not shout', '/Assets/images/property/1.jpg'),
-(20, 1, 'joshan', 'SHHDNSJodn sdohsld vs', 'D01AY09', 'apartment', '19099299', '2024-05-03', '2024-05-23', 'hello getty it&amp;#039;s me joshan. I&amp;#039;m so bad', 4, 22000, 'I have no rules', '/Assets/images/property/1.jpg'),
-(21, 1, 'Hotel', 'hj', 'D05FV12', 'house', '78', '2024-04-25', '2024-05-09', 'jhjj', 7, 3000, 'nnnnn', '/Assets/images/property/1.jpg');
+(1, 2, 'Ann\'s Home', 'Griffith Hall Of Residence South Circular road ', 'D08 H4U9', 'apartment', 1400, '2024-04-10', '2024-04-30', 'Griffith Halls of Residence (GHR) is purpose-built student accommodation located in Dublin 8, a desirable neighbourhood just a few minutes’ walk south of the city centre. GHR is pleased to open its doors to tourists from all over the world exclusively during our summer months.', 2, 2000, 'This agreement serves as a contract  for the tenancy of the property\r\nRent: The monthly rent for the property should be paid on time\r\nMaintenance: The tenant agrees to maintain the property in good condition and promptly report any damages or maintenance issues to the landlord.\r\nUse of Property: The property is to be used solely for residential purposes and not for any illegal activities.\r\nPets: No pets allowed\r\nSubletting: Subletting of the property is strictly prohibited without prior written consent from the landlord.\r\nTermination: Either party may terminate this agreement with written notice.\r\nBy signing this agreement, you agree to abide by the terms and conditions outlined herein.', '/Assets/images/property/1.jpg'),
+(2, 2, 'greenspan', 'st mary', 'D09T1UT', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/2.jpg'),
+(3, 2, 'greenspan', 'st mary', 'D01GH7T', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/3.jpg'),
+(4, 2, 'greenspan', 'st mary', 'D02R4EF', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/4.jpg'),
+(5, 2, 'greenspan', 'st mary', 'D03T6B4', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/5.jpg'),
+(6, 2, 'greenspan', 'st mary', 'D05W8QS', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/6.jpg'),
+(7, 2, 'greenspan', 'st mary', 'D07HJ8I', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
+(8, 2, 'greenspan', 'st mary', 'D10PI7Y', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
+(9, 2, 'greenspan', 'st mary', 'D11X3ER', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
+(10, 2, 'greenspan', 'st mary', 'D12K9IK', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
+(11, 2, 'greenspan', 'st mary', 'D13O9PC', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
+(12, 2, 'greenspan', 'st mary', 'D16SE7Y', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
+(13, 2, 'greenspan', 'st mary', 'D24P0IK', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
+(14, 2, 'greenspan', 'st mary', 'D22KM9I', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
+(15, 2, 'greenspan', 'st mary', 'D01IOP2', 'apartment', 2100, '2024-12-02', '2024-12-23', 'good', 4, 200, NULL, '/Assets/images/property/1.jpg'),
+(16, 1, 'Tyrell', '12 st', 'D15N6X2', 'house', 230, '2024-04-04', '2024-04-30', 'gggh', 2, 300, NULL, '/Assets/images/property/1.jpg'),
+(17, 1, '', '12 st', 'D15N6X2', 'house', 230, '2024-04-04', '2024-04-30', 'gggh', 2, 300, NULL, '/Assets/images/property/1.jpg'),
+(18, 1, 'Gracefield view', '12 mary', 'D16LI9O', 'apartment', 2300, '2024-04-05', '2024-04-30', 'Loft apartment', 2, 3000, NULL, '/Assets/images/property/1.jpg'),
+(19, 1, 'Hotel', '15 The Boulevard, Mount Eustace', 'D05FV12', 'house', 6000, '2024-05-03', '2024-05-07', 'very good', 5, 300, 'do not shout', '/Assets/images/property/1.jpg'),
+(20, 1, 'joshan', 'SHHDNSJodn sdohsld vs', 'D01AY09', 'apartment', 19099299, '2024-05-03', '2024-05-23', 'hello getty it&amp;#039;s me joshan. I&amp;#039;m so bad', 4, 22000, 'I have no rules', '/Assets/images/property/1.jpg'),
+(21, 1, 'Hotel', 'hj', 'D05FV12', 'house', 78, '2024-04-25', '2024-05-09', 'jhjj', 7, 3000, 'nnnnn', '/Assets/images/property/1.jpg');
 
 -- --------------------------------------------------------
 
@@ -252,8 +372,8 @@ CREATE TABLE `reviews` (
   `user_id` int(11) NOT NULL COMMENT 'user_id of reviewer',
   `title` varchar(150) NOT NULL COMMENT 'title of review',
   `message` varchar(200) NOT NULL COMMENT 'review message',
-  `visible` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'visiblity of review'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `visible` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'visiblity of review'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `reviews`
@@ -282,9 +402,9 @@ CREATE TABLE `tenant` (
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   `agreement` tinyint(1) DEFAULT NULL,
-  `amountPaid` double NOT NULL DEFAULT '650',
-  `amountOwed` double NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `amountPaid` double NOT NULL DEFAULT 650,
+  `amountOwed` double NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tenant`
@@ -298,6 +418,30 @@ INSERT INTO `tenant` (`user_ID`, `property_ID`, `start_date`, `end_date`, `agree
 (24, 1, '2024-04-30', '2024-05-03', 1, 900, 0),
 (25, 1, '2024-04-30', '2024-08-10', 1, 650, 0);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `mail_id` varchar(50) NOT NULL,
+  `eircode` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='tabke to store user information';
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `address`, `mobile`, `mail_id`, `eircode`) VALUES
+(303, 'Joshan', 'John', 'tyujkjhgfdsdf', '+353 899856434', 'joshan.', 'D15AY09'),
+(502, 'Anna', 'Gromyko', 'S Circular Rd, Dublin 8', '+7 899837325', 'Anna.gromyko@student.griffith.ie', 'D08 V04N');
+
 --
 -- Indexes for dumped tables
 --
@@ -307,6 +451,13 @@ INSERT INTO `tenant` (`user_ID`, `property_ID`, `start_date`, `end_date`, `agree
 --
 ALTER TABLE `ads`
   ADD PRIMARY KEY (`ad_id`);
+
+--
+-- Indexes for table `appliance`
+--
+ALTER TABLE `appliance`
+  ADD PRIMARY KEY (`appliance_id`),
+  ADD KEY `appliance_ibfk_1` (`user_id`);
 
 --
 -- Indexes for table `appliances`
@@ -322,6 +473,12 @@ ALTER TABLE `appuser`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`customer_id`);
+
+--
 -- Indexes for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
@@ -333,6 +490,27 @@ ALTER TABLE `feedbacks`
 ALTER TABLE `landlord`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `tenant_id` (`tenant_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `customer_id` (`customer_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`item_id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `property`
@@ -356,6 +534,12 @@ ALTER TABLE `tenant`
   ADD KEY `property` (`property_ID`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -364,34 +548,82 @@ ALTER TABLE `tenant`
 --
 ALTER TABLE `ads`
   MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique ad ID', AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `appliance`
+--
+ALTER TABLE `appliance`
+  MODIFY `appliance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+
 --
 -- AUTO_INCREMENT for table `appliances`
 --
 ALTER TABLE `appliances`
   MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `appuser`
 --
 ALTER TABLE `appuser`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique user ID', AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
   MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique feedback ID', AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
   MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique property ID', AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'unique review ID', AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=769;
+
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `appliance`
+--
+ALTER TABLE `appliance`
+  ADD CONSTRAINT `appliance_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `appliances`
@@ -404,6 +636,19 @@ ALTER TABLE `appliances`
 --
 ALTER TABLE `landlord`
   ADD CONSTRAINT `landlord_ibfk_1` FOREIGN KEY (`tenant_id`) REFERENCES `tenant` (`user_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`);
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
 -- Constraints for table `property`

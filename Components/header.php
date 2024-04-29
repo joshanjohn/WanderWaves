@@ -166,10 +166,24 @@ function validate_text($data)
     return preg_match("/^[a-zA-Z\d ]{2,50}$/", $data);
 }
 
-function validate_password($data)
-{
-    return true;
+function validate_password($data){
+  if(strlen($data)<6) return false;
+
+  $upper=0;
+  $lower=0;
+  $numbers=0;
+  $special=0;
+  
+  for(str_split($data) as $character){
+    if(ctype_upper($characeter)) $upper+=1;
+    else if(ctype_lower($characeter)) $lower+=1;
+    else if(ctype_digit($characeter)) $digit+=1;
+    else $special+=1;
+  }
+  
+  return $upper && $lower && $numbers && $special;
 }
+
 
 function validate_category($data)
 {

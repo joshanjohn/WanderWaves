@@ -2,7 +2,7 @@
 require '../Components/header.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $error = null;
-    $user = 16; // $_SESSION['user'];
+    $user =$_SESSION['user'];
     $property_id = isset($_GET["id"]) ? $_GET["id"] : null;
     // $property=validate_input($_POST['property']);
     $name = validate_input($_POST['name']);
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Execute the query
             if ($sql_query->execute()) {
                 // Close database connection
-                $_SESSION["Response"] = "Property added successfully";
+                $_SESSION["Response"] = "Property edited successfully";
                 $db_connection->close();
                 header("Location:../pages/property/property.php"); 
             } else

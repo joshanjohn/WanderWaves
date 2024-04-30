@@ -61,7 +61,7 @@
             <div class="title-wrapper">
                 <h2 class="section-title headline-small">Edit Property</h2>
             </div>
-            <form action="../../control/property_edit.php" method="POST" novalidate>
+            <form action="../../control/property_edit.php?id=<?php echo $property_id; ?>" method="POST" novalidate>
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
